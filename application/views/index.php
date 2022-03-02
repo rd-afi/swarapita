@@ -33,6 +33,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <span class="navbar-toggler-icon"></span>
       </button>
 
+
       <div class="collapse navbar-collapse order-3" id="navbarCollapse">
         <!-- Left navbar links -->
 
