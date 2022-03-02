@@ -129,7 +129,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                                    <input type="text" class="form-control" id="kelurahan" placeholder="Kecamatan Sesuai KTP">
                                                               </div>
                        <div class="form-group">
-                                                                   <label for="exampleInputEmail1">No. Handpohone/WA</label>
+                                                                   <label for="exampleInputEmail1">No. Handphone/WA</label>
                                                                    <input type="text" class="form-control" id="kelurahan" placeholder="Nomor Handphone / WhatsApp">
                                                               </div>
 
