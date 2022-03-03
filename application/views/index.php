@@ -8,13 +8,28 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SWARAPITA</title>
-  <title>SWARAPITA</title>
 
-  <link rel="stylesheet" href="<?php echo base_url();?>assets/plugins/daterangepicker/daterangepicker.css">
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome Icons -->
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="<?php echo base_url();?>/assets/plugins/fontawesome-free/css/all.min.css">
+  <!-- daterange picker -->
+  <link rel="stylesheet" href="<?php echo base_url();?>/assets/plugins/daterangepicker/daterangepicker.css">
+  <!-- iCheck for checkboxes and radio inputs -->
+  <link rel="stylesheet" href="<?php echo base_url();?>/assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- Bootstrap Color Picker -->
+  <link rel="stylesheet" href="<?php echo base_url();?>/assets/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
+  <!-- Tempusdominus Bootstrap 4 -->
+  <link rel="stylesheet" href="<?php echo base_url();?>/assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="<?php echo base_url();?>/assets/plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="<?php echo base_url();?>/assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+  <!-- Bootstrap4 Duallistbox -->
+  <link rel="stylesheet" href="<?php echo base_url();?>/assets/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
+  <!-- BS Stepper -->
+  <link rel="stylesheet" href="<?php echo base_url();?>/assets/plugins/bs-stepper/css/bs-stepper.min.css">
+  <!-- dropzonejs -->
+  <link rel="stylesheet" href="<?php echo base_url();?>/assets/plugins/dropzone/min/dropzone.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?php echo base_url();?>/assets/dist/css/adminlte.min.css">
 </head>
@@ -28,16 +43,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <img src="<?php echo base_url();?>/assets/dist/img/Partai Gerindra Logo - Download Free PNG.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light"><b>SWARAPITA</b></span>
       </a>
-
       <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
-
       <div class="collapse navbar-collapse order-3" id="navbarCollapse">
         <!-- Left navbar links -->
-
-        </ul>
+      </ul>
   </nav>
   <!-- /.navbar -->
 
@@ -48,7 +59,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0"> Formulir Pendaftaran</h1>
+            <h1 class="m-0">Relawan Swarapita</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -70,77 +81,70 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- general form elements -->
             <div class="card card-primary">
               <div class="card-header"style="background-color:red;">
-                <h3 class="card-title"  >Formulir Pendaftaran Relawan Swarapita</h3>
+                <h3 class="card-title">Formulir Pendaftaran</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form>
+              <form action="<?php echo base_url(). 'general/add_relawan'; ?>" method="post">
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">NIK</label>
-                    <input type="text" class="form-control" id="nik" placeholder="Nomor Induk Kependudukan">
+                    <label for="nik">NIK</label>
+                    <input type="number" class="form-control" name="nik" placeholder="Nomor Induk Kependudukan" minlength="16" maxlength="16"
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                   </div>
                   <div class="form-group">
-                   <label for="exampleInputEmail1">Nama</label>
-                    <input type="text" class="form-control" id="nik" placeholder="Nama sesuai KTP">
-                   </div>
-                    <div class="form-group">
-                     <label for="exampleInputEmail1">Tempat Lahir</label>
-                      <input type="text" class="form-control" id="nik" placeholder="Tempat Lahir Sesuai KTP">
-                    </div>
-                     <div class="form-group">
-                                      <label for="exampleSelectBorder">Jenis Kelamin</label>
-                                      <select class="custom-select form-control-border" id="exampleSelectBorder">
-                                        <option>Laki-Laki</option>
-                                        <option>Perempuan</option>
-                                      </select>
-                                    </div>
-                   <div class="form-group">
+                    <label for="nama">Nama</label>
+                    <input type="text" class="form-control" name="nama" placeholder="Nama sesuai KTP">
+                  </div>
+                  <div class="form-group">
+                    <label for="tempat_lahir">Tempat Lahir</label>
+                    <input type="text" class="form-control" name="tempat_lahir" placeholder="Tempat Lahir Sesuai KTP">
+                  </div>
+                  <div class="form-group">
+                    <label for="jk">Jenis Kelamin</label>
+                    <select class="custom-select form-control-border" name="jk">
+                      <option value="1">Laki-Laki</option>
+                      <option value="2">Perempuan</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
                     <label>Tanggal Lahir:</label>
-                                     <div class="input-group">
-                                       <div class="input-group-prepend">
-                                         <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
-                                       </div>
-                                       <input type="text" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask>
-                                     </div>
-                   </div>
-                   <div class="form-group">
-                        <label for="exampleInputEmail1">Alamat</label>
-                        <input type="text" class="form-control" id="alamat" placeholder="Alamat Sesuai KTP">
-                   </div>
-                     <div class="form-group">
-                         <label for="exampleInputEmail1">RT/RW</label>
-                         <div class="row">
-                                           <div class="col-6">
-                                             <input type="number" class="form-control" placeholder="RT">
-                                           </div>
-                                           <div class="col-6">
-                                             <input type="number" class="form-control" placeholder="RW">
-                                           </div>
-
-                                         </div>
-                     </div>
-                      <div class="form-group">
-                                             <label for="exampleInputEmail1">Kelurahan/Desa</label>
-                                             <input type="text" class="form-control" id="kelurahan" placeholder="Kelurahan/Desa Sesuai KTP">
-                                        </div>
-                       <div class="form-group">
-                                                                   <label for="exampleInputEmail1">Kecamatan</label>
-                                                                   <input type="text" class="form-control" id="kelurahan" placeholder="Kecamatan Sesuai KTP">
-                                                              </div>
-                       <div class="form-group">
-                                                                   <label for="exampleInputEmail1">No. Handphone/WA</label>
-                                                                   <input type="text" class="form-control" id="kelurahan" placeholder="Nomor Handphone / WhatsApp">
-                                                              </div>
-
-
-                                                           <div class="form-group">
-                                                                                                <label for="exampleSelectBorder">Bersedia menjadi kordinator desa/kelurahan dan menjadi rumah sebagai posko pendaftaran relawan</label>
-                                                                                                <select class="custom-select form-control-border" id="exampleSelectBorder">
-                                                                                                  <option>Ya</option>
-                                                                                                  <option>Tidak</option>
-                                                                                                </select>
-                                                                                              </div>
+                    <input type="date" class="form-control" name="tanggal_lahir">
+                  </div>
+                  <div class="form-group">
+                    <label for="alamat">Alamat</label>
+                    <input type="text" class="form-control" name="alamat" placeholder="Alamat Sesuai KTP">
+                  </div>
+                  <div class="form-group">
+                    <label for="rtrw">RT/RW</label>
+                    <div class="row">
+                      <div class="col-6">
+                        <input type="number" class="form-control" name="rt" placeholder="RT" min="0">
+                      </div>
+                      <div class="col-6">
+                        <input type="number" class="form-control" name="rw" placeholder="RW" min="0">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="kelurahan">Kelurahan/Desa</label>
+                    <input type="text" class="form-control" name="kelurahan" placeholder="Kelurahan/Desa Sesuai KTP">
+                  </div>
+                  <div class="form-group">
+                    <label for="kecamatan">Kecamatan</label>
+                    <input type="text" class="form-control" name="kecamatan" placeholder="Kecamatan Sesuai KTP">
+                  </div>
+                  <div class="form-group">
+                    <label for="hpwa">No. Handphone/WA</label>
+                    <input type="text" class="form-control" name="hpwa" placeholder="Nomor Handphone / WhatsApp">
+                  </div>
+                  <div class="form-group">
+                    <label for="as_koor">Bersedia menjadi kordinator desa/kelurahan dan menjadi rumah sebagai posko pendaftaran relawan</label>
+                    <select class="custom-select form-control-border" name="as_koor">
+                      <option value="1">Ya</option>
+                      <option value="0">Tidak</option>
+                    </select>
+                  </div>
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary" style="background-color:red;">Submit</button>
                 </div>
@@ -176,16 +180,27 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="<?php echo base_url();?>/assets/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="<?php echo base_url();?>/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Select2 -->
+<script src="<?php echo base_url();?>/assets/plugins/select2/js/select2.full.min.js"></script>
+<!-- Bootstrap4 Duallistbox -->
+<script src="<?php echo base_url();?>/assets/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+<!-- InputMask -->
+<script src="<?php echo base_url();?>/assets/plugins/moment/moment.min.js"></script>
+<script src="<?php echo base_url();?>/assets/plugins/inputmask/jquery.inputmask.min.js"></script>
+<!-- date-range-picker -->
+<script src="<?php echo base_url();?>/assets/plugins/daterangepicker/daterangepicker.js"></script>
+<!-- bootstrap color picker -->
+<script src="<?php echo base_url();?>/assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="<?php echo base_url();?>/assets/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- Bootstrap Switch -->
+<script src="<?php echo base_url();?>/assets/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+<!-- BS-Stepper -->
+<script src="<?php echo base_url();?>/assets/plugins/bs-stepper/js/bs-stepper.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?php echo base_url();?>/assets/dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="<?php echo base_url();?>/assets/dist/js/demo.js"></script>
+<!-- Page specific script -->
 <script>
-//Datemask dd/mm/yyyy
-     $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
-             //Datemask2 mm/dd/yyyy
-             $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
-             //Money Euro
-             $('[data-mask]').inputmask()</script>
+
 </body>
 </html>
