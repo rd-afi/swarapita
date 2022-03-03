@@ -55,6 +55,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <li class="nav-item">
             <a href="<?php echo base_url();?>list_relawan" class="nav-link">List Relawan</a>
           </li>
+          <li class="nav-item">
+            <a href="<?php echo base_url();?>upload_relawan" class="nav-link">Upload Data Relawan</a>
+          </li>
         </ul>
 
       </div>
@@ -99,57 +102,57 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <div class="form-group">
                     <label for="nik">NIK</label>
                     <input type="number" class="form-control" name="nik" placeholder="Nomor Induk Kependudukan" minlength="16" maxlength="16"
-                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>
                   </div>
                   <div class="form-group">
                     <label for="nama">Nama</label>
-                    <input type="text" class="form-control" name="nama" placeholder="Nama sesuai KTP">
+                    <input type="text" class="form-control" name="nama" placeholder="Nama sesuai KTP" required>
                   </div>
                   <div class="form-group">
                     <label for="tempat_lahir">Tempat Lahir</label>
-                    <input type="text" class="form-control" name="tempat_lahir" placeholder="Tempat Lahir Sesuai KTP">
+                    <input type="text" class="form-control" name="tempat_lahir" placeholder="Tempat Lahir Sesuai KTP" required>
                   </div>
                   <div class="form-group">
                     <label for="jk">Jenis Kelamin</label>
-                    <select class="custom-select form-control-border" name="jk">
+                    <select class="custom-select form-control-border" name="jk" required>
                       <option value="1">Laki-Laki</option>
                       <option value="2">Perempuan</option>
                     </select>
                   </div>
                   <div class="form-group">
                     <label>Tanggal Lahir:</label>
-                    <input type="date" class="form-control" name="tanggal_lahir">
+                    <input type="date" class="form-control" name="tanggal_lahir" required>
                   </div>
                   <div class="form-group">
                     <label for="alamat">Alamat</label>
-                    <input type="text" class="form-control" name="alamat" placeholder="Alamat Sesuai KTP">
+                    <input type="text" class="form-control" name="alamat" placeholder="Alamat Sesuai KTP" required>
                   </div>
                   <div class="form-group">
                     <label for="rtrw">RT/RW</label>
                     <div class="row">
                       <div class="col-6">
-                        <input type="number" class="form-control" name="rt" placeholder="RT" min="0">
+                        <input type="number" class="form-control" name="rt" placeholder="RT" min="0"required>
                       </div>
                       <div class="col-6">
-                        <input type="number" class="form-control" name="rw" placeholder="RW" min="0">
+                        <input type="number" class="form-control" name="rw" placeholder="RW" min="0" required>
                       </div>
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="kelurahan">Kelurahan/Desa</label>
-                    <input type="text" class="form-control" name="kelurahan" placeholder="Kelurahan/Desa Sesuai KTP">
+                    <input type="text" class="form-control" name="kelurahan" placeholder="Kelurahan/Desa Sesuai KTP" required>
                   </div>
                   <div class="form-group">
                     <label for="kecamatan">Kecamatan</label>
-                    <input type="text" class="form-control" name="kecamatan" placeholder="Kecamatan Sesuai KTP">
+                    <input type="text" class="form-control" name="kecamatan" placeholder="Kecamatan Sesuai KTP" required>
                   </div>
                   <div class="form-group">
                     <label for="hpwa">No. Handphone/WA</label>
-                    <input type="text" class="form-control" name="hpwa" placeholder="Nomor Handphone / WhatsApp">
+                    <input type="text" class="form-control" name="hpwa" placeholder="628xxx" required>
                   </div>
                   <div class="form-group">
                     <label for="as_koor">Bersedia menjadi kordinator desa/kelurahan dan menjadi rumah sebagai posko pendaftaran relawan</label>
-                    <select class="custom-select form-control-border" name="as_koor">
+                    <select class="custom-select form-control-border" name="as_koor" required>
                       <option value="1">Ya</option>
                       <option value="0">Tidak</option>
                     </select>
@@ -183,7 +186,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </div>
 <!-- ./wrapper -->
 
-<!-- REQUIRED SCRIPTS -->
+<!-- requiredD SCRIPTS -->
 
 <!-- jQuery -->
 <script src="<?php echo base_url();?>/assets/plugins/jquery/jquery.min.js"></script>

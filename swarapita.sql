@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 03, 2022 at 03:08 AM
+-- Generation Time: Mar 03, 2022 at 03:32 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.4.20
 
@@ -40,8 +40,18 @@ CREATE TABLE `relawan` (
   `keldesa` varchar(256) NOT NULL,
   `kec` varchar(256) NOT NULL,
   `hpwa` varchar(256) NOT NULL,
-  `as_koor` int(11) NOT NULL
+  `as_koor` int(11) NOT NULL,
+  `source` varchar(10) NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `update_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `relawan`
+--
+
+INSERT INTO `relawan` (`id`, `nik`, `nama`, `tempat_lahir`, `jk`, `tgl_lahir`, `alamat`, `rt`, `rw`, `keldesa`, `kec`, `hpwa`, `as_koor`, `source`, `created_at`, `update_at`) VALUES
+(1, '9109090709950001', 'Raafi\'ud Darajaat', 'Serang', 1, '1991-09-07', 'Cikande', '002', '003', 'Cikande', 'Cikande', '85219147528', 1, 'form', '2022-03-03 21:29:21', NULL);
 
 --
 -- Indexes for dumped tables
@@ -61,7 +71,7 @@ ALTER TABLE `relawan`
 -- AUTO_INCREMENT for table `relawan`
 --
 ALTER TABLE `relawan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

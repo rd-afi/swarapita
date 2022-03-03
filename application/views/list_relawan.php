@@ -43,6 +43,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <li class="nav-item">
             <a href="<?php echo base_url();?>list_relawan" class="nav-link">List Relawan</a>
           </li>
+          <li class="nav-item">
+            <a href="<?php echo base_url();?>upload_relawan" class="nav-link">Upload Data Relawan</a>
+          </li>
         </ul>
 
       </div>
@@ -105,14 +108,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <td><?php echo $u->nik ?></td>
                         <td><?php echo $u->nama ?></td>
                         <td><?php echo $u->tempat_lahir ?></td>
-                        <td><?php echo $u->jk ?></td>
+                        <td><?php echo ($u->jk == 1) ? 'Laki-Laki' : 'Perempuan'; ?></td>
                         <td><?php echo $u->tgl_lahir ?></td>
                         <td><?php echo $u->alamat ?></td>
                         <td><?php echo $u->rt.'/'.$u->rw ?></td>
                         <td><?php echo $u->keldesa ?></td>
                         <td><?php echo $u->kec ?></td>
                         <td><?php echo $u->hpwa ?></td>
-                        <td><?php echo $u->as_koor ?></td>
+                        <td><?php echo ($u->as_koor == 1) ? 'Ya Bersedia' : 'Tidak Bersedia'; ?></td>
                     </tr>
                     <?php } ?>
                   </tbody>
