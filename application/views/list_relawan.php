@@ -116,21 +116,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </tr>
                     <?php } ?>
                   </tbody>
-                  <tfoot>
-                  <tr>
-                    <th>NIK</th>
-                    <th>Nama</th>
-                    <th>Tempat Lahir</th>
-                    <th>Jenis Kelamin</th>
-                    <th>Tanggal Lahir</th>
-                    <th>Alamat</th>
-                    <th>RT/RW</th>
-                    <th>Kelurahan / Desa</th>
-                    <th>Kecamatan</th>
-                    <th>No HP / WA</th>
-                    <th>Relawan</th>
-                  </tr>
-                  </tfoot>
+
                 </table>
               </div>
               <!-- /.card-body -->
