@@ -60,4 +60,10 @@ class General extends CI_Controller {
 		$this->m_data->input_data($data,'relawan');
 		redirect('general');
 	}
+	public function list_relawan()
+	{
+		$data['relawan'] = $this->m_data->list_relawan()->result();
+		$this->load->view('list_relawan',$data);
+		// $this->load->view('data',$data);
+	}
 }
