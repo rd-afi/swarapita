@@ -44,7 +44,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <a href="<?php echo base_url();?>list_relawan" class="nav-link">List Relawan</a>
           </li>
           <li class="nav-item">
-            <a href="<?php echo base_url();?>upload_relawan" class="nav-link">Upload Data Relawan</a>
+            <a href="<?php echo base_url();?>login" class="nav-link">Login</a>
           </li>
         </ul>
 
