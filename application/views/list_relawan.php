@@ -93,8 +93,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <th>Tanggal Lahir</th>
                     <th>Alamat</th>
                     <th>RT/RW</th>
-                    <th>Kelurahan / Desa</th>
+                    <th>Provinsi</th>
+                    <th>Kabupaten</th>
                     <th>Kecamatan</th>
+                    <th>Kelurahan</th>
                     <th>No HP / WA</th>
                     <th>Relawan</th>
                   </tr>
@@ -112,8 +114,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <td><?php echo $u->tgl_lahir ?></td>
                         <td><?php echo $u->alamat ?></td>
                         <td><?php echo $u->rt.'/'.$u->rw ?></td>
-                        <td><?php echo $u->keldesa ?></td>
-                        <td><?php echo $u->kec ?></td>
+                        <td><?php echo $u->provinsi ?></td>
+                        <td><?php echo $u->kabupaten ?></td>
+                        <td><?php echo $u->kecamatan ?></td>
+                        <td><?php echo $u->kelurahan ?></td>
                         <td><?php echo $u->hpwa ?></td>
                         <td><?php echo ($u->as_koor == 1) ? 'Ya Bersedia' : 'Tidak Bersedia'; ?></td>
                     </tr>
