@@ -246,11 +246,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
         showConfirmButton: false,
         timerProgressBar: true,
         timer: 5000
-      });
-
+        });
+      
       $(document).ready(function(){
       Toast.fire({
-        icon: 'success',
+        icon: '<?php echo $this->session->flashdata("ico"); ?>',
         title: '<?php echo $this->session->flashdata("msg"); ?>'
         })
       });

@@ -8,7 +8,7 @@ class General extends CI_Controller {
 		parent::__construct();		
 		$this->load->model('m_data');
 		$this->load->helper(array('form', 'url'));
-		// $this->load->library("session");
+		$this->load->library("session");
 	}
 
 	/**
@@ -70,26 +70,37 @@ class General extends CI_Controller {
 		$kelurahan = $this->input->post('kelurahan');
 		$hpwa = $this->input->post('hpwa');
 		$as_koor = $this->input->post('as_koor');
- 
-		$data = array(
-			'nik' => $nik,
-			'nama' => $nama,
-			'tempat_lahir' => $tempat_lahir,
-			'jk' => $jk,
-			'tgl_lahir' => $tanggal_lahir,
-			'alamat' => $alamat,
-			'rt' => $rt,
-			'rw' => $rw,
-			'provinsi' => $provinsi,
-			'kabupaten' => $kabupaten,
-			'kecamatan' => $kecamatan,
-			'kelurahan' => $kelurahan,
-			'hpwa' => $hpwa,
-			'as_koor' => $as_koor,
-			'source' => 'form',
-			'created_at' => date("Y-m-d H:i:s")
-			);
-		$this->m_data->input_data($data,'relawan');
-		redirect('general');
+
+		$this->db->where('nik',$nik);
+        $cek_nik = $this->db->get('relawan');
+
+		if ($cek_nik->num_rows() >= 1) {
+			$this->session->set_flashdata('ico', 'error');
+			$this->session->set_flashdata('msg', 'NIK Sudah di-Input');
+			redirect('general');
+		} else {
+			$data = array(
+				'nik' => $nik,
+				'nama' => $nama,
+				'tempat_lahir' => $tempat_lahir,
+				'jk' => $jk,
+				'tgl_lahir' => $tanggal_lahir,
+				'alamat' => $alamat,
+				'rt' => $rt,
+				'rw' => $rw,
+				'provinsi' => $provinsi,
+				'kabupaten' => $kabupaten,
+				'kecamatan' => $kecamatan,
+				'kelurahan' => $kelurahan,
+				'hpwa' => $hpwa,
+				'as_koor' => $as_koor,
+				'source' => 'form',
+				'created_at' => date("Y-m-d H:i:s")
+				);
+			$this->m_data->input_data($data,'relawan');
+			$this->session->set_flashdata('ico', 'success');
+			$this->session->set_flashdata('msg', 'Data Berhasil di-Input');
+			redirect('general');
+		}
 	}
 }
