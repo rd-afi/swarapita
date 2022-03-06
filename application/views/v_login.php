@@ -9,8 +9,9 @@ $this->load->view('layout/head');
 <div class="login-box">
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">
+    <img src="<?php echo base_url();?>assets/dist/img/fococlipping-20220306-173417.png" alt="Gerindra Logo" class="brand-image">
     <div class="card-header text-center">
-      <a class="h1"><b>SWARAPITA</b></a>
+      <a class="h1" href="<?php echo base_url();?>general/index"><b>SWARAPITA</b></a>
     </div>
     <div class="card-body">
       <p class="login-box-msg">Sign in to start your session</p>
@@ -41,10 +42,11 @@ $this->load->view('layout/head');
               </label>
             </div> -->
           </div>
+          <button type="submit" value="Login" class="btn btn-primary btn-block">Sign In</button>
+          <a class="btn btn-primary btn-block" href="<?php echo base_url();?>general/index" role="button">Back</a>
           <!-- /.col -->
-          <div class="col-4">
-            <button type="submit" value="Login" class="btn btn-primary btn-block">Sign In</button>
-          </div>
+         
+          
           <!-- /.col -->
         </div>
       </form>
