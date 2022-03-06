@@ -54,10 +54,12 @@ $this->load->view('layout/navbar');
             <div class="form-group">
                     <label for="exampleInputFile">File input</label>
                     <div class="input-group">
+                    <form method="post" action="<?php echo base_url('General/importExcel') ?>" enctype="multipart/form-data">
                       <div class="custom-file">
                         <input type="file" class="custom-file-input" id="exampleInputFile">
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                        <label class="custom-file-label" for="exampleInputFile" >Choose file</label>
                       </div>
+                    </form>
                     </div>
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary" style="background-color:red;">Submit</button>

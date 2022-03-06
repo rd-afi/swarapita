@@ -42,4 +42,8 @@ class M_data extends CI_Model{
         $this->db->where('district_id',$data);
         return $this->db->get('reg_villages');
     }
+
+    function getData(){
+        return $this->db->get('relawan')->result_array();
+    }
 }
