@@ -55,5 +55,5 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['list_relawan'] = 'general/list_relawan';
 $route['upload_relawan'] = 'general/upload_relawan';
-$route['login'] = 'admin/login';
+$route['login'] = 'login/index';
 

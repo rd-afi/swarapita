@@ -105,6 +105,8 @@ $autoload['helper'] = array('url','file');
 */
 $autoload['config'] = array();
 
+$config['encryption_key'] = 'tutoriallogincodeigniterwwwmalasngodingcom';
+
 /*
 | -------------------------------------------------------------------
 |  Auto-load Language files

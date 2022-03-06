@@ -5,33 +5,27 @@ date_default_timezone_set("Asia/Bangkok");
 class Admin extends CI_Controller {
 
 	function __construct(){
-		parent::__construct();		
-		$this->load->model('m_admin');
-		$this->load->helper(array('form', 'url'));
-		// $this->load->library("session");
+		parent::__construct();
+	
+		if($this->session->userdata('status') != "login"){
+			redirect(base_url("login"));
+		}
 	}
-
-    public function login()
-	{
-		$this->load->view('v_login');
-	}
-
-    public function aksi_login()
-	{
+ 
+	function index(){
 		$this->load->view('admin_home');
 	}
 
-	public function input_pemilih_tetap()
-	{
+	function input_pemilih_tetap(){
+
 		$this->load->view('input_pemilih_tetap');
+
 	}
 
-	public function dashboard()
-	{
+	function dashboard(){
+
 		$this->load->view('admin_home');
 	}
-
-
 	
 
 }

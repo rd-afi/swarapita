@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 04, 2022 at 02:27 PM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 7.4.20
+-- Generation Time: Mar 06, 2022 at 09:48 AM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,25 @@ SET time_zone = "+00:00";
 --
 -- Database: `swarapita`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `id` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `username`, `password`) VALUES
+(1, 'malasngoding', '10406c1d7b7421b1a56f0d951e952a95');
 
 -- --------------------------------------------------------
 
@@ -479,6 +498,12 @@ CREATE TABLE `relawan` (
 --
 
 --
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `reg_districts`
 --
 ALTER TABLE `reg_districts`
@@ -511,6 +536,16 @@ ALTER TABLE `reg_villages`
 ALTER TABLE `relawan`
   ADD UNIQUE KEY `nik_2` (`nik`),
   ADD KEY `nik` (`nik`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
