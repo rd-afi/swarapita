@@ -42,8 +42,9 @@ $this->load->view('layout/head');
               </label>
             </div> -->
           </div>
+         
           <button type="submit" value="Login" class="btn btn-primary btn-block">Sign In</button>
-          <a class="btn btn-primary btn-block" href="<?php echo base_url();?>general/index" role="button">Back</a>
+          <a class="btn btn-secondary btn-block" href="<?php echo base_url();?>general/index" role="button" >Back</a>
           <!-- /.col -->
          
           
