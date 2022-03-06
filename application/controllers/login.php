@@ -3,9 +3,8 @@
 class Login extends CI_Controller{
  
 	function __construct(){
-		parent::__construct();		
+		parent::__construct();
 		$this->load->model('m_login');
- 
 	}
  
 	function index(){
@@ -23,16 +22,19 @@ class Login extends CI_Controller{
 		if($cek > 0){
  
 			$data_session = array(
-				'nama' => $username,
+				'username' => $username,
 				'status' => "login"
 				);
  
 			$this->session->set_userdata($data_session);
  
-			redirect(base_url("admin"));
+			redirect(base_url("dashboard"));
  
 		}else{
-			echo "Username dan password salah !";
+			// echo "Username dan password salah !";
+			$this->session->set_flashdata('ico', 'error');
+			$this->session->set_flashdata('msg', 'Gagal Login! Username atau Password salah');
+			redirect(base_url('login'));
 		}
 	}
  

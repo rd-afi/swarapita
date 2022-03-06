@@ -53,7 +53,11 @@ $route['default_controller'] = 'general';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+$route['login'] = 'login/index';
+$route['logout'] = 'login/logout';
+
+// ADMIN
+$route['dashboard'] = 'dashboard';
 $route['list_relawan'] = 'general/list_relawan';
 $route['upload_relawan'] = 'general/upload_relawan';
-$route['login'] = 'login/index';
-
+$route['upload_pemilih_tetap'] = 'admin/input_pemilih_tetap';

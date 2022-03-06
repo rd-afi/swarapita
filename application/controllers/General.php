@@ -5,7 +5,13 @@ date_default_timezone_set("Asia/Bangkok");
 class General extends CI_Controller {
 
 	function __construct(){
-		parent::__construct();		
+		parent::__construct();
+		if ($this->session->userdata['status'] == 'login') {
+        } else {
+			$this->session->set_flashdata('ico', 'error');
+			$this->session->set_flashdata('msg', 'Silakan login terlebih dahulu');
+            redirect('login');
+        } 		
 		$this->load->model('m_data');
 		$this->load->helper(array('form', 'url'));
 		$this->load->library("session");

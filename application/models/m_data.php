@@ -1,6 +1,17 @@
 <?php 
  
 class M_data extends CI_Model{
+	function all_relawan(){
+		return $this->db->get('relawan');
+	}
+	function c_kotbek(){
+		$this->db->where('kabupaten','3275');
+		return $this->db->count_all_results('relawan');
+	}
+	function c_kotdep(){
+		$this->db->where('kabupaten','3276');
+		return $this->db->count_all_results('relawan');
+	}
 	function list_relawan(){
         $this->db->select('nik,nama,alamat,tempat_lahir,jk,tgl_lahir,rt,rw,reg_provinces.name as `provinsi`,
         ,reg_regencies.name as `kabupaten`,reg_districts.name as `kecamatan`,reg_villages.name as `kelurahan`,hpwa,as_koor');
