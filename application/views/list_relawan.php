@@ -11,9 +11,13 @@ $this->load->view('layout/head');
 
 <body class="hold-transition layout-top-nav">
 <div class="wrapper">
-  
+
 <?php
-$this->load->view('layout/navbar_masyarakat');
+if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
+  $this->load->view('layout/navbar');
+} else {
+  $this->load->view('layout/navbar_masyarakat');
+}
 ?>
 
   <!-- Content Wrapper. Contains page content -->

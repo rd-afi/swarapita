@@ -10,8 +10,7 @@ $this->load->view('layout/head');
 ?>
 
 <body class="hold-transition layout-top-nav">
-<div class="wrapper">
-  
+<div class="wrapper">  
 
 <?php
 if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
