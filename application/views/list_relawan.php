@@ -13,7 +13,7 @@ $this->load->view('layout/head');
 <div class="wrapper">
   
 <?php
-$this->load->view('layout/navbar');
+$this->load->view('layout/navbar_masyarakat');
 ?>
 
   <!-- Content Wrapper. Contains page content -->
