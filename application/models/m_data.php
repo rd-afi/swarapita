@@ -46,4 +46,9 @@ class M_data extends CI_Model{
     function getData(){
         return $this->db->get('relawan')->result_array();
     }
+
+    public function getChartData(){
+      $query = $this->db->query("SELECT reg_regencies.name as kabupaten, COUNT(relawan.kabupaten) AS Total_Pemilih FROM reg_regencies INNER JOIN relawan ON reg_regencies.id=relawan.kabupaten GROUP BY reg_regencies.name");
+      return $query;
+  }
 }

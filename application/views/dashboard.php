@@ -85,6 +85,10 @@ $this->load->view('layout/navbar');
               <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
+          <div class="col-lg-12 col-6">
+            <!-- small box -->
+              <div id="barchart_material" style="width: 1100px; height: 600px;"></div>
+          </div>
           <!-- ./col -->
         </div>
         <!-- /.row -->
@@ -150,6 +154,31 @@ $this->load->view('layout/js');
 
 <script>
 </script>
+<script type="text/javascript">
+              google.charts.load('current', {'packages':['bar']});
+              google.charts.setOnLoadCallback(drawChart);
+
+              function drawChart() {
+                var data = google.visualization.arrayToDataTable([
+                  ['Kota', 'Total'],
+                  <?php foreach($chartData as $row){ ?>
+                    ['<?= $row->kabupaten ?>',<?= $row->Total_Pemilih ?>],
+                  <?php } ?>
+                ]);
+
+                var options = {
+                  chart: {
+                    title: 'Relawan Chart Result',
+                    subtitle: 'Grafik Total Relawan',
+                  },
+                  bars: 'vertical' // Required for Material Bar Charts.
+                };
+
+                var chart = new google.charts.Bar(document.getElementById('barchart_material'));
+
+                chart.draw(data, google.charts.Bar.convertOptions(options));
+              }
+        </script>
 
 </body>
 </html>

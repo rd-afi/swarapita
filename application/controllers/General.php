@@ -8,7 +8,7 @@ class General extends CI_Controller {
 		parent::__construct();
 		$this->load->model('m_data');
 		$this->load->helper(array('form', 'url'));
-		$this->load->library("session");
+		$this->load->library("session","Excel");
 	}
 
 	/**
@@ -107,12 +107,12 @@ class General extends CI_Controller {
 	public function importExcel(){
         $fileName = $_FILES['file']['name'];
           
-        $config['upload_path'] = './assets/'; //path upload
-        $config['file_name'] = $fileName;  // nama file
-        $config['allowed_types'] = 'xls|xlsx|csv'; //tipe file yang diperbolehkan
-        $config['max_size'] = 10000; // maksimal sizze
+        $config['upload_path'] = './assets/'; 
+        $config['file_name'] = $fileName;  
+        $config['allowed_types'] = 'xls|xlsx|csv'; 
+        $config['max_size'] = 10000; 
  
-        $this->load->library('upload'); //meload librari upload
+        $this->load->library('upload'); 
         $this->upload->initialize($config);
           
         if(! $this->upload->do_upload('file') ){
@@ -139,7 +139,7 @@ class General extends CI_Controller {
                                                 TRUE,
                                                 FALSE);   
  
-                 // Sesuaikan key array dengan nama kolom di database                                                         
+                                                                  
                  $data = array(
                     "nik"=> $rowData[0][0],
                     "nama"=> $rowData[0][1]
