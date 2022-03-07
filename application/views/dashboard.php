@@ -87,7 +87,10 @@ $this->load->view('layout/navbar');
           </div>
           <div class="col-lg-12 col-6">
             <!-- small box -->
-              <div id="barchart_material" style="width: 1100px; height: 600px;"></div>
+              <div class="card mb-2">
+                            <div class="card-body">
+                                <div id="barchart_material" style="width: 900px; height: 400px;"></div>
+                            </div>
           </div>
           <!-- ./col -->
         </div>
