@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 07, 2022 at 09:47 PM
+-- Generation Time: Mar 07, 2022 at 10:38 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -38,7 +38,9 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `username`, `password`) VALUES
-(1, 'admin', '10406c1d7b7421b1a56f0d951e952a95');
+(1, 'admin', 'malasngoding123'),
+(2, 'dika', 'dika'),
+(3, 'budi', 'budi');
 
 -- --------------------------------------------------------
 
@@ -309,9 +311,9 @@ CREATE TABLE `relawan` (
 
 INSERT INTO `relawan` (`nik`, `nama`, `tempat_lahir`, `jk`, `tgl_lahir`, `alamat`, `rt`, `rw`, `provinsi`, `kabupaten`, `kelurahan`, `kecamatan`, `hpwa`, `as_koor`, `source`, `created_at`, `updated_at`, `penginput`) VALUES
 ('2713981278901237', 'aklsdoaksdjads', 'askndlaskdn', 1, '2021-12-16', 'dssdadsasdaasd', '2', '2', 32, 3275, 3275011001, 327501, '123132123', 1, 'form', '2022-03-08 03:47:20', NULL, 'admin'),
-('321', 'dika coba', 'medan', 1, '2021-12-08', 'jalan mekatani', '11', '1', 32, 3275, 3275011001, 327501, '08116051721', 1, 'form', '2022-03-08 03:32:03', '2022-03-08 03:34:26', 'admin'),
+('321', 'dika coba', 'medan', 1, '2021-12-08', 'jalan mekatani', '11', '1', 32, 3275, 3275011001, 327501, '08116051721', 1, 'form', '2022-03-08 03:32:03', '2022-03-08 03:34:26', 'budi'),
 ('333333333', 'dsdasdas', 'asdasdasdasd', 2, '2022-03-10', 'asdasddas', '123', '123', 32, 3275, 3275011001, 327501, '312123312', 1, 'form', '2022-03-08 03:46:26', NULL, NULL),
-('461', 'begeng', 'mandalika', 1, '2021-12-08', 'jasklasnk', '01', '21', 32, 3276, 3276011006, 327601, '0811122321', 1, 'form', '2022-03-08 03:33:23', NULL, 'admin'),
+('461', 'begeng', 'mandalika', 1, '2021-12-08', 'jasklasnk', '01', '21', 32, 3276, 3276011006, 327601, '0811122321', 1, 'form', '2022-03-08 03:33:23', NULL, 'dika'),
 ('8813', 'Dasdo Purba', 'medan', 1, '2021-09-09', 'Jalan Mekatani GG syukur no 238E', '031', '001', 32, 3275, 3275011001, 327501, '08116061811', 1, 'form', '2022-03-08 03:13:14', NULL, 'admin');
 
 --
@@ -367,7 +369,7 @@ ALTER TABLE `relawan`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables

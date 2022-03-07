@@ -56,12 +56,11 @@ $this->load->view('layout/navbar');
                     <th>Jenis Kelamin</th>
                     <th>Tempat/Tanggal Lahir</th>
                     <th>Alamat</th>
-                    
                     <th>No HP / WA</th>
                     <th>Relawan</th>
                     <th>Lokasi</th>
                     <th>Input By</th>
-                    <th></th>
+                    <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -79,9 +78,23 @@ $this->load->view('layout/navbar');
                         <td><?php echo ($u->as_koor == 1) ? 'Ya Bersedia' : 'Tidak Bersedia'; ?></td>
                         <td><?php echo $u->lokasi ?></td>
                         <td><?php echo $u->penginput ?></td>
+                        <?php 
+                        $role=$u->penginput;
+                        $session=$_SESSION['username'];
+                        if ($session=='admin'){
+                          ?>
+                        
                         <td><a type="button" href="<?php echo base_url('edit/'.$u->nik);?>" class="btn btn-warning btn-sm"><i class="fas fa-pen"></i></a>
                             <a type="button" href="<?php echo base_url('hapus/'.$u->nik);?>" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
                         </td>
+                        <?php }
+                        else if($role==$session){
+
+                         ?>
+                         <td><a type="button" href="<?php echo base_url('edit/'.$u->nik);?>" class="btn btn-warning btn-sm"><i class="fas fa-pen"></i></a>
+                            <a type="button" href="<?php echo base_url('hapus/'.$u->nik);?>" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                        </td>
+                        <?php } ?>
                     </tr>
                     <?php } ?>
                   </tbody>
