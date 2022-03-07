@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 07, 2022 at 11:54 AM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 7.4.20
+-- Generation Time: Mar 07, 2022 at 09:47 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -39,6 +39,26 @@ CREATE TABLE `admin` (
 
 INSERT INTO `admin` (`id`, `username`, `password`) VALUES
 (1, 'admin', '10406c1d7b7421b1a56f0d951e952a95');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `data_kpu`
+--
+
+CREATE TABLE `data_kpu` (
+  `nik` varchar(255) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `lokasi` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `data_kpu`
+--
+
+INSERT INTO `data_kpu` (`nik`, `nama`, `lokasi`) VALUES
+('321', 'dika gaharu', 'tps 62'),
+('461', 'begeng', 'lokasi 82 bekasi');
 
 -- --------------------------------------------------------
 
@@ -279,8 +299,20 @@ CREATE TABLE `relawan` (
   `as_koor` int(11) NOT NULL,
   `source` varchar(10) NOT NULL,
   `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL
+  `updated_at` datetime DEFAULT NULL,
+  `penginput` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `relawan`
+--
+
+INSERT INTO `relawan` (`nik`, `nama`, `tempat_lahir`, `jk`, `tgl_lahir`, `alamat`, `rt`, `rw`, `provinsi`, `kabupaten`, `kelurahan`, `kecamatan`, `hpwa`, `as_koor`, `source`, `created_at`, `updated_at`, `penginput`) VALUES
+('2713981278901237', 'aklsdoaksdjads', 'askndlaskdn', 1, '2021-12-16', 'dssdadsasdaasd', '2', '2', 32, 3275, 3275011001, 327501, '123132123', 1, 'form', '2022-03-08 03:47:20', NULL, 'admin'),
+('321', 'dika coba', 'medan', 1, '2021-12-08', 'jalan mekatani', '11', '1', 32, 3275, 3275011001, 327501, '08116051721', 1, 'form', '2022-03-08 03:32:03', '2022-03-08 03:34:26', 'admin'),
+('333333333', 'dsdasdas', 'asdasdasdasd', 2, '2022-03-10', 'asdasddas', '123', '123', 32, 3275, 3275011001, 327501, '312123312', 1, 'form', '2022-03-08 03:46:26', NULL, NULL),
+('461', 'begeng', 'mandalika', 1, '2021-12-08', 'jasklasnk', '01', '21', 32, 3276, 3276011006, 327601, '0811122321', 1, 'form', '2022-03-08 03:33:23', NULL, 'admin'),
+('8813', 'Dasdo Purba', 'medan', 1, '2021-09-09', 'Jalan Mekatani GG syukur no 238E', '031', '001', 32, 3275, 3275011001, 327501, '08116061811', 1, 'form', '2022-03-08 03:13:14', NULL, 'admin');
 
 --
 -- Indexes for dumped tables
