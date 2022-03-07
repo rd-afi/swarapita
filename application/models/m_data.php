@@ -26,12 +26,26 @@ class M_data extends CI_Model{
     function input_data($data,$table){
         $this->db->insert($table,$data);
     }
-
+    function hapus_data($where,$table){
+        $this->db->where($where);
+        $this->db->delete($table);
+    }
+    function edit_data($where,$table){		
+        return $this->db->get_where($table,$where);
+    }
+    function update_data($where,$data,$table){
+		$this->db->where($where);
+		$this->db->update($table,$data);
+	}	
     function prov(){
         return $this->db->get('reg_provinces');
     }
-    function kota($data){
-        $this->db->where('province_id',$data);
+    // function kota($data){
+    //     $this->db->where('province_id',$data);
+    //     return $this->db->get('reg_regencies');
+    // }
+    function kota(){
+        $this->db->where('province_id','32');
         return $this->db->get('reg_regencies');
     }
     function kel($data){

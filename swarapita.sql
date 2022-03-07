@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 06, 2022 at 02:32 PM
+-- Generation Time: Mar 07, 2022 at 11:54 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.4.20
 
@@ -116,7 +116,6 @@ CREATE TABLE `reg_regencies` (
 --
 
 INSERT INTO `reg_regencies` (`id`, `province_id`, `name`) VALUES
-('3216', '32', 'KAB. BEKASI'),
 ('3275', '32', 'KOTA BEKASI'),
 ('3276', '32', 'KOTA DEPOK');
 
@@ -280,7 +279,7 @@ CREATE TABLE `relawan` (
   `as_koor` int(11) NOT NULL,
   `source` varchar(10) NOT NULL,
   `created_at` datetime DEFAULT NULL,
-  `update_at` datetime DEFAULT NULL
+  `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --

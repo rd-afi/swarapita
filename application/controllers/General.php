@@ -34,19 +34,18 @@ class General extends CI_Controller {
 	{
 		$this->load->view('upload_data');
 	}
-	public function list_relawan(){
-		$data['relawan'] = $this->m_data->list_relawan()->result();
-		$this->load->view('list_relawan',$data);
-		// $this->load->view('data',$data);
-	}
 	public function json_prov(){
 		$query = $this->m_data->prov()->result();
 		echo json_encode($query);
 	}
-	public function json_kota($data){
-		$query = $this->m_data->kota($data)->result();
+	public function json_kota(){
+		$query = $this->m_data->kota()->result();
 		echo json_encode($query);
 	}
+	// public function json_kota($data){
+	// 	$query = $this->m_data->kota($data)->result();
+	// 	echo json_encode($query);
+	// }
 	public function json_kel($data){
 		$query = $this->m_data->kel($data)->result();
 		echo json_encode($query);

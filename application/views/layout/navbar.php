@@ -11,7 +11,7 @@
         </button>
         <div class="collapse navbar-collapse order-3" id="navbarCollapse">
         
-        <?php if ($_SESSION['username'] == 'admin') { ?>
+        <?php if (isset($_SESSION['status']) && $_SESSION['status'] == 'login') { ?>
 
         <!-- Left navbar links -->
         <ul class="navbar-nav">
@@ -31,17 +31,17 @@
 
         <!-- Right navbar links -->
         <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
-            <?php if ($_SESSION['status'] <> 'login') { ?>
-            <li class="nav-item">
-                <a href="<?php echo base_url();?>login" class="nav-link">Login</a>
-            </li>
-            <?php } else { ?>
+        <?php if (isset($_SESSION['status']) && $_SESSION['status'] == 'login') { ?>
             <li class="nav-item dropdown">
-                <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Hello, <?php echo $_SESSION['username'] ?></a>
+                <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Hello, <?php echo (isset($_SESSION['status'])) ? $_SESSION['username'] : NULL ; ?></a>
                 <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-                <li><a href="<?php base_url();?>logout" class="dropdown-item">Logout</a></li>
+                <li><a href="<?php echo base_url();?>logout" class="dropdown-item">Logout</a></li>
                 </ul>
             </li>
+            <?php } else { ?>
+                <li class="nav-item">
+                    <a href="<?php echo base_url();?>login" class="nav-link">Login</a>
+                </li>
             <?php } ?>
         </ul>
 
