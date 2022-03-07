@@ -8,7 +8,7 @@ class General extends CI_Controller {
 		parent::__construct();
 		$this->load->model('m_data');
 		$this->load->helper(array('form', 'url'));
-		$this->load->library("session","Excel","table","upload");
+		
 	}
 
 	/**

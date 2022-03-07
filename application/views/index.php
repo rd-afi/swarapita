@@ -99,7 +99,7 @@ $this->load->view('layout/navbar');
                     <select class="data-array browser-default form-control" id="provinsi" name="provinsi" required></select>
                   </div>
                   <div class="form-group">
-                    <label for="kelurahan">Kabupaten</label>
+                    <label for="kelurahan">Kota</label>
                     <select class="data-array browser-default form-control" id="kabupaten" name="kabupaten" required></select>
                   </div>
                   <div class="form-group">
@@ -235,8 +235,8 @@ $this->load->view('layout/js');
 
                     data = [{
                         id: "",
-                        name: "- Pilih Kabupaten -",
-                        text: "- Pilih Kabupaten -"
+                        name: "- Pilih Kota -",
+                        text: "- Pilih Kota -"
                     }].concat(res);
 
                     //implemen data ke select provinsi

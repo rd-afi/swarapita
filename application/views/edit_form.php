@@ -109,7 +109,7 @@ $this->load->view('layout/navbar');
                     <select class="data-array browser-default form-control" id="provinsi" name="provinsi" required></select>
                   </div>
                   <div class="form-group">
-                    <label for="kelurahan">Kabupaten</label>
+                    <label for="kelurahan">Kota</label>
                     <?php echo '<input type="text" value="'.$u->kabupaten.'" name="ed_kab" id="ed_kab" hidden>'?>
                     <select class="data-array browser-default form-control" id="kabupaten" name="kabupaten" required></select>
                   </div>

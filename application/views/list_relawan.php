@@ -59,7 +59,7 @@ $this->load->view('layout/navbar');
                     <th>Alamat</th>
                     <th>RT/RW</th>
                     <th>Provinsi</th>
-                    <th>Kabupaten</th>
+                    <th>Kota</th>
                     <th>Kecamatan</th>
                     <th>Kelurahan</th>
                     <th>No HP / WA</th>
