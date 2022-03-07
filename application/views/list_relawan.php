@@ -13,11 +13,7 @@ $this->load->view('layout/head');
 <div class="wrapper">
 
 <?php
-if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
-  $this->load->view('layout/navbar');
-} else {
-  $this->load->view('layout/navbar_masyarakat');
-}
+$this->load->view('layout/navbar');
 ?>
 
   <!-- Content Wrapper. Contains page content -->
@@ -27,7 +23,7 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
       <div class="container">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Relawan Swarapita</h1>
+            <h1 class="m-0">List Relawan Swarapita</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -41,17 +37,18 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
     <!-- /.content-header -->
 
     <!-- Main content -->
-    <div class="content">
-      <div class="container">
+    <section class="content">
+      <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
         <div class="row">
-            <div class="col-md-12">
-            <div class="card">
-              <div class="card-header">
+          <div class="col-lg-12 col-6">
+          <div class="card">
+              <!-- <div class="card-header">
                 <h3 class="card-title">List Relawan</h3>
-              </div>
+              </div> -->
               <!-- /.card-header -->
               <div class="card-body">
-                <table id="list1" class="table table-bordered table-striped nowrap">
+                <table id="list1" class="table display table-bordered table-striped nowrap" data-export-title="List Relawan SWARAPITA">
                   <thead>
                   <tr>
                     <th>NIK</th>
@@ -67,6 +64,7 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
                     <th>Kelurahan</th>
                     <th>No HP / WA</th>
                     <th>Relawan</th>
+                    <th></th>
                   </tr>
                   </thead>
                   <tbody>
@@ -88,6 +86,9 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
                         <td><?php echo $u->kelurahan ?></td>
                         <td><?php echo $u->hpwa ?></td>
                         <td><?php echo ($u->as_koor == 1) ? 'Ya Bersedia' : 'Tidak Bersedia'; ?></td>
+                        <td><a type="button" href="<?php echo base_url('edit/'.$u->nik);?>" class="btn btn-warning btn-sm"><i class="fas fa-pen"></i></a>
+                            <a type="button" href="<?php echo base_url('hapus/'.$u->nik);?>" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                        </td>
                     </tr>
                     <?php } ?>
                   </tbody>
@@ -97,12 +98,13 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
-            </div>
+          </div>
         </div>
         <!-- /.row -->
       </div><!-- /.container-fluid -->
-    </div>
+    </section>
     <!-- /.content -->
+
   </div>
   <!-- /.content-wrapper -->
 
@@ -128,7 +130,25 @@ $this->load->view('layout/js');
   $(function () {
     $("#list1").DataTable({
       "autoWidth": false, "scrollX": true,
-      "buttons": ["csv", "excel", "pdf", "print"]
+      "buttons": [
+        {
+          extend: 'excelHtml5',
+          title: "List Relawan SWARAPITA",
+          filename: "List Relawan SWARAPITA"
+        },{
+          extend: 'csvHtml5',
+          title: "List Relawan SWARAPITA",
+          filename: "List Relawan SWARAPITA"
+        },{
+          extend: 'pdfHtml5',
+          title: "List Relawan SWARAPITA",
+          filename: "List Relawan SWARAPITA"
+        }
+          // 'excelHtml5',
+          // 'csvHtml5',
+          // 'pdfHtml5'
+      ],
+      "fixedColumns": { right: 1 }
     }).buttons().container().appendTo('#list1_wrapper .col-md-6:eq(0)');
   });
 </script>

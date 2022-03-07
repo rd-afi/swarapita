@@ -58,6 +58,9 @@ $route['logout'] = 'login/logout';
 
 // ADMIN
 $route['dashboard'] = 'dashboard';
-$route['list_relawan'] = 'general/list_relawan';
+$route['list_relawan'] = 'dashboard/list_relawan';
 $route['upload_relawan'] = 'general/upload_relawan';
 $route['upload_pemilih_tetap'] = 'admin/input_pemilih_tetap';
+$route['hapus/(:num)'] = 'dashboard/hapus/$1';
+$route['edit/(:num)'] = 'dashboard/edit/$1';
+$route['update_relawan'] = 'dashboard/update_relawan';

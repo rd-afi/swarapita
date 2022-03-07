@@ -53,78 +53,93 @@ $this->load->view('layout/navbar');
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="<?php echo base_url(). 'general/add_relawan'; ?>" method="post">
+              <form action="<?php echo base_url(). 'update_relawan'; ?>" method="post">
+              <?php foreach($relawan as $u){ ?>
               <div class="card-body">
                 <div class="form-group">
                   <label for="nik">NIK</label>
                   <input type="number" class="form-control" name="nik" placeholder="Nomor Induk Kependudukan" minlength="16" maxlength="16"
-                  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>
+                  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required
+                    <?php echo (isset($relawan)) ? 'value ="'.$u->nik.'" readonly' : NULL ; ?>
+                    >
                   </div>
                   <div class="form-group">
                     <label for="nama">Nama</label>
-                    <input type="text" class="form-control" name="nama" placeholder="Nama sesuai KTP" required>
+                    <input type="text" class="form-control" name="nama" placeholder="Nama sesuai KTP" required
+                    value="<?php echo (isset($relawan)) ? $u->nama : NULL ; ?>">
                   </div>
                   <div class="form-group">
                     <label for="tempat_lahir">Tempat Lahir</label>
-                    <input type="text" class="form-control" name="tempat_lahir" placeholder="Tempat Lahir Sesuai KTP" required>
+                    <input type="text" class="form-control" name="tempat_lahir" placeholder="Tempat Lahir Sesuai KTP" required
+                    value="<?php echo (isset($relawan)) ? $u->tempat_lahir : NULL ; ?>">
                   </div>
                   <div class="form-group">
                     <label for="jk">Jenis Kelamin</label>
                     <select class="custom-select form-control-border" name="jk" required>
-                      <option value="1">Laki-Laki</option>
-                      <option value="2">Perempuan</option>
+                      <option value="1" <?php echo (isset($relawan) && $u->jk == '1') ? 'selected' : NULL ; ?>>Laki-Laki</option>
+                      <option value="2" <?php echo (isset($relawan) && $u->jk == '2') ? 'selected' : NULL ; ?>>Perempuan</option>
                     </select>
                   </div>
                   <div class="form-group">
                     <label>Tanggal Lahir:</label>
-                    <input type="date" class="form-control" name="tanggal_lahir" required>
+                    <input type="date" class="form-control" name="tanggal_lahir" required
+                    value="<?php echo (isset($relawan)) ? $u->tgl_lahir : NULL ; ?>">
                   </div>
                   <div class="form-group">
                     <label for="alamat">Alamat</label>
-                    <input type="text" class="form-control" name="alamat" placeholder="Alamat Sesuai KTP" required>
+                    <input type="text" class="form-control" name="alamat" placeholder="Alamat Sesuai KTP" required
+                    value="<?php echo (isset($relawan)) ? $u->alamat : NULL ; ?>">
                   </div>
                   <div class="form-group">
                     <label for="rtrw">RT/RW</label>
                     <div class="row">
                       <div class="col-6">
-                        <input type="number" class="form-control" name="rt" placeholder="RT" min="0"required>
+                        <input type="number" class="form-control" name="rt" placeholder="RT" min="0"required
+                        value="<?php echo (isset($relawan)) ? $u->rt : NULL ; ?>">
                       </div>
                       <div class="col-6">
-                        <input type="number" class="form-control" name="rw" placeholder="RW" min="0" required>
+                        <input type="number" class="form-control" name="rw" placeholder="RW" min="0" required
+                        value="<?php echo (isset($relawan)) ? $u->rw : NULL ; ?>">
                       </div>
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="kelurahan">Provinsi</label>
+                    <?php echo '<input type="text" value="'.$u->provinsi.'" name="ed_prov" id="ed_prov" hidden>'?>
                     <select class="data-array browser-default form-control" id="provinsi" name="provinsi" required></select>
                   </div>
                   <div class="form-group">
                     <label for="kelurahan">Kabupaten</label>
+                    <?php echo '<input type="text" value="'.$u->kabupaten.'" name="ed_kab" id="ed_kab" hidden>'?>
                     <select class="data-array browser-default form-control" id="kabupaten" name="kabupaten" required></select>
                   </div>
                   <div class="form-group">
                     <label for="kelurahan">Kecamatan</label>
+                    <?php echo '<input type="text" value="'.$u->kecamatan.'" name="ed_kec" id="ed_kec" hidden>'?>
                     <select class="data-array browser-default form-control" id="kecamatan" name="kecamatan" required></select>
                   </div>
                   <div class="form-group">
                     <label for="kelurahan">Kelurahan</label>
+                    <?php echo '<input type="text" value="'.$u->kelurahan.'" name="ed_kel" id="ed_kel" hidden>'?>
                     <select class="data-array browser-default form-control" id="kelurahan" name="kelurahan" required></select>
                   </div>
                   <div class="form-group">
                     <label for="hpwa">No. Handphone/WA</label>
                     <input type="number" class="form-control" name="hpwa" placeholder="628xxx" minlength="10" maxlength="15" min="0" required
-                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                    value="<?php echo (isset($relawan)) ? $u->hpwa : NULL ; ?>">
                   </div>
                   <div class="form-group">
                     <label for="as_koor">Bersedia menjadi kordinator desa/kelurahan dan menjadi rumah sebagai posko pendaftaran relawan</label>
                     <select class="custom-select form-control-border" name="as_koor" required>
-                      <option value="1">Ya</option>
-                      <option value="0">Tidak</option>
+                      <option value="1" <?php echo (isset($relawan) && $u->as_koor == '1') ? 'selected' : NULL ; ?>>Ya</option>
+                      <option value="0" <?php echo (isset($relawan) && $u->as_koor == '0') ? 'selected' : NULL ; ?>>Tidak</option>
                     </select>
                   </div>
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary" style="background-color:red;">Submit</button>
                 </div>
+              <?php } ?>
               </form>
             </div>
             <!-- /.card -->
@@ -184,6 +199,28 @@ $this->load->view('layout/js');
     var urlKecamatan = "<?php echo base_url(). 'general/json_kel/'; ?>";
     var urlKelurahan = "<?php echo base_url(). 'general/json_des/'; ?>";
 
+    var ed_prov = document.getElementById("ed_prov").value;
+    var ed_kab = document.getElementById("ed_kab").value;
+    var ed_kec = document.getElementById("ed_kec").value;
+    var ed_kel = document.getElementById("ed_kel").value;
+    $("document").ready(function() {
+        // setTimeout(function() {
+        //     $("ul.galleria li:first-child img").trigger('click');
+        // },10);
+        // alert(ed_prov)
+        // $('#provinsi').select2().select2('val', 32).trigger('change');
+        // $("#provinsi").select2().val(32).trigger('change.select2');
+        // $("#kabupaten").val(ed_kab).trigger('change');
+        // $("#provinsi").val(ed_prov).trigger('change');
+        // $('#provinsi').val("32").select2().trigger('change');
+        // var $newOption = $("<option selected='selected'></option>").val("32").text("JAWA BARAT")
+        // $("#provinsi").append($newOption).trigger('change');
+        // $('#provinsi').val('1');
+        // $('#provinsi').trigger('change');
+        // $('#kabupaten').val(ed_kab);
+        // $('#kabupaten').trigger('change');
+    });
+
         function clearOptions(id) {
             console.log("on clearOptions :" + id);
 
@@ -211,6 +248,8 @@ $this->load->view('layout/js');
                 width: '100%',
                 data: data
             })
+            $('#provinsi').val(ed_prov);
+            $('#provinsi').trigger('change');
         });
 
         var selectProv = $('#provinsi');
@@ -245,6 +284,10 @@ $this->load->view('layout/js');
                         width: '100%',
                         data: data
                     })
+                    if (ed_kab) {
+                      $('#kabupaten').val(ed_kab);
+                      $('#kabupaten').trigger('change');
+                    }
                 })
             }
         });
@@ -281,6 +324,10 @@ $this->load->view('layout/js');
                         width: '100%',
                         data: data
                     })
+                    if (ed_kec) {
+                      $('#kecamatan').val(ed_kec);
+                      $('#kecamatan').trigger('change');
+                    }
                 })
             }
         });
@@ -317,6 +364,10 @@ $this->load->view('layout/js');
                         width: '100%',
                         data: data
                     })
+                    if (ed_kel) {
+                      $('#kelurahan').val(ed_kel);
+                      $('#kelurahan').trigger('change');
+                    }
                 })
             }
         });
