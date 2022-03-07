@@ -23,6 +23,7 @@ class Dashboard extends CI_Controller {
         $data['c_kotbek'] = $this->m_data->c_kotbek();
         $data['c_kotdep'] = $this->m_data->c_kotdep();
         $data['chartData'] = $this->m_data->getChartData()->result();
+		$data['chartData2'] = $this->m_data->getChartData2()->result();
 		$this->load->view('dashboard',$data);
 	}
 	public function upload_relawan()

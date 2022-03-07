@@ -15,7 +15,6 @@ $this->load->view('layout/head');
 <?php
 $this->load->view('layout/navbar');
 ?>
-
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -50,6 +49,8 @@ $this->load->view('layout/navbar');
                 <?php } else { ?>
                   <h3 class="card-title">Formulir Pendaftaran</h3>
                 <?php } ?>
+
+             
               </div>
               <!-- /.card-header -->
               <!-- form start -->

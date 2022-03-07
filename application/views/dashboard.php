@@ -92,8 +92,20 @@ $this->load->view('layout/navbar');
                                 <div id="barchart_material" style="width: 900px; height: 400px;"></div>
                             </div>
           </div>
+
+          <div class="col-lg-12 col-6">
+            <!-- small box -->
+              <div class="card mb-2">
+                            <div class="card-body">
+                                <div id="barchart_material2" style="width: 900px; height: 400px;"></div>
+                            </div>
+          </div>
+          
+          
           <!-- ./col -->
         </div>
+
+        
         <!-- /.row -->
         <!-- Main row -->
         <div class="row">
@@ -157,22 +169,23 @@ $this->load->view('layout/js');
 
 <script>
 </script>
+
 <script type="text/javascript">
               google.charts.load('current', {'packages':['bar']});
               google.charts.setOnLoadCallback(drawChart);
 
               function drawChart() {
                 var data = google.visualization.arrayToDataTable([
-                  ['Kota', 'Total'],
+                  ['Kecamatan Bekasi', 'Total'],
                   <?php foreach($chartData as $row){ ?>
-                    ['<?= $row->kabupaten ?>',<?= $row->Total_Pemilih ?>],
+                    ['<?= $row->kecamatan ?>',<?= $row->Total_Pemilih ?>],
                   <?php } ?>
                 ]);
 
                 var options = {
                   chart: {
-                    title: 'Relawan Chart Result',
-                    subtitle: 'Grafik Total Relawan',
+                    title: 'Relawan Chart Result Kecamatan Bekasi',
+                    subtitle: 'Grafik Total Relawan Bekasi',
                   },
                   bars: 'vertical' // Required for Material Bar Charts.
                 };
@@ -182,6 +195,34 @@ $this->load->view('layout/js');
                 chart.draw(data, google.charts.Bar.convertOptions(options));
               }
         </script>
+
+<script type="text/javascript">
+              google.charts.load('current', {'packages':['bar']});
+              google.charts.setOnLoadCallback(drawChart);
+
+              function drawChart() {
+                var data = google.visualization.arrayToDataTable([
+                  ['Kecamatan Depok', 'Total'],
+                  <?php foreach($chartData2 as $row){ ?>
+                    ['<?= $row->kecamatan ?>',<?= $row->Total_Pemilih ?>],
+                  <?php } ?>
+                ]);
+
+                var options = {
+                  chart: {
+                    title: 'Relawan Chart Result Kecamatan Depok',
+                    subtitle: 'Grafik Total Relawan Depok',
+                  },
+                  bars: 'vertical' // Required for Material Bar Charts.
+                };
+
+                var chart = new google.charts.Bar(document.getElementById('barchart_material2'));
+
+                chart.draw(data, google.charts.Bar.convertOptions(options));
+              }
+        </script>
+
+
 
 </body>
 </html>

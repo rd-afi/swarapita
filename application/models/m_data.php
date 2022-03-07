@@ -13,13 +13,13 @@ class M_data extends CI_Model{
 		return $this->db->count_all_results('relawan');
 	}
 	function list_relawan(){
-        $this->db->select('nik,nama,alamat,tempat_lahir,jk,tgl_lahir,rt,rw,reg_provinces.name as `provinsi`,
-        ,reg_regencies.name as `kabupaten`,reg_districts.name as `kecamatan`,reg_villages.name as `kelurahan`,hpwa,as_koor');
+        $this->db->select('relawan.nik as `nik`,relawan.nama as `nama`,relawan.alamat as `alamat`,relawan.tempat_lahir as `tempat_lahir`,relawan.jk as `jk`,relawan.tgl_lahir as `tgl_lahir`,reg_provinces.name as `provinsi`,reg_regencies.name as `kabupaten`,reg_districts.name as `kecamatan`,reg_villages.name as `kelurahan`,hpwa,as_koor,penginput,data_kpu.lokasi as `lokasi`');
         $this->db->from('relawan');
         $this->db->join('reg_provinces', 'reg_provinces.id = relawan.provinsi');
         $this->db->join('reg_regencies', 'reg_regencies.id = relawan.kabupaten');
         $this->db->join('reg_districts', 'reg_districts.id = relawan.kecamatan');
         $this->db->join('reg_villages', 'reg_villages.id = relawan.kelurahan');
+        $this->db->join('data_kpu','relawan.nik = data_kpu.nik','left');
         return $this->db->get();
 		// return $this->db->get('relawan');
 	}
@@ -62,7 +62,12 @@ class M_data extends CI_Model{
     }
 
     public function getChartData(){
-      $query = $this->db->query("SELECT reg_regencies.name as kabupaten, COUNT(relawan.kabupaten) AS Total_Pemilih FROM reg_regencies INNER JOIN relawan ON reg_regencies.id=relawan.kabupaten GROUP BY reg_regencies.name");
+      $query = $this->db->query("SELECT reg_districts.name as kecamatan, COUNT(relawan.kecamatan) AS Total_Pemilih FROM reg_districts INNER JOIN relawan ON reg_districts.id=relawan.kecamatan where relawan.kabupaten ='3275' GROUP BY reg_districts.name");
       return $query;
   }
+  public function getChartData2(){
+    $query = $this->db->query("SELECT reg_districts.name as kecamatan, COUNT(relawan.kecamatan) AS Total_Pemilih FROM reg_districts INNER JOIN relawan ON reg_districts.id=relawan.kecamatan where relawan.kabupaten ='3276' GROUP BY reg_districts.name");
+    return $query;
+}
+
 }

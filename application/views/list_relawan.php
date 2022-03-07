@@ -53,17 +53,14 @@ $this->load->view('layout/navbar');
                   <tr>
                     <th>NIK</th>
                     <th>Nama</th>
-                    <th>Tempat Lahir</th>
                     <th>Jenis Kelamin</th>
-                    <th>Tanggal Lahir</th>
+                    <th>Tempat/Tanggal Lahir</th>
                     <th>Alamat</th>
-                    <th>RT/RW</th>
-                    <th>Provinsi</th>
-                    <th>Kota</th>
-                    <th>Kecamatan</th>
-                    <th>Kelurahan</th>
+                    
                     <th>No HP / WA</th>
                     <th>Relawan</th>
+                    <th>Lokasi</th>
+                    <th>Input By</th>
                     <th></th>
                   </tr>
                   </thead>
@@ -75,17 +72,13 @@ $this->load->view('layout/navbar');
                     <tr>
                         <td><?php echo $u->nik ?></td>
                         <td><?php echo $u->nama ?></td>
-                        <td><?php echo $u->tempat_lahir ?></td>
                         <td><?php echo ($u->jk == 1) ? 'Laki-Laki' : 'Perempuan'; ?></td>
-                        <td><?php echo $u->tgl_lahir ?></td>
+                        <td><?php echo $u->tempat_lahir.','.$u->tgl_lahir ?></td>
                         <td><?php echo $u->alamat ?></td>
-                        <td><?php echo $u->rt.'/'.$u->rw ?></td>
-                        <td><?php echo $u->provinsi ?></td>
-                        <td><?php echo $u->kabupaten ?></td>
-                        <td><?php echo $u->kecamatan ?></td>
-                        <td><?php echo $u->kelurahan ?></td>
                         <td><?php echo $u->hpwa ?></td>
                         <td><?php echo ($u->as_koor == 1) ? 'Ya Bersedia' : 'Tidak Bersedia'; ?></td>
+                        <td><?php echo $u->lokasi ?></td>
+                        <td><?php echo $u->penginput ?></td>
                         <td><a type="button" href="<?php echo base_url('edit/'.$u->nik);?>" class="btn btn-warning btn-sm"><i class="fas fa-pen"></i></a>
                             <a type="button" href="<?php echo base_url('hapus/'.$u->nik);?>" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
                         </td>

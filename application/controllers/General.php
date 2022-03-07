@@ -69,6 +69,7 @@ class General extends CI_Controller {
 		$kelurahan = $this->input->post('kelurahan');
 		$hpwa = $this->input->post('hpwa');
 		$as_koor = $this->input->post('as_koor');
+		$penginput= $_SESSION['username'];
 
 		$this->db->where('nik',$nik);
         $cek_nik = $this->db->get('relawan');
@@ -94,7 +95,8 @@ class General extends CI_Controller {
 				'hpwa' => $hpwa,
 				'as_koor' => $as_koor,
 				'source' => 'form',
-				'created_at' => date("Y-m-d H:i:s")
+				'created_at' => date("Y-m-d H:i:s"),
+				'penginput' =>$penginput
 				);
 			$this->m_data->input_data($data,'relawan');
 			$this->session->set_flashdata('ico', 'success');
@@ -103,50 +105,4 @@ class General extends CI_Controller {
 		}
 	}
 
-	public function importExcel(){
-        $fileName = $_FILES['file']['name'];
-          
-        $config['upload_path'] = './assets/'; 
-        $config['file_name'] = $fileName;  
-        $config['allowed_types'] = 'xls|xlsx|csv'; 
-        $config['max_size'] = 10000; 
- 
-        $this->load->library('upload'); 
-        $this->upload->initialize($config);
-          
-        if(! $this->upload->do_upload('file') ){
-            echo $this->upload->display_errors();exit();
-        }
-              
-        $inputFileName = './assets/'.$fileName;
- 
-        try {
-                $inputFileType = PHPExcel_IOFactory::identify($inputFileName);
-                $objReader = PHPExcel_IOFactory::createReader($inputFileType);
-                $objPHPExcel = $objReader->load($inputFileName);
-            } catch(Exception $e) {
-                die('Error loading file "'.pathinfo($inputFileName,PATHINFO_BASENAME).'": '.$e->getMessage());
-            }
- 
-            $sheet = $objPHPExcel->getSheet(0);
-            $highestRow = $sheet->getHighestRow();
-            $highestColumn = $sheet->getHighestColumn();
- 
-            for ($row = 2; $row <= $highestRow; $row++){                  //  Read a row of data into an array                 
-                $rowData = $sheet->rangeToArray('A' . $row . ':' . $highestColumn . $row,
-                                                NULL,
-                                                TRUE,
-                                                FALSE);   
- 
-                                                                  
-                 $data = array(
-                    "nik"=> $rowData[0][0],
-                    "nama"=> $rowData[0][1]
-                );
- 
-                $insert = $this->db->insert("relawan",$data);
-                      
-            }
-            redirect('list_relawan');
-    }
 }
