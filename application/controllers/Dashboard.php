@@ -24,9 +24,22 @@ class Dashboard extends CI_Controller {
         $data['c_kotbek'] = $this->m_data->c_kotbek();
         $data['c_kotdep'] = $this->m_data->c_kotdep();
         $data['chartData'] = $this->m_data->getChartData()->result();
-		$data['chartData2'] = $this->m_data->getChartData2()->result();
+		$data['BekasiChartData'] = $this->m_data->BekasiChartData()->result();
 		$this->load->view('dashboard',$data);
 	}
+
+		public function moreinfo_Bekasi()
+	{
+		$data['BekasiChartData'] = $this->m_data->BekasiChartData()->result();
+		$this->load->view('moreinfo_bekasi',$data);
+	}
+
+		public function moreinfo_Depok()
+	{
+		$data['DepokChartData'] = $this->m_data->DepokChartData()->result();
+		$this->load->view('moreinfo_depok',$data);
+	}
+
 	public function upload_relawan()
 	{
 		$this->load->view('upload_data');

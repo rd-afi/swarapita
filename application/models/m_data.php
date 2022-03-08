@@ -62,11 +62,32 @@ class M_data extends CI_Model{
     }
 
     public function getChartData(){
-      $query = $this->db->query("SELECT reg_districts.name as kecamatan, COUNT(relawan.kecamatan) AS Total_Pemilih FROM reg_districts INNER JOIN relawan ON reg_districts.id=relawan.kecamatan where relawan.kabupaten ='3275' GROUP BY reg_districts.name");
+      $query = $this->db->query("SELECT reg_regencies.name AS kota, COUNT(relawan.kabupaten) AS Total_Pemilih FROM reg_regencies
+          JOIN relawan ON relawan.kabupaten=reg_regencies.id
+          GROUP BY reg_regencies.name;");
       return $query;
   }
-  public function getChartData2(){
-    $query = $this->db->query("SELECT reg_districts.name as kecamatan, COUNT(relawan.kecamatan) AS Total_Pemilih FROM reg_districts INNER JOIN relawan ON reg_districts.id=relawan.kecamatan where relawan.kabupaten ='3276' GROUP BY reg_districts.name");
+  public function DepokChartData(){
+    $query = $this->db->query("
+        SELECT reg_districts.name as kecamatan, COUNT(relawan.kecamatan) as  Total_Pemilih
+        from relawan
+        join reg_districts on reg_districts.id=relawan.kecamatan
+        join reg_regencies on reg_regencies.id=relawan.kabupaten
+        join reg_villages ON reg_villages.id=relawan.kelurahan
+        WHERE reg_regencies.id=3276
+        GROUP BY reg_districts.name desc;");
+    return $query;
+}
+
+ public function BekasiChartData(){
+    $query = $this->db->query("
+        SELECT reg_districts.name as kecamatan, COUNT(relawan.kecamatan) as  Total_Pemilih
+        from relawan
+        join reg_districts on reg_districts.id=relawan.kecamatan
+        join reg_regencies on reg_regencies.id=relawan.kabupaten
+        join reg_villages ON reg_villages.id=relawan.kelurahan
+        WHERE reg_regencies.id=3275
+        GROUP BY reg_districts.name desc;");
     return $query;
 }
 

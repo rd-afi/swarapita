@@ -66,3 +66,5 @@ $route['edit/(:num)'] = 'dashboard/edit/$1';
 $route['update_relawan'] = 'dashboard/update_relawan';
 $route['upload_kpu'] = 'dashboard/upload_kpu';
 $route['data/import'] = 'dashboard/import';
+$route['moreinfo_bekasi'] = 'dashboard/moreinfo_Bekasi';
+$route['moreinfo_depok'] = 'dashboard/moreinfo_Depok';

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 07, 2022 at 10:38 PM
+-- Generation Time: Mar 08, 2022 at 08:58 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -310,11 +310,16 @@ CREATE TABLE `relawan` (
 --
 
 INSERT INTO `relawan` (`nik`, `nama`, `tempat_lahir`, `jk`, `tgl_lahir`, `alamat`, `rt`, `rw`, `provinsi`, `kabupaten`, `kelurahan`, `kecamatan`, `hpwa`, `as_koor`, `source`, `created_at`, `updated_at`, `penginput`) VALUES
+('253246', 'wefiwfe', 'hewj', 1, '1221-03-12', 'sighwir', '3', '23', 32, 3275, 3275061003, 327506, '3423432', 1, 'form', '2022-03-09 02:06:26', NULL, 'admin'),
 ('2713981278901237', 'aklsdoaksdjads', 'askndlaskdn', 1, '2021-12-16', 'dssdadsasdaasd', '2', '2', 32, 3275, 3275011001, 327501, '123132123', 1, 'form', '2022-03-08 03:47:20', NULL, 'admin'),
 ('321', 'dika coba', 'medan', 1, '2021-12-08', 'jalan mekatani', '11', '1', 32, 3275, 3275011001, 327501, '08116051721', 1, 'form', '2022-03-08 03:32:03', '2022-03-08 03:34:26', 'budi'),
+('32523463457', 'erhtrult', '43tergdfb', 1, '2311-12-12', 'fgergergew', '3', '32', 32, 3275, 3275071007, 327507, '3534623', 1, 'form', '2022-03-09 01:16:58', NULL, 'admin'),
 ('333333333', 'dsdasdas', 'asdasdasdasd', 2, '2022-03-10', 'asdasddas', '123', '123', 32, 3275, 3275011001, 327501, '312123312', 1, 'form', '2022-03-08 03:46:26', NULL, NULL),
+('42353464', 'frsdhtyj', 'ershytfj', 2, '2742-03-04', 'efwegeh', '42', '52', 32, 3276, 3276111002, 327611, '423534653', 1, 'form', '2022-03-09 01:16:22', NULL, 'admin'),
+('44444', 'hgosgo', 'osarhfro', 2, '1929-11-11', 'guwhiu', '1', '1', 32, 3276, 3276091002, 327609, '3436435765', 1, 'form', '2022-03-09 01:15:50', NULL, 'admin'),
 ('461', 'begeng', 'mandalika', 1, '2021-12-08', 'jasklasnk', '01', '21', 32, 3276, 3276011006, 327601, '0811122321', 1, 'form', '2022-03-08 03:33:23', NULL, 'dika'),
-('8813', 'Dasdo Purba', 'medan', 1, '2021-09-09', 'Jalan Mekatani GG syukur no 238E', '031', '001', 32, 3275, 3275011001, 327501, '08116061811', 1, 'form', '2022-03-08 03:13:14', NULL, 'admin');
+('8813', 'Dasdo Purba', 'medan', 1, '2021-09-09', 'Jalan Mekatani GG syukur no 238E', '031', '001', 32, 3275, 3275011001, 327501, '08116061811', 1, 'form', '2022-03-08 03:13:14', NULL, 'admin'),
+('8956735423', 'ergrthe', 'rehrehre', 2, '4321-12-23', '32wefgrrdt', '12', '12', 32, 3275, 3275041003, 327504, '1243534654', 1, 'form', '2022-03-09 01:17:39', NULL, 'admin');
 
 --
 -- Indexes for dumped tables
