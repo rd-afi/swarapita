@@ -129,7 +129,7 @@ $this->load->view('layout/js');
                     subtitle: 'Grafik Total Relawan Depok',
                   },
                   bars: 'vertical', // Required for Material Bar Charts.
-                  colors: ['#b52314']
+                  colors: ['#E26000']
                 };
 
                 var chart = new google.charts.Bar(document.getElementById('barchart_material'));

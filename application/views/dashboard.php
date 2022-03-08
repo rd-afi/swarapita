@@ -195,7 +195,7 @@ $this->load->view('layout/js');
                 chart.draw(data, google.charts.Bar.convertOptions(options));
               }
         </script>
-<script type="text/javascript">
+<!--<script type="text/javascript">
               google.charts.load('current', {'packages':['bar']});
               google.charts.setOnLoadCallback(drawChart);
 
@@ -220,7 +220,7 @@ $this->load->view('layout/js');
 
                 chart.draw(data, google.charts.Bar.convertOptions(options));
               }
-        </script>
+        </script>-->
 
 </body>
 </html>
