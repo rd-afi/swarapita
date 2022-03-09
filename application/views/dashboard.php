@@ -82,7 +82,7 @@ $this->load->view('layout/navbar');
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="<?php echo base_url();?>list_relawan" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- CHARTJS -->
@@ -269,7 +269,7 @@ $this->load->view('layout/js');
 
               function drawChart() {
                 var data = google.visualization.arrayToDataTable([
-                  ['Kota', 'Total'],
+                  ['Kota', 'Total Relawan'],
                   <?php foreach($chartData as $row){ ?>
                     ['<?= $row->kota ?>',<?= $row->Total_Pemilih ?>],
                   <?php } ?>
@@ -294,7 +294,7 @@ $this->load->view('layout/js');
 
               function drawChart() {
                 var data = google.visualization.arrayToDataTable([
-                  ['Kecamatan', 'Total'],
+                  ['Kecamatan', 'Total Relawan'],
                   <?php foreach($BekasiChartData as $row){ ?>
                     ['<?= $row->kecamatan ?>',<?= $row->Total_Pemilih ?>],
                   <?php } ?>

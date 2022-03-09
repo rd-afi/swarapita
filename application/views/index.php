@@ -11,10 +11,14 @@ $this->load->view('layout/head');
 
 <body class="hold-transition layout-top-nav">
 <div class="wrapper">  
-
+<?php if (isset($_SESSION['status']) && $_SESSION['status'] == 'login') { ?>
 <?php
 $this->load->view('layout/navbar');
 ?>
+ <?php }
+ else {
+  $this->load->view('layout/navbar_masyarakat');
+ } ?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -22,12 +26,12 @@ $this->load->view('layout/navbar');
       <div class="container">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Relawan Swarapita</h1>
+            <h1 class="m-0">Formulir Pendaftaran Relawan Swarapita</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <!-- <li class="breadcrumb-item"><a href="#">formulir</a></li> -->
+              <li class="breadcrumb-item"><a href="<?php echo base_url();?>">Home</a></li>
+              <li class="breadcrumb-item"><a href="#"></a>Formulir Pendaftaran</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->

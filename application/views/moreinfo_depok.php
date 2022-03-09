@@ -117,7 +117,7 @@ $this->load->view('layout/js');
 
               function drawChart() {
                 var data = google.visualization.arrayToDataTable([
-                  ['Kecamatan', 'Total'],
+                  ['Kecamatan', 'Total Relawan'],
                   <?php foreach($DepokChartData as $row){ ?>
                     ['<?= $row->kecamatan ?>',<?= $row->Total_Pemilih ?>],
                   <?php } ?>
