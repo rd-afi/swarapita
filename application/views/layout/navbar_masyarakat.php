@@ -33,6 +33,10 @@
              <img src="<?php echo base_url();?>assets/dist/img/14844-removebg-preview.png" alt="Gerindra Logo" width="100px" heigth="50px">
             </a>
         </ul>
+        <ul class="navbar-nav">
+             <img src="<?php echo base_url();?>assets/dist/img/detail_swarapita-removebg-preview.png" alt="Gerindra Logo" width="480px" heigth="600px">
+            
+        </ul>
        <!-- Right navbar links -->
         <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
             <li class="nav-item">
