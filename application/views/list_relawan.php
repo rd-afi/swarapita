@@ -56,6 +56,7 @@ $this->load->view('layout/navbar');
                     <th>Jenis Kelamin</th>
                     <th>Tempat/Tanggal Lahir</th>
                     <th>Alamat</th>
+                    <th>Kota</th>
                     <th>No HP / WA</th>
                     <th>Relawan</th>
                     <th>Lokasi</th>
@@ -74,6 +75,7 @@ $this->load->view('layout/navbar');
                         <td><?php echo ($u->jk == 1) ? 'Laki-Laki' : 'Perempuan'; ?></td>
                         <td><?php echo $u->tempat_lahir.','.$u->tgl_lahir ?></td>
                         <td><?php echo $u->alamat ?></td>
+                        <td><?php echo $u->kabupaten ?></td>
                         <td><?php echo $u->hpwa ?></td>
                         <td><?php echo ($u->as_koor == 1) ? 'Ya Bersedia' : 'Tidak Bersedia'; ?></td>
                         <td><?php echo $u->lokasi ?></td>

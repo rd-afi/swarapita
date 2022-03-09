@@ -62,10 +62,13 @@ $this->load->view('layout/navbar');
               <div class="card-body">
                 <div class="form-group">
                   <label for="nik">NIK</label>
-                  <input type="text" class="form-control" name="nik" placeholder="Nomor Induk Kependudukan" pattern=".{16,16}" required
+                  <input type="text" class="form-control" name="nik" placeholder="Nomor Induk Kependudukan" maxlength="16" id="function_code_nik">
+                  <div id="error-box"></div>
+                  <!--<input type="number" class="form-control" name="nik" placeholder="Nomor Induk Kependudukan" pattern=".{16,16}" required
                   oninput="javascript: if (this.value.length > 16) this.value = this.value.slice(0, 16);
                   this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
-                  <!-- <input type="text" class="form-control" name="nik" placeholder="Nomor Induk Kependudukan" pattern=".{16,16}" minlength="10" maxlength="16"
+                  
+                  <input type="text" class="form-control" name="nik" placeholder="Nomor Induk Kependudukan" pattern=".{16,16}" minlength="10" maxlength="16"
                   oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);
                   this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" required> -->
                   </div>
@@ -96,15 +99,24 @@ $this->load->view('layout/navbar');
                     <label for="rtrw">RT/RW</label>
                     <div class="row">
                       <div class="col-6">
-                        <input type="text" class="form-control" name="rt" placeholder="RT" pattern=".{0,3}" required
+                      <input type="text" class="form-control" name="rt" placeholder="RT" maxlength="2" id="function_code_rt">
+                          <div id="error-box"></div>
+                <!--
+                        <input type="number" class="form-control" name="rt" placeholder="RT" pattern=".{0,3}" required
                         oninput="javascript: if (this.value.length > 3) this.value = this.value.slice(0, 3);
-                        this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                        this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" max="31">
+                  -->
+                         
                       </div>
                       <div class="col-6">
-                      <input type="text" class="form-control" name="rw" placeholder="RW" pattern=".{0,3}" required
+                      <input type="text" class="form-control" name="rw" placeholder="RW" maxlength="2" id="function_code_rw" >
+                      <div id="error-box"></div>
+                   <!--
+                      <input type="number" class="form-control" name="rw" placeholder="RW" pattern=".{0,3}" required
                         oninput="javascript: if (this.value.length > 3) this.value = this.value.slice(0, 3);
-                        this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                        this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" max="31">
                       </div>
+                    -->
                     </div>
                   </div>
                   <div class="form-group">
@@ -349,6 +361,46 @@ $this->load->view('layout/js');
                 console.log("value = " + value + " / " + "text = " + text);
             }
         });
+
+        function showError (key) {
+  var errBox = document.querySelector("#error-box");
+  errBox.textContent = "The character " + key.toString() + " is not allowed!";
+  //Dismiss the error
+  window.setTimeout(function () {
+      errBox.textContent = "";
+  }, 10000)
+}
+
+
+document.getElementById("function_code_nik").onkeypress = function(e) {
+var chr = String.fromCharCode(e.which);
+
+if ("></\":*?|.,abcdefghijklmnopqrstuvwxyz!@#$%^&*()_+=-><.,?/`~".indexOf(chr) >= 0){
+  showError(chr)
+   return false;
+}
+return true
+};
+
+document.getElementById("function_code_rt").onkeypress = function(e) {
+var chr = String.fromCharCode(e.which);
+
+if ("></\":*?|.,abcdefghijklmnopqrstuvwxyz!@#$%^&*()_+=-><.,?/`~".indexOf(chr) >= 0){
+  showError(chr)
+   return false;
+}
+return true
+};
+
+document.getElementById("function_code_rw").onkeypress = function(e) {
+var chr = String.fromCharCode(e.which);
+
+if ("></\":*?|.,abcdefghijklmnopqrstuvwxyz!@#$%^&*()_+=-><.,?/`~".indexOf(chr) >= 0){
+  showError(chr)
+   return false;
+}
+return true
+};
 </script>
 
 </body>

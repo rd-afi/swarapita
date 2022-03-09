@@ -119,11 +119,12 @@ $this->load->view('layout/navbar');
               <!-- /.card -->
           </div>
           <!-- END CHARTJS -->
+         
           <div class="col-lg-12 col-6">
             <!-- small box -->
               <div class="card mb-2">
                             <div class="card-body">
-                                <div id="barchart_material" style="width: 900px; height: 400px;"></div>
+                                <div id="barchart_material2" style="width: 900px; height: 400px;"></div>
                             </div>
           </div>
 
@@ -131,7 +132,7 @@ $this->load->view('layout/navbar');
             <!-- small box -->
               <div class="card mb-2">
                             <div class="card-body">
-                                <div id="barchart_material2" style="width: 900px; height: 400px;"></div>
+                                <div id="barchart_material3" style="width: 900px; height: 400px;"></div>
                             </div>
           </div>
           
@@ -303,13 +304,39 @@ $this->load->view('layout/js');
                 var options = {
                   chart: {
                     title: 'Grafik Pemilih Kota Bekasi',
-                    subtitle: 'Grafik Total Relawan Bekasi',
+                    subtitle: 'Detail Grafik Total Relawan Bekasi',
                   },
                   bars: 'vertical', // Required for Material Bar Charts.
-                  colors: ['#b52314']
+                  colors: ['#3C8DBC']
                 };
 
                 var chart = new google.charts.Bar(document.getElementById('barchart_material2'));
+
+                chart.draw(data, google.charts.Bar.convertOptions(options));
+              }
+        </script>
+<script type="text/javascript">
+              google.charts.load('current', {'packages':['bar']});
+              google.charts.setOnLoadCallback(drawChart);
+
+              function drawChart() {
+                var data = google.visualization.arrayToDataTable([
+                  ['Kecamatan', 'Total Relawan'],
+                  <?php foreach($BekasiChartData as $row){ ?>
+                    ['<?= $row->kecamatan ?>',<?= $row->Total_Pemilih ?>],
+                  <?php } ?>
+                ]);
+
+                var options = {
+                  chart: {
+                    title: 'Grafik Pemilih Kota Depok',
+                    subtitle: 'Detail Grafik Total Relawan Depok',
+                  },
+                  bars: 'vertical', // Required for Material Bar Charts.
+                  colors: ['#D2D6DE']
+                };
+
+                var chart = new google.charts.Bar(document.getElementById('barchart_material3'));
 
                 chart.draw(data, google.charts.Bar.convertOptions(options));
               }

@@ -15,6 +15,20 @@ $this->load->view('layout/head');
 <?php
 $this->load->view('layout/navbar');
 ?>
+
+<style>
+.field-icon {
+  float: right;
+  padding: 1px;
+  margin-left: -25px;
+  margin-right:20px;
+  margin-top: -27px;
+  position: relative;
+  z-index: 2;
+}
+
+</style>
+
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -22,12 +36,12 @@ $this->load->view('layout/navbar');
       <div class="container">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Registrasi Account</h1>
+            <h1 class="m-0">Register Account Pengguna Swarapita</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home/Registrasi Account</a></li>
-              <!-- <li class="breadcrumb-item"><a href="#">formulir</a></li> -->
+              <li class="breadcrumb-item"><a href="<?php echo base_url();?>">Home</a></li>
+              <li class="breadcrumb-item"><a href="#">Register Account Swarapita</a></li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -56,7 +70,8 @@ $this->load->view('layout/navbar');
                   </div>
                   <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="text" class="form-control" name="password" placeholder="password" required>
+                    <input id="password-field" type="password" class="form-control" name="password" placeholder="password" required>
+                    <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                   </div>
                  
                   <div class="form-group">
@@ -122,6 +137,18 @@ $this->load->view('layout/js');
     });
   </script> 
 <?php endif ?>
+<script>
+  $(".toggle-password").click(function() {
+
+$(this).toggleClass("fa-eye fa-eye-slash");
+var input = $($(this).attr("toggle"));
+if (input.attr("type") == "password") {
+  input.attr("type", "text");
+} else {
+  input.attr("type", "password");
+}
+});
+  </script>
 
 
 
