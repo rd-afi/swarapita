@@ -27,7 +27,10 @@ class Dashboard extends CI_Controller {
 		$data['BekasiChartData'] = $this->m_data->BekasiChartData()->result();
 		$this->load->view('dashboard',$data);
 	}
-
+	public function json_chart_all(){
+		$query = $this->m_data->getChartData()->result();
+		echo json_encode($query);
+	}
 		public function moreinfo_Bekasi()
 	{
 		$data['BekasiChartData'] = $this->m_data->BekasiChartData()->result();

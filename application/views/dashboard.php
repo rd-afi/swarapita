@@ -85,6 +85,40 @@ $this->load->view('layout/navbar');
               <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
+          <!-- CHARTJS -->
+          <div class="col-md-4">
+              <!-- BAR CHART -->
+              <div class="card card-success">
+                <div class="card-header">
+                  <h3 class="card-title">Bar Chart</h3>
+                </div>
+                <div class="card-body">
+                  <div class="chart">
+                    <canvas id="barChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                  </div>
+                </div>
+                <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+          </div>
+          <!-- END CHARTJS -->
+          <!-- CHARTJS -->
+          <div class="col-md-4">
+              <!-- BAR CHART -->
+              <div class="card card-success">
+                <div class="card-header">
+                  <h3 class="card-title">Pie Chart</h3>
+                </div>
+                <div class="card-body">
+                  <div class="chart">
+                    <canvas id="pie_chart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                  </div>
+                </div>
+                <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+          </div>
+          <!-- END CHARTJS -->
           <div class="col-lg-12 col-6">
             <!-- small box -->
               <div class="card mb-2">
@@ -168,6 +202,65 @@ $this->load->view('layout/js');
 <?php endif ?>
 
 <script>
+  var pieData = {
+    labels: [
+      <?php
+        if (count($chartData)>0) {
+          foreach ($chartData as $data) {
+            echo "'" .$data->kota ."',";
+          }
+        }
+      ?>
+    ],
+    datasets: [
+      {
+        data: [
+          <?php
+            if (count($chartData)>0) {
+              foreach ($chartData as $data) {
+                echo "'" .$data->Total_Pemilih ."',";
+              }
+            }
+          ?>
+        ],
+        backgroundColor : ['rgba(60,141,188,0.9)', 'rgba(210, 214, 222, 1)'],
+      }
+    ]
+  }
+  var pieChartCanvas = $('#pie_chart').get(0).getContext('2d')
+  var barChartCanvas = $('#barChart').get(0).getContext('2d')
+  var pieData        = pieData;
+  var pieOptions     = {
+    maintainAspectRatio : false,
+    responsive : true,
+    hoverOffset: 4,
+    spacing: 4
+  }
+  var barOptions     = {
+    maintainAspectRatio : false,
+    responsive : true,
+    hoverOffset: 4,
+    legend: {
+        display: false
+    },
+    scales: {
+        yAxes: [{
+            ticks: {
+                beginAtZero:true
+            }
+        }]
+    }
+  }
+  new Chart(pieChartCanvas, {
+    type: 'pie',
+    data: pieData,
+    options: pieOptions
+  })
+  new Chart(barChartCanvas, {
+    type: 'bar',
+    data: pieData,
+    options: barOptions
+  })
 </script>
 
 <script type="text/javascript">
@@ -195,7 +288,7 @@ $this->load->view('layout/js');
                 chart.draw(data, google.charts.Bar.convertOptions(options));
               }
         </script>
-<!--<script type="text/javascript">
+<script type="text/javascript">
               google.charts.load('current', {'packages':['bar']});
               google.charts.setOnLoadCallback(drawChart);
 
@@ -220,7 +313,7 @@ $this->load->view('layout/js');
 
                 chart.draw(data, google.charts.Bar.convertOptions(options));
               }
-        </script>-->
+        </script>
 
 </body>
 </html>
