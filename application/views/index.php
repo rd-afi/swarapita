@@ -54,12 +54,16 @@ $this->load->view('layout/navbar');
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="<?php echo base_url(). 'general/add_relawan'; ?>" method="post">
+              <form action="<?php echo base_url(). 'general/add_relawan'; ?>" method="post" id="form_relawan">
               <div class="card-body">
                 <div class="form-group">
                   <label for="nik">NIK</label>
-                  <input type="number" class="form-control" name="nik" placeholder="Nomor Induk Kependudukan" minlength="16" maxlength="16"
-                  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>
+                  <input type="text" class="form-control" name="nik" placeholder="Nomor Induk Kependudukan" pattern=".{16,16}" required
+                  oninput="javascript: if (this.value.length > 16) this.value = this.value.slice(0, 16);
+                  this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                  <!-- <input type="text" class="form-control" name="nik" placeholder="Nomor Induk Kependudukan" pattern=".{16,16}" minlength="10" maxlength="16"
+                  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);
+                  this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" required> -->
                   </div>
                   <div class="form-group">
                     <label for="nama">Nama</label>
@@ -78,7 +82,7 @@ $this->load->view('layout/navbar');
                   </div>
                   <div class="form-group">
                     <label>Tanggal Lahir:</label>
-                    <input type="date" class="form-control" name="tanggal_lahir" required>
+                    <input type="date" class="form-control" name="tanggal_lahir" min="1800-12-31" max="2007-12-31" required>
                   </div>
                   <div class="form-group">
                     <label for="alamat">Alamat</label>
@@ -88,10 +92,14 @@ $this->load->view('layout/navbar');
                     <label for="rtrw">RT/RW</label>
                     <div class="row">
                       <div class="col-6">
-                        <input type="number" class="form-control" name="rt" placeholder="RT" min="0"required>
+                        <input type="text" class="form-control" name="rt" placeholder="RT" pattern=".{0,3}" required
+                        oninput="javascript: if (this.value.length > 3) this.value = this.value.slice(0, 3);
+                        this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                       </div>
                       <div class="col-6">
-                        <input type="number" class="form-control" name="rw" placeholder="RW" min="0" required>
+                      <input type="text" class="form-control" name="rw" placeholder="RW" pattern=".{0,3}" required
+                        oninput="javascript: if (this.value.length > 3) this.value = this.value.slice(0, 3);
+                        this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                       </div>
                     </div>
                   </div>
@@ -113,8 +121,12 @@ $this->load->view('layout/navbar');
                   </div>
                   <div class="form-group">
                     <label for="hpwa">No. Handphone/WA</label>
-                    <input type="number" class="form-control" name="hpwa" placeholder="628xxx" minlength="10" maxlength="15" min="0" required
-                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                    <input type="text" class="form-control" name="hpwa" placeholder="628xxx" pattern=".{10,15}" required
+                    oninput="javascript: if (this.value.length > 15) this.value = this.value.slice(0, 15);
+                    this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                    <!-- <input type="text" class="form-control" name="hpwa" placeholder="628xxx" minlength="10" maxlength="15" min="0" required
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);
+                    this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"> -->
                   </div>
                   <div class="form-group">
                     <label for="as_koor">Bersedia menjadi kordinator desa/kelurahan dan menjadi rumah sebagai posko pendaftaran relawan</label>
