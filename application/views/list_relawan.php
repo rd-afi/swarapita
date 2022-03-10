@@ -139,19 +139,28 @@ $this->load->view('layout/js');
         {
           extend: 'excelHtml5',
           title: "List Relawan SWARAPITA",
-          filename: "List Relawan SWARAPITA"
+          filename: "List Relawan SWARAPITA",
+          exportOptions: {
+            columns: [0,1,2,3,4,5,6,7,8]
+            // columns: ':visible:not(:last-child)'
+          }
         },{
           extend: 'csvHtml5',
           title: "List Relawan SWARAPITA",
-          filename: "List Relawan SWARAPITA"
+          filename: "List Relawan SWARAPITA",
+          exportOptions: {
+            columns: [0,1,2,3,4,5,6,7,8]
+            // columns: ':visible:not(:last-child)'
+          }
         },{
           extend: 'pdfHtml5',
           title: "List Relawan SWARAPITA",
-          filename: "List Relawan SWARAPITA"
+          filename: "List Relawan SWARAPITA",
+          exportOptions: {
+            columns: [0,1,2,3,4,5,6,7,8]
+            // columns: ':visible:not(:last-child)'
+          }
         }
-          // 'excelHtml5',
-          // 'csvHtml5',
-          // 'pdfHtml5'
       ],
       "fixedColumns": { right: 1 }
     }).buttons().container().appendTo('#list1_wrapper .col-md-6:eq(0)');

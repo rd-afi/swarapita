@@ -115,19 +115,25 @@ $this->load->view('layout/js');
         {
           extend: 'excelHtml5',
           title: "List Account Swarapita",
-          filename: "List Account Swarapita"
+          filename: "List Account Swarapita",
+          exportOptions: {
+            columns: ':visible:not(:last-child)'
+          }
         },{
           extend: 'csvHtml5',
           title: "List Account Swarapita",
-          filename: "List Account Swarapita"
+          filename: "List Account Swarapita",
+          exportOptions: {
+            columns: ':visible:not(:last-child)'
+          }
         },{
           extend: 'pdfHtml5',
           title: "List Account Swarapita",
-          filename: "List Account Swarapita"
+          filename: "List Account Swarapita",
+          exportOptions: {
+            columns: ':visible:not(:last-child)'
+          }
         }
-          // 'excelHtml5',
-          // 'csvHtml5',
-          // 'pdfHtml5'
       ],
       "fixedColumns": { right: 1 }
     }).buttons().container().appendTo('#list1_wrapper .col-md-6:eq(0)');
