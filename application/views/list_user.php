@@ -67,8 +67,8 @@ $this->load->view('layout/navbar');
                         <td><?php echo $mama->password ?></td>
                         <td><?php echo $mama->role ?></td>
                         <td>
-                            <a type="button" href="<?php echo base_url('edit/'.$mama->username);?>" class="btn btn-warning btn-sm"><i class="fas fa-pen"></i></a>
-                            <a type="button" href="<?php echo base_url('hapus/'.$mama->username);?>" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                            <a type="button" href="<?php echo base_url('admin/edit_list_account/'.$mama->id);?>" class="btn btn-warning btn-sm"><i class="fas fa-pen"></i></a>
+                            <a type="button" href="<?php echo base_url().'/Dashboard/delete_account/'.$mama->id ?>" onclick="return confirmDialog();" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
                         </td>                  
                     </tr>
                   <?php } ?>
@@ -114,5 +114,12 @@ $this->load->view('layout/js');
     })
   });
 </script>
+<script>
+            function confirmDialog() {
+              return confirm('Apakah anda yakin akan menghapus data pegawai ini ? ')
+    }
+    </script>
+
+
 </body>
 </html>

@@ -67,6 +67,8 @@ class M_data extends CI_Model{
           GROUP BY reg_regencies.name;");
       return $query;
   }
+
+  
   public function DepokChartData(){
     $query = $this->db->query("
         SELECT reg_districts.name as kecamatan, COUNT(relawan.kecamatan) as  Total_Pemilih
@@ -90,5 +92,11 @@ class M_data extends CI_Model{
         GROUP BY reg_districts.name desc;");
     return $query;
 }
+
+
+ public function update_account($id,$password,$role){
+     $query=$this->db->query("UPDATE admin SET password='$password', role = '$role' WHERE id = '$id'");
+     return $query;
+   }
 
 }

@@ -50,20 +50,42 @@ $this->load->view('layout/navbar');
           </div>
         <!-- /.row -->
         <!-- Main row -->
-        <div class="row">
-          <!-- Left col -->
-          <section class="col-lg-7 connectedSortable">
-            
-          </section>
-          <!-- /.Left col -->
-          <!-- right col (We are only adding the ID to make the widgets sortable)-->
-          <section class="col-lg-5 connectedSortable">
-
-          </section>
-          <!-- right col -->
-        </div>
         <!-- /.row (main row) -->
       </div><!-- /.container-fluid -->
+        <div class="col-lg-12 col-6">
+          <div class="card">
+              <!-- <div class="card-header">
+                <h3 class="card-title">List Relawan</h3>
+              </div> -->
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="list1" class="table display table-bordered table-striped nowrap" data-export-title="List Account Swarapita">
+                  <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>Kecamatan</th>
+                    <th>Total Pemilih</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <?php 
+                    $no = 1;
+                    foreach($bekasi_listdata as $city){ 
+                    ?>
+                    <tr>
+                        <td><?php echo $no++ ?></td>
+                        <td><?php echo $city->kecamatan ?></td>
+                        <td><?php echo $city->Total_Pemilih ?> suara</td>               
+                    </tr>
+                  <?php } ?>
+                  </tbody>
+
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
     </section>
     <!-- /.content -->
   </div>

@@ -31,15 +31,17 @@ class Dashboard extends CI_Controller {
 		$query = $this->m_data->getChartData()->result();
 		echo json_encode($query);
 	}
-		public function moreinfo_Bekasi()
-	{
+
+
+		public function moreinfo_Bekasi(){
 		$data['BekasiChartData'] = $this->m_data->BekasiChartData()->result();
+		$data['bekasi_listdata'] = $this->m_data->BekasiChartData()->result();
 		$this->load->view('moreinfo_bekasi',$data);
 	}
 
-		public function moreinfo_Depok()
-	{
+		public function moreinfo_Depok(){
 		$data['DepokChartData'] = $this->m_data->DepokChartData()->result();
+		$data['depok_listdata'] = $this->m_data->DepokChartData()->result();
 		$this->load->view('moreinfo_depok',$data);
 	}
 
@@ -204,4 +206,48 @@ class Dashboard extends CI_Controller {
 		$config['max_size'] 		= 4096; 
 		$this->load->library('upload', $config);
 	}
+
+
+	public function update_account($id){
+        $this->load->model("m_admin");
+        $id = $this->input->post("id");
+        $password = $this->input->post("password");
+        $role = $this->input->post("role");
+        $data['account']=$this->m_admin->account_detail($id);
+		$data = $this->m_data->update_account($id,$password,$role);
+        if ($data['account'] == 1){
+              $this->session->set_flashdata('msg',
+                  '<div class="alert alert-danger">
+                     <p>Akun gagal di update.</p>
+                   </div>');
+              redirect('admin/edit_list_account');
+        }else{
+            $this->session->set_flashdata('msg',
+                  '<div class="alert alert-success">
+                     <p>Akun berhasil di update.</p>
+                   </div>');
+              redirect('admin/list_account');
+        }
+    }
+
+	public function delete_account($id){
+        $this->load->model("m_admin");
+        $data['list_user'] = $this->m_admin->list_account();
+        if ($this->m_admin->delete_account($id)){
+            $this->load->model("m_admin");
+            $data['list_user'] = $this->m_admin->list_account();
+            $this->session->set_flashdata('ico', 'success');
+			$this->session->set_flashdata('msg', 'Data berhasil dihapus');
+            $this->load->view("list_user",$data);
+        }else{
+            $this->session->set_flashdata('ico', 'error');
+			$this->session->set_flashdata('msg', 'Data gagal dihapus. Silahkan coba kembali');
+        }
+    }
+
+    function bekasi_listdata(){
+		$data['list_data'] = $this->m_data->bekasi_listdata();
+		$this->load->view('moreinfo_bekasi',$data);
+	}
+
 }

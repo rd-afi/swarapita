@@ -1,4 +1,4 @@
-<?php
+;<?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 date_default_timezone_set("Asia/Bangkok");
 
@@ -34,7 +34,7 @@ class Admin extends CI_Controller {
 	}
 
 	function list_account(){
-		$data['list_user'] = $this->m_admin->list_account()->result();
+		$data['list_user'] = $this->m_admin->list_account();
 		$this->load->view('list_user',$data);
 	}
 
@@ -72,6 +72,12 @@ class Admin extends CI_Controller {
 			redirect('admin/register_account');
 		}
 		}
+
+	public function edit_list_account($id){
+        $this->load->model("m_admin");
+        $data['account'] = $this->m_admin->account_detail($id)->result();
+        $this->load->view('edit_list_account', $data);
+       }
 
 }
 
