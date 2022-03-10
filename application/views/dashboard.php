@@ -86,8 +86,7 @@ $this->load->view('layout/navbar');
             </div>
           </div>
           <!-- CHARTJS -->
-          <div class="col-md-4">
-              <!-- BAR CHART -->
+          <!-- <div class="col-md-4">
               <div class="card card-success">
                 <div class="card-header">
                   <h3 class="card-title">Bar Chart</h3>
@@ -97,14 +96,9 @@ $this->load->view('layout/navbar');
                     <canvas id="barChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
                   </div>
                 </div>
-                <!-- /.card-body -->
               </div>
-              <!-- /.card -->
           </div>
-          <!-- END CHARTJS -->
-          <!-- CHARTJS -->
           <div class="col-md-4">
-              <!-- BAR CHART -->
               <div class="card card-success">
                 <div class="card-header">
                   <h3 class="card-title">Pie Chart</h3>
@@ -114,10 +108,8 @@ $this->load->view('layout/navbar');
                     <canvas id="pie_chart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
                   </div>
                 </div>
-                <!-- /.card-body -->
               </div>
-              <!-- /.card -->
-          </div>
+          </div> -->
           <!-- END CHARTJS -->
          
           <div class="col-lg-12 col-6">
@@ -202,7 +194,7 @@ $this->load->view('layout/js');
   </script> 
 <?php endif ?>
 
-<script>
+<!-- <script>
   var pieData = {
     labels: [
       <?php
@@ -262,7 +254,7 @@ $this->load->view('layout/js');
     data: pieData,
     options: barOptions
   })
-</script>
+</script> -->
 
 <script type="text/javascript">
               google.charts.load('current', {'packages':['bar']});

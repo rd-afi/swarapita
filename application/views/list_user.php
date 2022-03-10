@@ -110,33 +110,8 @@ $this->load->view('layout/js');
 <script>
   $(function () {
     $("#list1").DataTable({
-      "autoWidth": false, "scrollX": true,
-      "buttons": [
-        {
-          extend: 'excelHtml5',
-          title: "List Account Swarapita",
-          filename: "List Account Swarapita",
-          exportOptions: {
-            columns: ':visible:not(:last-child)'
-          }
-        },{
-          extend: 'csvHtml5',
-          title: "List Account Swarapita",
-          filename: "List Account Swarapita",
-          exportOptions: {
-            columns: ':visible:not(:last-child)'
-          }
-        },{
-          extend: 'pdfHtml5',
-          title: "List Account Swarapita",
-          filename: "List Account Swarapita",
-          exportOptions: {
-            columns: ':visible:not(:last-child)'
-          }
-        }
-      ],
-      "fixedColumns": { right: 1 }
-    }).buttons().container().appendTo('#list1_wrapper .col-md-6:eq(0)');
+      "autoWidth": false, "scrollX": true
+    })
   });
 </script>
 </body>
