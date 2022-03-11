@@ -77,6 +77,7 @@ $this->load->view('layout/navbar');
                   <div class="form-group">
                     <label for="role">Role</label>
                     <select class="custom-select form-control-border" name="role" required>
+                    <option value="">- Role -</option>
                       <option value="super_admin">Super Admin</option>
                       <option value="admin">Admin</option>
                       <option value="user">User</option>

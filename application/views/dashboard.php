@@ -86,7 +86,7 @@ $this->load->view('layout/navbar');
             </div>
           </div>
           <!-- CHARTJS -->
-          <!-- <div class="col-md-4">
+          <div class="col-md-4">
               <div class="card card-success">
                 <div class="card-header">
                   <h3 class="card-title">Bar Chart</h3>
@@ -109,11 +109,11 @@ $this->load->view('layout/navbar');
                   </div>
                 </div>
               </div>
-          </div> -->
+          </div> 
           <!-- END CHARTJS -->
-         
+<!-- 
           <div class="col-lg-12 col-6">
-            <!-- small box -->
+         
               <div class="card mb-2">
                             <div class="card-body">
                                 <div id="barchart_material2" style="width: 900px; height: 400px;"></div>
@@ -121,13 +121,13 @@ $this->load->view('layout/navbar');
           </div>
 
           <div class="col-lg-12 col-6">
-            <!-- small box -->
+          
               <div class="card mb-2">
                             <div class="card-body">
                                 <div id="barchart_material3" style="width: 900px; height: 400px;"></div>
                             </div>
           </div>
-          
+          -->
           
           <!-- ./col -->
         </div>
@@ -194,7 +194,7 @@ $this->load->view('layout/js');
   </script> 
 <?php endif ?>
 
-<!-- <script>
+ <script>
   var pieData = {
     labels: [
       <?php
@@ -254,7 +254,7 @@ $this->load->view('layout/js');
     data: pieData,
     options: barOptions
   })
-</script> -->
+</script> 
 
 <script type="text/javascript">
               google.charts.load('current', {'packages':['bar']});

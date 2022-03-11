@@ -25,6 +25,8 @@ class Dashboard extends CI_Controller {
         $data['c_kotdep'] = $this->m_data->c_kotdep();
         $data['chartData'] = $this->m_data->getChartData()->result();
 		$data['BekasiChartData'] = $this->m_data->BekasiChartData()->result();
+		$data['barchart_material3'] = $this->m_data->DepokChartData()->result();
+	
 		$this->load->view('dashboard',$data);
 	}
 	public function json_chart_all(){
