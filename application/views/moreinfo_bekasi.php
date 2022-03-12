@@ -52,40 +52,78 @@ $this->load->view('layout/navbar');
         <!-- Main row -->
         <!-- /.row (main row) -->
       </div><!-- /.container-fluid -->
-        <div class="col-lg-12 col-6">
+        <div class="col-lg-6 col-6">
           <div class="card">
-              <!-- <div class="card-header">
-                <h3 class="card-title">List Relawan</h3>
-              </div> -->
-              <!-- /.card-header -->
-              <div class="card-body">
-                <table id="list1" class="table display table-bordered table-striped nowrap" data-export-title="List Account Swarapita">
-                  <thead>
+            <div class="card-header">
+              <h3 class="card-title">Kecamatan</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="list1" class="table display table-bordered table-striped nowrap" data-export-title="List Account Swarapita">
+                <thead>
                   <tr>
-                    <th>No</th>
+                    <!-- <th>No</th> -->
                     <th>Kecamatan</th>
                     <th>Total Pemilih</th>
+                    <th>Total Relawan</th>
                   </tr>
-                  </thead>
-                  <tbody>
+                </thead>
+                <tbody>
                   <?php 
                     $no = 1;
-                    foreach($bekasi_listdata as $city){ 
+                    foreach($bekasi_kec as $city){ 
                     ?>
                     <tr>
-                        <td><?php echo $no++ ?></td>
+                        <!-- <td><?php echo $no++ ?></td> -->
                         <td><?php echo $city->kecamatan ?></td>
-                        <td><?php echo $city->Total_Pemilih ?> suara</td>               
+                        <td><?php echo $city->total_pemilih ?> suara</td>               
+                        <td><?php echo $city->total_relawan ?> suara</td>               
                     </tr>
                   <?php } ?>
-                  </tbody>
-
-                </table>
-              </div>
-              <!-- /.card-body -->
+                </tbody>
+              </table>
             </div>
-            <!-- /.card -->
+            <!-- /.card-body -->
           </div>
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+        <div class="col-lg-6 col-6">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Kelurahan</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="list2" class="table display table-bordered table-striped nowrap" data-export-title="List Account Swarapita">
+                <thead>
+                  <tr>
+                    <!-- <th>No</th> -->
+                    <th>Kelurahan</th>
+                    <th>Total Pemilih</th>
+                    <th>Total Relawan</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php 
+                    $no = 1;
+                    foreach($bekasi_kel as $city){ 
+                    ?>
+                    <tr>
+                        <!-- <td><?php echo $no++ ?></td> -->
+                        <td><?php echo $city->kelurahan ?></td>
+                        <td><?php echo $city->total_pemilih ?> suara</td>               
+                        <td><?php echo $city->total_relawan ?> suara</td>               
+                    </tr>
+                  <?php } ?>
+                </tbody>
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
     </section>
     <!-- /.content -->
   </div>
@@ -134,6 +172,46 @@ $this->load->view('layout/js');
 <script>
 </script>
 <script type="text/javascript">
+  $(function () {
+    $("#list1").DataTable({
+      "autoWidth": false, "scrollX": true, "paging": false,
+      "buttons": [
+        {
+          extend: 'excelHtml5',
+          title: "List Kecamatan Bekasi",
+          filename: "List Kecamatan Bekasi"
+        },{
+          extend: 'csvHtml5',
+          title: "List Kecamatan Bekasi",
+          filename: "List Kecamatan Bekasi"
+        },{
+          extend: 'pdfHtml5',
+          title: "List Kecamatan Bekasi",
+          filename: "List Kecamatan Bekasi"
+        }
+      ],
+      "fixedColumns": { right: 1 }
+    }).buttons().container().appendTo('#list1_wrapper .col-md-6:eq(0)');
+    $("#list2").DataTable({
+      "autoWidth": false, "scrollX": true, "paging": false,
+      "buttons": [
+        {
+          extend: 'excelHtml5',
+          title: "List Kelurahan Bekasi",
+          filename: "List Kelurahan Bekasi"
+        },{
+          extend: 'csvHtml5',
+          title: "List Kelurahan Bekasi",
+          filename: "List Kelurahan Bekasi"
+        },{
+          extend: 'pdfHtml5',
+          title: "List Kelurahan Bekasi",
+          filename: "List Kelurahan Bekasi"
+        }
+      ],
+      "fixedColumns": { right: 1 }
+    }).buttons().container().appendTo('#list2_wrapper .col-md-6:eq(0)');
+  });
               google.charts.load('current', {'packages':['bar']});
               google.charts.setOnLoadCallback(drawChart);
 

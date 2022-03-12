@@ -93,6 +93,31 @@ class M_data extends CI_Model{
     return $query;
 }
 
+function list_bekasi_kec(){
+    $query = $this->db->query("
+        SELECT name as kecamatan, COUNT(data_kpu.nik) as total_pemilih, COUNT(relawan.nik) as total_relawan
+        FROM `reg_districts`
+        LEFT JOIN relawan ON relawan.kecamatan = reg_districts.id
+        LEFT JOIN data_kpu ON data_kpu.nik = relawan.nik
+        WHERE reg_districts.regency_id = 3275
+        GROUP BY 1
+    ");
+    return $query;
+}
+
+function list_bekasi_kel(){
+    $query = $this->db->query("
+        SELECT reg_villages.name as kelurahan, COUNT(data_kpu.nik) as total_pemilih, COUNT(relawan.nik) as total_relawan
+        FROM `reg_villages`
+        JOIN reg_districts ON reg_villages.district_id = reg_districts.id
+        LEFT JOIN relawan ON relawan.kecamatan = reg_districts.id
+        LEFT JOIN data_kpu ON data_kpu.nik = relawan.nik
+        WHERE reg_districts.regency_id = 3275
+        GROUP BY 1
+    ");
+    return $query;
+}
+
 
  public function update_account($id,$password,$role){
      $query=$this->db->query("UPDATE admin SET password='$password', role = '$role' WHERE id = '$id'");

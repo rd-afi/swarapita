@@ -37,7 +37,9 @@ class Dashboard extends CI_Controller {
 
 		public function moreinfo_Bekasi(){
 		$data['BekasiChartData'] = $this->m_data->BekasiChartData()->result();
-		$data['bekasi_listdata'] = $this->m_data->BekasiChartData()->result();
+		// $data['bekasi_listdata'] = $this->m_data->BekasiChartData()->result();
+		$data['bekasi_kec'] = $this->m_data->list_bekasi_kec()->result();
+		$data['bekasi_kel'] = $this->m_data->list_bekasi_kel()->result();
 		$this->load->view('moreinfo_bekasi',$data);
 	}
 
