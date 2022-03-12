@@ -68,6 +68,9 @@ class General extends CI_Controller {
 		$kecamatan = $this->input->post('kecamatan');
 		$kelurahan = $this->input->post('kelurahan');
 		$hpwa = $this->input->post('hpwa');
+		if (substr($hpwa,0,1) == 0){
+			$hpwa = '62'.substr($hpwa,1);
+		}
 		$as_koor = $this->input->post('as_koor');
 		$penginput= $_SESSION['username'];
 
