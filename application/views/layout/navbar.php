@@ -21,13 +21,42 @@
             <li class="nav-item dropdown">
                 <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Menu</a>
                 <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-                <li><a href="<?php echo base_url();?>register_account" class="dropdown-item">Register Account</a></li>
-                <li><a href="<?php echo base_url();?>admin/list_account" class="dropdown-item">List Account</a></li>
+                    <?php if ($_SESSION['role'] == 'admin') { ?>
+                        <li><a href="<?php echo base_url();?>register_account" class="dropdown-item">Register Account</a></li>
+                        <li><a href="<?php echo base_url();?>admin/list_account" class="dropdown-item">List Account</a></li>
+                    <?php } ?>
                 <li><a href="<?php echo base_url();?>" class="dropdown-item">Form Relawan</a></li>
                 <li><a href="<?php echo base_url();?>list_relawan" class="dropdown-item">List Relawan</a></li>
                 <li><a href="<?php echo base_url();?>upload_kpu" class="dropdown-item">Upload Data KPU</a></li>
                 </ul>
             </li>
+        </ul>
+        <?php } else { ?>
+            <!-- Left navbar links -->
+        <ul class="navbar-nav">
+            <a class="btn-floating btn btn-tw" type="button" role="button" title="Share on facebook"
+             href="https://www.facebook.com/Swara-Pita-108745171600038" target="_blank"
+             rel="noopener">
+             <img src="<?php echo base_url();?>assets/dist/img/24-249482_find-us-on-facebook-transparent-png-stickpng-find-removebg-preview.png" alt="facebook Logo" class="brand-image">
+            </a>
+        </ul>
+        <ul class="navbar-nav">
+            <a class="btn-floating btn btn-tw" type="button" role="button" title="Share on twitter"
+             href="https://twitter.com/SwaraPita" target="_blank"
+             rel="noopener">
+             <img src="<?php echo base_url();?>assets/dist/img/twitter-removebg-preview.png" alt="Twitter Logo" class="brand-image">
+            </a>
+        </ul>
+        <ul class="navbar-nav">
+            <a class="btn-floating btn btn-tw" type="button" role="button" title="Share on instgram"
+             href="https://www.instagram.com/swara.pita/" target="_blank"
+             rel="noopener">
+             <img src="<?php echo base_url();?>assets/dist/img/14844-removebg-preview.png" alt="Gerindra Logo" width="100px" heigth="50px">
+            </a>
+        </ul>
+        <ul class="navbar-nav">
+             <img src="<?php echo base_url();?>assets/dist/img/detail_swarapita-removebg-preview.png" alt="Gerindra Logo" width="480px" heigth="600px">
+            
         </ul>
         <?php } ?>
 

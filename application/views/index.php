@@ -11,14 +11,17 @@ $this->load->view('layout/head');
 
 <body class="hold-transition layout-top-nav">
 <div class="wrapper">  
-<?php if (isset($_SESSION['status']) && $_SESSION['status'] == 'login') { ?>
+<?php 
+// if (isset($_SESSION['status']) && $_SESSION['status'] == 'login') { 
+?>
 <?php
 $this->load->view('layout/navbar');
 ?>
- <?php }
- else {
-  $this->load->view('layout/navbar_masyarakat');
- } ?>
+<?php
+// } else {
+// $this->load->view('layout/navbar_masyarakat');
+// } 
+?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->

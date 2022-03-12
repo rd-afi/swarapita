@@ -17,15 +17,17 @@ class Login extends CI_Controller{
 		//$role 	  = $this->input->post('role');
 		$where = array(
 			'username' => $username,
-			'password' => ($password),
+			'password' => $password,
 			//'role'	   => $role
 			);
-		$cek = $this->m_login->cek_login("admin",$where)->num_rows();
-		if($cek > 0){
- 
+		// $cek = $this->m_login->cek_login("admin",$where);
+		$cek = $this->m_login->cek_login($username,$password);
+		if($cek->num_rows() > 0){
+			$data  = $cek->row_array();
 			$data_session = array(
 				'username' => $username,
-				'status' => "login"
+				'status' => "login",
+				'role' => $data['role']
 				);
  
 			$this->session->set_userdata($data_session);
