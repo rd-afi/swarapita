@@ -138,6 +138,7 @@ $this->load->view('layout/js');
 ?>
 
 <script>
+
   $(function () {
     $("#list1").DataTable({
       "autoWidth": false, "scrollX": true,
@@ -147,7 +148,7 @@ $this->load->view('layout/js');
           title: "List Relawan SWARAPITA",
           filename: "List Relawan SWARAPITA",
           exportOptions: {
-            columns: [0,1,2,3,4,5,6,7,8]
+            columns: [0,1,2,3,4,5,6,7,8,9,10,11]
             // columns: ':visible:not(:last-child)'
           }
         },{
@@ -155,7 +156,7 @@ $this->load->view('layout/js');
           title: "List Relawan SWARAPITA",
           filename: "List Relawan SWARAPITA",
           exportOptions: {
-            columns: [0,1,2,3,4,5,6,7,8]
+            columns: [0,1,2,3,4,5,6,7,8,9,10,11]
             // columns: ':visible:not(:last-child)'
           }
         },{
@@ -163,14 +164,59 @@ $this->load->view('layout/js');
           title: "List Relawan SWARAPITA",
           filename: "List Relawan SWARAPITA",
           exportOptions: {
-            columns: [0,1,2,3,4,5,6,7,8]
+            columns: [0,1,2,3,4,5,6,7,8,9,10,11]
             // columns: ':visible:not(:last-child)'
           }
         }
       ],
-      "fixedColumns": { right: 1 }
+      "fixedColumns": { right: 1 },
+      initComplete: function () {
+        $('<div class="row">' +
+          '<div class="col-sm-4"> <div class="form-group">' +
+            '<select class="form-control" id="fKot"><option value="">KOTA</option></select>' +
+          '</div> </div>' +
+          '<div class="col-sm-4"> <div class="form-group">' +
+            '<select class="form-control" id="fKec"><option value="">KECAMATAN</option></select>' +
+          '</div> </div>' +
+          '<div class="col-sm-4"> <div class="form-group">' +
+            '<select class="form-control" id="fKel"><option value="">KELURAHAN</option></select>' +
+          '</div> </div>' +
+        '</div>').appendTo("#list1_wrapper .dataTables_filter");
+            this.api().columns(6).every( function () {
+                var column = this;
+                var select = $("#fKot")
+                    .on( 'change', function () { var val = $.fn.dataTable.util.escapeRegex( $(this).val());
+                        column.search( val ? '^'+val+'$' : '', true, false ).draw();
+                    } );
+                column.data().unique().sort().each( function ( d, j ) {
+                    select.append( '<option value="'+d+'">'+d+'</option>' )
+                } );
+            } );
+            this.api().columns(7).every( function () {
+                var column = this;
+                var select = $("#fKec")
+                    .on( 'change', function () { var val = $.fn.dataTable.util.escapeRegex( $(this).val());
+                        column.search( val ? '^'+val+'$' : '', true, false ).draw();
+                    } );
+                column.data().unique().sort().each( function ( d, j ) {
+                    select.append( '<option value="'+d+'">'+d+'</option>' )
+                } );
+            } );
+            this.api().columns(8).every( function () {
+                var column = this;
+                var select = $("#fKel")
+                    .on( 'change', function () { var val = $.fn.dataTable.util.escapeRegex( $(this).val());
+                        column.search( val ? '^'+val+'$' : '', true, false ).draw();
+                    } );
+                column.data().unique().sort().each( function ( d, j ) {
+                    select.append( '<option value="'+d+'">'+d+'</option>' )
+                } );
+            } );
+            
+        }
     }).buttons().container().appendTo('#list1_wrapper .col-md-6:eq(0)');
   });
+
 </script>
 </body>
 </html>
