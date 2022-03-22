@@ -81,7 +81,7 @@ $this->load->view('layout/navbar');
                   </div>
                   <div class="form-group">
                     <label for="tempat_lahir">Tempat Lahir</label>
-                    <input type="text" class="form-control" name="tempat_lahir" placeholder="Tempat Lahir Sesuai KTP" required>
+                    <input type="text" class="form-control" name="tempat_lahir" placeholder="Tempat Lahir Sesuai KTP">
                   </div>
                   <div class="form-group">
                     <label for="jk">Jenis Kelamin</label>
