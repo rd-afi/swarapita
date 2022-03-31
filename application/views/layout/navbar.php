@@ -31,7 +31,10 @@
                             <?php } ?>
                             <li><a href="<?php echo base_url(); ?>" class="dropdown-item">Form Relawan</a></li>
                             <li><a href="<?php echo base_url(); ?>list_relawan" class="dropdown-item">List Relawan</a></li>
+                            <?php if ($_SESSION['role'] == 'user' ) {}
+                            else {?>
                             <li><a href="<?php echo base_url(); ?>upload_relawan" class="dropdown-item">Upload Data Relawan</a></li>
+                            <?php } ?>
                             <!-- <li><a href="<?php echo base_url(); ?>upload_kpu" class="dropdown-item">Upload Data KPU</a></li> -->
                         </ul>
                     </li>
