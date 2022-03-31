@@ -46,11 +46,11 @@ class General extends CI_Controller {
 	// 	$query = $this->m_data->kota($data)->result();
 	// 	echo json_encode($query);
 	// }
-	public function json_kel($data){
+	public function json_kec($data){
 		$query = $this->m_data->kel($data)->result();
 		echo json_encode($query);
 	}
-	public function json_des($data){
+	public function json_kel($data){
 		$query = $this->m_data->des($data)->result();
 		echo json_encode($query);
 	}

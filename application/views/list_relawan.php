@@ -41,6 +41,35 @@ $this->load->view('layout/head');
         <div class="container-fluid">
           <!-- Small boxes (Stat box) -->
           <div class="row">
+            <div class="col-lg-12">
+              <div class="card">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-4">
+                      <div class="form-group">
+                        <label for="kelurahan">Kota</label>
+                        <select class="data-array browser-default form-control" id="kota" name="kota" required></select>
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class="form-group">
+                        <label for="kelurahan">Kecamatan</label>
+                        <select class="data-array browser-default form-control" id="kecamatan" name="kecamatan" required></select>
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class="form-group">
+                        <label for="kelurahan">Kelurahan</label>
+                        <select class="data-array browser-default form-control" id="kelurahan" name="kelurahan" required></select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <!-- </div> -->
+          <div class="row">
             <div class="col-lg-12 col-6">
               <div class="card">
                 <!-- <div class="card-header">
@@ -154,6 +183,127 @@ $this->load->view('layout/head');
   $this->load->view('layout/js');
   ?>
 
+<script>
+    var urlProvinsi = "<?php echo base_url(). 'general/json_prov'; ?>";
+    var urlKota = "<?php echo base_url(). 'general/json_kota/'; ?>";
+    var urlKecamatan = "<?php echo base_url(). 'general/json_kec/'; ?>";
+    var urlKelurahan = "<?php echo base_url(). 'general/json_kel/'; ?>";
+
+        function clearOptions(id) {
+            console.log("on clearOptions :" + id);
+
+            //$('#' + id).val(null);
+            $('#' + id).empty().trigger('change');
+        }
+
+        console.log('Load Kota...');
+        $.getJSON(urlKota, function (res) {
+
+            res = $.map(res, function (obj) {
+                obj.text = obj.name
+                return obj;
+            });
+
+            data = [{
+                id: "",
+                name: "- Pilih Kota -",
+                text: "- Pilih Kota -"
+            }].concat(res);
+
+            //implemen data ke select provinsi
+            $("#kota").select2({
+                dropdownAutoWidth: true,
+                width: '100%',
+                data: data
+            })
+        });
+
+        var selectKab = $('#kota');
+        $(selectKab).change(function () {
+            var value = $(selectKab).val();
+            clearOptions('kecamatan');
+
+            if (value) {
+                console.log("on change selectKab");
+
+                var text = $('#kecamatan :selected').text();
+                console.log("value = " + value + " / " + "text = " + text);
+
+                console.log('Load Kecamatan di '+text+'...')
+                $.getJSON(urlKecamatan + value, function(res) {
+                // $.getJSON(urlKecamatan + value + ".json", function(res) {
+
+                    res = $.map(res, function (obj) {
+                        obj.text = obj.name
+                        return obj;
+                    });
+
+                    data = [{
+                        id: "",
+                        name: "- Pilih Kecamatan -",
+                        text: "- Pilih Kecamatan -"
+                    }].concat(res);
+
+                    //implemen data ke select provinsi
+                    $("#kecamatan").select2({
+                        dropdownAutoWidth: true,
+                        width: '100%',
+                        data: data
+                    })
+                })
+            }
+        });
+
+        var selectKec = $('#kecamatan');
+        $(selectKec).change(function () {
+            var value = $(selectKec).val();
+            clearOptions('kelurahan');
+
+            if (value) {
+                console.log("on change selectKec");
+
+                var text = $('#kelurahan :selected').text();
+                console.log("value = " + value + " / " + "text = " + text);
+
+                console.log('Load Kelurahan di '+text+'...')
+                $.getJSON(urlKelurahan + value, function(res) {
+                // $.getJSON(urlKelurahan + value + ".json", function(res) {
+
+                    res = $.map(res, function (obj) {
+                        obj.text = obj.name
+                        return obj;
+                    });
+
+                    data = [{
+                        id: "",
+                        name: "- Pilih Kelurahan -",
+                        text: "- Pilih Kelurahan -"
+                    }].concat(res);
+
+                    //implemen data ke select provinsi
+                    $("#kelurahan").select2({
+                        dropdownAutoWidth: true,
+                        width: '100%',
+                        data: data
+                    })
+                })
+            }
+        });
+
+        var selectKel = $('#kelurahan');
+        $(selectKel).change(function () {
+            var value = $(selectKel).val();
+
+            if (value) {
+                console.log("on change selectKel");
+
+                var text = $('#kelurahan :selected').text();
+                console.log("value = " + value + " / " + "text = " + text);
+            }
+        });
+
+</script>
+
   <script>
     $(function() {
       $("#list1").DataTable({
@@ -190,71 +340,123 @@ $this->load->view('layout/head');
           right: 1
         },
         initComplete: function() {
-          $('<div class="row">' +
-            '<div class="col-sm-4"> <div class="form-group">' +
-            '<select class="form-control" id="fKot" ><option value="">KOTA</option></select>' +
-            '</div> </div>' +
-            '<div class="col-sm-4"> <div class="form-group">' +
-            '<select class="form-control" id="fKec"><option value="">KECAMATAN</option></select>' +
-            '</div> </div>' +
-            '<div class="col-sm-4"> <div class="form-group">' +
-            '<select class="form-control" id="fKel"><option value="">KELURAHAN</option></select>' +
-            '</div> </div>' +
-            '</div>').appendTo("#list1_wrapper .dataTables_filter");
+          // $('<div class="row">' +
+          //   '<div class="col-sm-4"> <div class="form-group">' +
+          //   '<select class="form-control" id="fKot" ><option value="">KOTA</option></select>' +
+          //   '</div> </div>' +
+          //   '<div class="col-sm-4"> <div class="form-group">' +
+          //   '<select class="form-control" id="fKec"><option value="">KECAMATAN</option></select>' +
+          //   '</div> </div>' +
+          //   '<div class="col-sm-4"> <div class="form-group">' +
+          //   '<select class="form-control" id="fKel"><option value="">KELURAHAN</option></select>' +
+          //   '</div> </div>' +
+          //   '</div>').appendTo("#list1_wrapper .dataTables_filter");
           this.api().columns(6).every(function() {
             var column = this;
-            var select = $("#fKot")
+            var select = $("#kota")
               .on('change', function() {
-                if ($(this).val() == "") {
-                  document.getElementById("fKec").removeAttribute("hidden");
-                  document.getElementById("fKel").removeAttribute("hidden");
+                // var val = $.fn.dataTable.util.escapeRegex($( "#kota option:selected" ).text());
+                var val = $( "#kota option:selected" ).text();
+                // var val2 = $.fn.dataTable.util.escapeRegex($(this).val());
+                var val2 = $(this).val();
+                if (val2 == "") {
+                  column.search("").draw();
                 } else {
-                  document.getElementById("fKec").setAttribute("hidden", "true");
-                  document.getElementById("fKel").setAttribute("hidden", "true");
+                  column.search(val ? '^' + val + '$' : '', true, false).draw();
                 }
-                var val = $.fn.dataTable.util.escapeRegex($(this).val());
-                column.search(val ? '^' + val + '$' : '', true, false).draw();
+                console.log(val);
+                console.log(val2);
               });
-            column.data().unique().sort().each(function(d, j) {
-              select.append('<option value="' + d + '">' + d + '</option>')
-            });
           });
           this.api().columns(7).every(function() {
             var column = this;
-            var select = $("#fKec")
+            var select = $("#kecamatan")
               .on('change', function() {
-                if ($(this).val() == "") {
-                  document.getElementById("fKot").removeAttribute("hidden");
-                  document.getElementById("fKel").removeAttribute("hidden");
+                // var val = $.fn.dataTable.util.escapeRegex($( "#kota option:selected" ).text());
+                var val = $( "#kecamatan option:selected" ).text();
+                // var val2 = $.fn.dataTable.util.escapeRegex($(this).val());
+                var val2 = $(this).val();
+                if (val2 == "") {
+                  column.search("").draw();
                 } else {
-                  document.getElementById("fKot").setAttribute("hidden", "true");
-                  document.getElementById("fKel").setAttribute("hidden", "true");
+                  column.search(val ? '^' + val + '$' : '', true, false).draw();
                 }
-                var val = $.fn.dataTable.util.escapeRegex($(this).val());
-                column.search(val ? '^' + val + '$' : '', true, false).draw();
+                console.log(val);
+                console.log(val2);
               });
-            column.data().unique().sort().each(function(d, j) {
-              select.append('<option value="' + d + '">' + d + '</option>')
-            });
           });
           this.api().columns(8).every(function() {
             var column = this;
-            var select = $("#fKel")
+            var select = $("#kelurahan")
               .on('change', function() {
-                if ($(this).val() == "") {
-                  document.getElementById("fKot").removeAttribute("hidden");
-                  document.getElementById("fKec").removeAttribute("hidden");
+                // var val = $.fn.dataTable.util.escapeRegex($( "#kota option:selected" ).text());
+                var val = $( "#kelurahan option:selected" ).text();
+                // var val2 = $.fn.dataTable.util.escapeRegex($(this).val());
+                var val2 = $(this).val();
+                if (val2 == "") {
+                  column.search("").draw();
                 } else {
-                  document.getElementById("fKot").setAttribute("hidden", "true");
-                  document.getElementById("fKec").setAttribute("hidden", "true");
+                  column.search(val ? '^' + val + '$' : '', true, false).draw();
                 }
-                var val = $.fn.dataTable.util.escapeRegex($(this).val());
-                column.search(val ? '^' + val + '$' : '', true, false).draw();
+                console.log(val);
+                console.log(val2);
               });
-            column.data().unique().sort().each(function(d, j) {
-              select.append('<option value="' + d + '">' + d + '</option>')
-            });
           });
+          // this.api().columns(6).every(function() {
+          //   var column = this;
+          //   var select = $("#fKot")
+          //     .on('change', function() {
+          //       if ($(this).val() == "") {
+          //         document.getElementById("fKec").removeAttribute("hidden");
+          //         document.getElementById("fKel").removeAttribute("hidden");
+          //       } else {
+          //         document.getElementById("fKec").setAttribute("hidden", "true");
+          //         document.getElementById("fKel").setAttribute("hidden", "true");
+          //       }
+          //       var val = $.fn.dataTable.util.escapeRegex($(this).val());
+          //       column.search(val ? '^' + val + '$' : '', true, false).draw();
+          //       console.log(val);
+          //     });
+          //   column.data().unique().sort().each(function(d, j) {
+          //     select.append('<option value="' + d + '">' + d + '</option>')
+          //   });
+          // });
+          // this.api().columns(7).every(function() {
+          //   var column = this;
+          //   var select = $("#fKec")
+          //     .on('change', function() {
+          //       if ($(this).val() == "") {
+          //         document.getElementById("fKot").removeAttribute("hidden");
+          //         document.getElementById("fKel").removeAttribute("hidden");
+          //       } else {
+          //         document.getElementById("fKot").setAttribute("hidden", "true");
+          //         document.getElementById("fKel").setAttribute("hidden", "true");
+          //       }
+          //       var val = $.fn.dataTable.util.escapeRegex($(this).val());
+          //       column.search(val ? '^' + val + '$' : '', true, false).draw();
+          //     });
+          //   column.data().unique().sort().each(function(d, j) {
+          //     select.append('<option value="' + d + '">' + d + '</option>')
+          //   });
+          // });
+          // this.api().columns(8).every(function() {
+          //   var column = this;
+          //   var select = $("#fKel")
+          //     .on('change', function() {
+          //       if ($(this).val() == "") {
+          //         document.getElementById("fKot").removeAttribute("hidden");
+          //         document.getElementById("fKec").removeAttribute("hidden");
+          //       } else {
+          //         document.getElementById("fKot").setAttribute("hidden", "true");
+          //         document.getElementById("fKec").setAttribute("hidden", "true");
+          //       }
+          //       var val = $.fn.dataTable.util.escapeRegex($(this).val());
+          //       column.search(val ? '^' + val + '$' : '', true, false).draw();
+          //     });
+          //   column.data().unique().sort().each(function(d, j) {
+          //     select.append('<option value="' + d + '">' + d + '</option>')
+          //   });
+          // });
         }
       }).buttons().container().appendTo('#list1_wrapper .col-md-6:eq(0)');
     });

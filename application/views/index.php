@@ -213,8 +213,8 @@ $this->load->view('layout/js');
 <script>
     var urlProvinsi = "<?php echo base_url(). 'general/json_prov'; ?>";
     var urlKabupaten = "<?php echo base_url(). 'general/json_kota/'; ?>";
-    var urlKecamatan = "<?php echo base_url(). 'general/json_kel/'; ?>";
-    var urlKelurahan = "<?php echo base_url(). 'general/json_des/'; ?>";
+    var urlKecamatan = "<?php echo base_url(). 'general/json_kec/'; ?>";
+    var urlKelurahan = "<?php echo base_url(). 'general/json_kel/'; ?>";
 
         function clearOptions(id) {
             console.log("on clearOptions :" + id);
