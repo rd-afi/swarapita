@@ -51,10 +51,6 @@ class Dashboard extends CI_Controller {
 		$this->load->view('moreinfo_depok',$data);
 	}
 
-	public function upload_relawan()
-	{
-		$this->load->view('upload_data');
-	}
 	public function list_relawan(){
 		$data['relawan'] = $this->m_data->list_relawan()->result();
 		$this->load->view('list_relawan',$data);
@@ -134,10 +130,103 @@ class Dashboard extends CI_Controller {
 	{
 		return base_url('public/template_form_data_kpu.xlsx');
 	}
+
+	public function template_relawan()
+	{
+		return base_url('public/template_relawan.xlsx');
+	}
+
+
 	public function upload_kpu()
 	{
 		$this->load->view('upload_kpu');
 	}
+
+		public function upload_relawan()
+	{
+		$this->load->view('upload_relawan');
+	}
+
+
+	public function import_relawan() {
+		$path 		= 'documents/users/';
+		$json 		= [];
+		$this->upload_config($path);
+		if (!$this->upload->do_upload('file')) {
+			$json = [
+				'error_message' => showErrorMessage($this->upload->display_errors()),
+			];
+		} else {
+			$file_data 	= $this->upload->data();
+			$file_name 	= $path.$file_data['file_name'];
+			$arr_file 	= explode('.', $file_name);
+			$extension 	= end($arr_file);
+			if('csv' == $extension) {
+				$reader 	= new \PhpOffice\PhpSpreadsheet\Reader\Csv();
+			} else {
+				$reader 	= new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
+			}
+			$spreadsheet 	= $reader->load($file_name);
+			$sheet_data 	= $spreadsheet->getActiveSheet()->toArray();
+			$list 			= [];
+			foreach($sheet_data as $key => $val) {
+				if($key != 0) {
+					$result 	= $this->user->get(["nik" => $val[1]]);
+					if($result) {
+					} else {
+						$list [] = [
+							'nik'					=> $val[0],
+							'nama'					=> $val[1],
+							'tempat_lahir'			=> $val[2],
+							'jk'				=> $val[3],
+							'tgl_lahir'			=> $val[4],
+							'alamat'			=> $val[5],
+							'rt'				=> $val[6],
+							'rw'				=> $val[7],
+							'provinsi'			=> $val[8],
+							'kabupaten'			=> $val[9],
+							'kelurahan'			=> $val[10],
+							'kecamatan'			=> $val[11],
+							'hpwa'				=> $val[12],
+							'as_koor'			=> 1,
+							'source'			=> "excel",
+							'created_at'		=> date("Y-m-d H:i:s"),
+							'updated_at'		=> null,
+							'penginput'			=> $_SESSION['username']
+						];
+					}
+				}
+			}
+			if(file_exists($file_name))
+				unlink($file_name);
+			if(count($list) > 0) {
+				$result 	= $this->user->add_batch_relawan($list);
+				if($result) {
+					$this->session->set_flashdata('ico', 'success');
+					$this->session->set_flashdata('msg', 'Data Berhasil diimport');
+					// $json = [
+					// 	'success_message' 	=> showSuccessMessage("All Entries are imported successfully."),
+					// ];
+				} else {
+					$this->session->set_flashdata('ico', 'error');
+					$this->session->set_flashdata('msg', 'Gagal, Silakan coba lagi');
+					// $json = [
+					// 	'error_message' 	=> showErrorMessage("Something went wrong. Please try again.")
+					// ];
+				}
+			} else {
+				$this->session->set_flashdata('ico', 'error');
+				$this->session->set_flashdata('msg', 'Tidak ada data');
+				// $json = [
+				// 	'error_message' => showErrorMessage("No new record is found."),
+				// ];
+			}
+		}
+		// echo json_encode($json);
+		redirect('list_relawan');
+
+	}
+
 	public function import() {
 		$path 		= 'documents/users/';
 		$json 		= [];
@@ -201,6 +290,7 @@ class Dashboard extends CI_Controller {
 		redirect('list_relawan');
 
 	}
+
 
 	public function upload_config($path) {
 		if (!is_dir($path)) 

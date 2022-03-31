@@ -77,7 +77,7 @@ $this->load->view('layout/navbar');
                         <!-- <td><?php echo $no++ ?></td> -->
                         <td><?php echo $city->kecamatan ?></td>
                         <td><?php echo $city->total_pemilih ?> suara</td>               
-                        <td><?php echo $city->total_relawan ?> suara</td>               
+                        <td><?php echo $city->total_relawan ?> relawan</td>               
                     </tr>
                   <?php } ?>
                 </tbody>
@@ -113,7 +113,7 @@ $this->load->view('layout/navbar');
                         <!-- <td><?php echo $no++ ?></td> -->
                         <td><?php echo $city->kelurahan ?></td>
                         <td><?php echo $city->total_pemilih ?> suara</td>               
-                        <td><?php echo $city->total_relawan ?> suara</td>               
+                        <td><?php echo $city->total_relawan ?> relawan</td>               
                     </tr>
                   <?php } ?>
                 </tbody>

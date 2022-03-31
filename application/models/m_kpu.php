@@ -47,4 +47,8 @@ class M_kpu extends CI_Model {
 		return $this->db->insert_batch('data_kpu', $data);
 	}
 
+	public function add_batch_relawan($data) {
+		return $this->db->insert_batch('relawan_temp', $data);
+	}
+
 }

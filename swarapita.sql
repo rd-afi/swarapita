@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 30, 2022 at 09:29 PM
+-- Generation Time: Mar 31, 2022 at 08:13 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -61,7 +61,20 @@ CREATE TABLE `data_kpu` (
 
 INSERT INTO `data_kpu` (`nik`, `nama`, `lokasi`) VALUES
 ('321', 'dika gaharu', 'tps 62'),
-('461', 'begeng', 'lokasi 82 bekasi');
+('461', 'begeng', 'lokasi 82 bekasi'),
+('2841902966579590', 'AegiBabby', 'indonesia'),
+('9766118009801980', 'baechildhood', 'indonesia'),
+('6611860159455090', 'baefather', 'indonesia'),
+('3520117764533040', 'baelove', 'indonesia'),
+('9237086449213940', 'baemerry', 'indonesia'),
+('4365480120561440', 'Bd_Army', 'indonesia'),
+('', '', ''),
+('', '', ''),
+('', '', ''),
+('', '', ''),
+('', '', ''),
+('', '', ''),
+('', '', '');
 
 -- --------------------------------------------------------
 
@@ -831,6 +844,45 @@ INSERT INTO `relawan` (`nik`, `nama`, `tempat_lahir`, `jk`, `tgl_lahir`, `alamat
 ('9950664924163200', 'Dicky Fajriah', 'indonesia', 1, '1994-02-28', 'gumudasd', '18', '30', 32, 3276, 3275031006, 327503, '80518751073302', 1, 'form', NULL, NULL, 'admin'),
 ('9981692743178550', 'MaJoy_', 'indonesia', 2, '1991-01-25', 'gumudasd', '8', '24', 32, 3275, 3275081002, 327508, '17778021516594', 1, 'form', NULL, NULL, 'admin'),
 ('9989571983065370', 'Gi Dong-Yul', 'indonesia', 1, '1997-01-13', 'gumudasd', '2', '9', 32, 3275, 3275041004, 327504, '86888261974607', 1, 'form', NULL, NULL, 'admin');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `relawan_temp`
+--
+
+CREATE TABLE `relawan_temp` (
+  `nik` varchar(256) NOT NULL,
+  `nama` varchar(256) NOT NULL,
+  `tempat_lahir` varchar(256) NOT NULL,
+  `jk` varchar(100) NOT NULL,
+  `tgl_lahir` date NOT NULL,
+  `alamat` varchar(256) NOT NULL,
+  `rt` varchar(11) NOT NULL,
+  `rw` varchar(11) NOT NULL,
+  `provinsi` varchar(100) NOT NULL,
+  `kabupaten` varchar(100) NOT NULL,
+  `kelurahan` varchar(99) NOT NULL,
+  `kecamatan` varchar(99) NOT NULL,
+  `hpwa` varchar(256) NOT NULL,
+  `as_koor` int(11) NOT NULL,
+  `source` varchar(10) NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `penginput` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `relawan_temp`
+--
+
+INSERT INTO `relawan_temp` (`nik`, `nama`, `tempat_lahir`, `jk`, `tgl_lahir`, `alamat`, `rt`, `rw`, `provinsi`, `kabupaten`, `kelurahan`, `kecamatan`, `hpwa`, `as_koor`, `source`, `created_at`, `updated_at`, `penginput`) VALUES
+('2841902966579590', 'AegiBabby', 'indonesia', 'perempuan', '2000-10-03', 'solo', '1', '2', 'Jawa Barat', 'KOTA BEKASI', 'Bekasi Timur', 'Margahayu', '8506563511073', 1, 'excel', '2022-04-01 01:12:19', NULL, 'dika'),
+('9766118009801980', 'baechildhood', 'indonesia', 'perempuan', '0000-00-00', 'solo', '2', '3', 'Jawa Barat', 'KOTA BEKASI', 'Bekasi Selatan', 'Jakamulya', '64067093368307', 1, 'excel', '2022-04-01 01:12:19', NULL, 'dika'),
+('6611860159455090', 'baefather', 'indonesia', 'perempuan', '0000-00-00', 'solo', '3', '4', 'Jawa Barat', 'KOTA DEPOK', 'Sawangan', 'Bedahan', '91764272735574', 1, 'excel', '2022-04-01 01:12:19', NULL, 'dika'),
+('3520117764533040', 'baelove', 'indonesia', 'perempuan', '1998-11-05', 'solo', '4', '5', 'Jawa Barat', 'KOTA DEPOK', 'Sawangan', 'Pengasinan', '8246556510673', 1, 'excel', '2022-04-01 01:12:19', NULL, 'dika'),
+('9237086449213940', 'baemerry', 'indonesia', 'perempuan', '0000-00-00', 'solo', '5', '6', 'Jawa Barat', 'DEPOK', 'Sawangan', 'Cinangka', '91643196664822', 1, 'excel', '2022-04-01 01:12:19', NULL, 'dika'),
+('4365480120561440', 'Bd_Army', 'indonesia', 'perempuan', '1980-09-01', 'solo', '6', '7', 'Jawa Barat', 'Bekasi', 'Bekasi Timur', 'Aren Jaya', '14927545559061', 1, 'excel', '2022-04-01 01:12:19', NULL, 'dika');
 
 --
 -- Indexes for dumped tables
