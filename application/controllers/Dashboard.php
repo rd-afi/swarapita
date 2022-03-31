@@ -6,7 +6,7 @@ class Dashboard extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();
-        if ($this->session->userdata['status'] == 'login') {
+        if ($this->session->userdata['status'] == 'login' && $this->session->userdata['role'] != 'user') {
         } else {
             $this->session->set_flashdata('ico', 'error');
 			$this->session->set_flashdata('msg', 'Silakan login terlebih dahulu');
@@ -45,7 +45,9 @@ class Dashboard extends CI_Controller {
 
 		public function moreinfo_Depok(){
 		$data['DepokChartData'] = $this->m_data->DepokChartData()->result();
-		$data['depok_listdata'] = $this->m_data->DepokChartData()->result();
+		//$data['depok_listdata'] = $this->m_data->DepokChartData()->result();
+		$data['depok_kec'] = $this->m_data->list_depok_kec()->result();
+		$data['depok_kel'] = $this->m_data->list_depok_kel()->result();
 		$this->load->view('moreinfo_depok',$data);
 	}
 

@@ -69,7 +69,7 @@ $this->load->view('layout/navbar');
                   </div>
                   <div class="form-group">
                     <label for="nama">Password</label>
-                    <input type="text" class="form-control" value="<?php echo $account[0]->password ?>" name="password" placeholder="Isi Password" required>
+                    <input type="password" class="form-control" value="<?php echo $account[0]->password ?>" name="password" placeholder="Isi Password" required>
                   </div>
                   <div class="form-group">
                     <label for="nama pegawai" class="col-md-3"> Role  </label>

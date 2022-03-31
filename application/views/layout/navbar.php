@@ -16,8 +16,12 @@
                 <!-- Left navbar links -->
                 <ul class="navbar-nav">
                     <li class="nav-item">
+                         <?php if ($_SESSION['role'] == 'user') {
+                         }
+                         else{
+                          ?>
                         <a href="<?php echo base_url(); ?>dashboard" class="nav-link">Dashboard</a>
-                    </li>
+                    <?php } ?></li>
                     <li class="nav-item dropdown">
                         <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Menu</a>
                         <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">

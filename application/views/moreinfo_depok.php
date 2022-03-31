@@ -44,60 +44,86 @@ $this->load->view('layout/navbar');
           <div class="col-lg-12 col-6">
             <!-- small box -->
               <div class="card mb-2">
-                            <div class="card-body">
+                <div class="card-body">
                                 <div id="barchart_material" style="width: 900px; height: 400px;"></div>
                             </div>
           </div>
         <!-- /.row -->
         <!-- Main row -->
-        <div class="row">
-          <!-- Left col -->
-          <section class="col-lg-7 connectedSortable">
-            
-          </section>
-          <!-- /.Left col -->
-          <!-- right col (We are only adding the ID to make the widgets sortable)-->
-          <section class="col-lg-5 connectedSortable">
-
-          </section>
-          <!-- right col -->
-        </div>
         <!-- /.row (main row) -->
-      </div>
-              <div class="col-lg-12 col-6">
+      </div><!-- /.container-fluid -->
+        <div class="col-lg-6 col-6">
           <div class="card">
-              <!-- <div class="card-header">
-                <h3 class="card-title">List Relawan</h3>
-              </div> -->
-              <!-- /.card-header -->
-              <div class="card-body">
-                <table id="list1" class="table display table-bordered table-striped nowrap" data-export-title="List Account Swarapita">
-                  <thead>
+            <div class="card-header">
+              <h3 class="card-title">Kecamatan</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="list1" class="table display table-bordered table-striped nowrap" data-export-title="List Account Swarapita">
+                <thead>
                   <tr>
-                    <th>No</th>
+                    <!-- <th>No</th> -->
                     <th>Kecamatan</th>
                     <th>Total Pemilih</th>
+                    <th>Total Relawan</th>
                   </tr>
-                  </thead>
-                  <tbody>
+                </thead>
+                <tbody>
                   <?php 
                     $no = 1;
-                    foreach($depok_listdata as $city){ 
+                    foreach($depok_kec as $city){ 
                     ?>
                     <tr>
-                        <td><?php echo $no++ ?></td>
+                        <!-- <td><?php echo $no++ ?></td> -->
                         <td><?php echo $city->kecamatan ?></td>
-                        <td><?php echo $city->Total_Pemilih ?> suara</td>               
+                        <td><?php echo $city->total_pemilih ?> suara</td>               
+                        <td><?php echo $city->total_relawan ?> relawan</td>               
                     </tr>
                   <?php } ?>
-                  </tbody>
-
-                </table>
-              </div>
-              <!-- /.card-body -->
+                </tbody>
+              </table>
             </div>
-            <!-- /.card -->
-          </div><!-- /.container-fluid -->
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+        <div class="col-lg-6 col-6">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Kelurahan</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="list2" class="table display table-bordered table-striped nowrap" data-export-title="List Account Swarapita">
+                <thead>
+                  <tr>
+                    <!-- <th>No</th> -->
+                    <th>Kelurahan</th>
+                    <th>Total Pemilih</th>
+                    <th>Total Relawan</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php 
+                    $no = 1;
+                    foreach($depok_kel as $city){ 
+                    ?>
+                    <tr>
+                        <!-- <td><?php echo $no++ ?></td> -->
+                        <td><?php echo $city->kelurahan ?></td>
+                        <td><?php echo $city->total_pemilih ?> suara</td>               
+                        <td><?php echo $city->total_relawan ?> relawan</td>               
+                    </tr>
+                  <?php } ?>
+                </tbody>
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
     </section>
     <!-- /.content -->
   </div>

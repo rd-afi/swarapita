@@ -52,7 +52,7 @@ $this->load->view('layout/navbar');
                   <thead>
                   <tr>
                     <th>Username</th>
-                    <th>Password</th>
+                    <!--<th>Password</th>-->
                     <th>Role</th>
                     <th>Action</th>
                   </tr>
@@ -64,7 +64,7 @@ $this->load->view('layout/navbar');
                     ?>
                     <tr>
                         <td><?php echo $mama->username ?></td>
-                        <td><?php echo $mama->password ?></td>
+                        <!--<td><?php echo $mama->password ?></td>-->
                         <td><?php echo $mama->role ?></td>
                         <td>
                             <a type="button" href="<?php echo base_url('admin/edit_list_account/'.$mama->id);?>" class="btn btn-warning btn-sm"><i class="fas fa-pen"></i></a>
