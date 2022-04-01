@@ -108,6 +108,11 @@ class Dashboard extends CI_Controller {
 		$this->m_data->hapus_data($where,'relawan');
 		redirect('list_relawan');
 	}
+	function hapus_temp($id){
+		$where = array('nik' => $id);
+		$this->m_data->hapus_data($where,'relawan_temp');
+		redirect('upload_relawan');
+	}
 	public function json_prov(){
 		$query = $this->m_data->prov()->result();
 		echo json_encode($query);

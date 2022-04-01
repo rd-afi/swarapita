@@ -201,8 +201,9 @@ $this->load->view('layout/navbar');
                           $role = $u->penginput;
                           $session = $_SESSION['role'];
                           if ($session == 'super_admin' or $session == 'admin') { ?>
-                            <td><a type="button" href="<?php echo base_url('edit/' . $u->nik); ?>" class="btn btn-warning btn-sm"><i class="fas fa-pen"></i></a>
-                              <a type="button" href="<?php echo base_url('hapus/' . $u->nik); ?>" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                            <td>
+                              <!-- <a type="button" href="<?php echo base_url('edit/' . $u->nik); ?>" class="btn btn-warning btn-sm"><i class="fas fa-pen"></i></a> -->
+                              <a type="button" href="<?php echo base_url('hapus_temp/' . $u->nik); ?>" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
                             </td>
                           <?php } else {  ?>
 
