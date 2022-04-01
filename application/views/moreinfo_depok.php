@@ -170,6 +170,46 @@ $this->load->view('layout/js');
 <?php endif ?>
 
 <script>
+  $(function () {
+    $("#list1").DataTable({
+      "autoWidth": false, "scrollX": true, "paging": false,
+      "buttons": [
+        {
+          extend: 'excelHtml5',
+          title: "List Kecamatan Bekasi",
+          filename: "List Kecamatan Bekasi"
+        },{
+          extend: 'csvHtml5',
+          title: "List Kecamatan Bekasi",
+          filename: "List Kecamatan Bekasi"
+        },{
+          extend: 'pdfHtml5',
+          title: "List Kecamatan Bekasi",
+          filename: "List Kecamatan Bekasi"
+        }
+      ],
+      "fixedColumns": { right: 1 }
+    }).buttons().container().appendTo('#list1_wrapper .col-md-6:eq(0)');
+    $("#list2").DataTable({
+      "autoWidth": false, "scrollX": true, "paging": false,
+      "buttons": [
+        {
+          extend: 'excelHtml5',
+          title: "List Kelurahan Bekasi",
+          filename: "List Kelurahan Bekasi"
+        },{
+          extend: 'csvHtml5',
+          title: "List Kelurahan Bekasi",
+          filename: "List Kelurahan Bekasi"
+        },{
+          extend: 'pdfHtml5',
+          title: "List Kelurahan Bekasi",
+          filename: "List Kelurahan Bekasi"
+        }
+      ],
+      "fixedColumns": { right: 1 }
+    }).buttons().container().appendTo('#list2_wrapper .col-md-6:eq(0)');
+  });
 </script>
 <script type="text/javascript">
               google.charts.load('current', {'packages':['bar']});

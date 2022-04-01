@@ -64,6 +64,7 @@ $route['upload_relawan'] = 'general/upload_relawan';
 $route['upload_pemilih_tetap'] = 'admin/input_pemilih_tetap';
 $route['hapus/(:num)'] = 'dashboard/hapus/$1';
 $route['edit/(:num)'] = 'dashboard/edit/$1';
+$route['edit_temp/(:num)'] = 'dashboard/edit_relawan_temp/$1';
 $route['hapus_temp/(:num)'] = 'dashboard/hapus_temp/$1';
 $route['update_relawan'] = 'dashboard/update_relawan';
 $route['upload_kpu'] = 'dashboard/upload_kpu';

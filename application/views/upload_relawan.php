@@ -133,6 +133,27 @@ $this->load->view('layout/navbar');
         <!-- </div> -->
           <div class="row">
             <div class="col-lg-12 col-6">
+            <?php 
+              if (isset($_SESSION['dup']) || isset($_SESSION['len'])) {
+                echo '<div class="alert alert-warning alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>';
+                echo 'NIK Duplikat = ';
+                foreach($_SESSION['dup'] as $key => $value){
+                  echo $value.', ';
+                }
+                echo '<br>';
+                echo 'Digit NIK salah = ';
+                foreach($_SESSION['len'] as $key => $value){
+                  echo $value.', ';
+                }
+                echo '</div>';
+              }
+            ?>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12 col-6">
               <div class="card">
                 <!-- <div class="card-header">
                 <h3 class="card-title">List Relawan</h3>
@@ -202,7 +223,7 @@ $this->load->view('layout/navbar');
                           $session = $_SESSION['role'];
                           if ($session == 'super_admin' or $session == 'admin') { ?>
                             <td>
-                              <!-- <a type="button" href="<?php echo base_url('edit/' . $u->nik); ?>" class="btn btn-warning btn-sm"><i class="fas fa-pen"></i></a> -->
+                              <!-- <a type="button" href="<?php echo base_url('edit_temp/' . $u->nik); ?>" class="btn btn-warning btn-sm"><i class="fas fa-pen"></i></a> -->
                               <a type="button" href="<?php echo base_url('hapus_temp/' . $u->nik); ?>" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
                             </td>
                           <?php } else {  ?>

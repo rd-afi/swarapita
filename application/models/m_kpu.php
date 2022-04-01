@@ -27,6 +27,13 @@ class M_kpu extends CI_Model {
 		return $query->row();
 	}
 
+	public function get_relawan_temp($where = 0) {
+		if($where) 
+			$this->db->where($where);
+		$query = $this->db->get('relawan_temp');
+		return $query->row();
+	}
+
 	public function get_all($where = 0, $order_by_column = 0, $order_by = 0) {
 		if($where) 
 			$this->db->where($where);

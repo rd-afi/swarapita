@@ -6,7 +6,8 @@ class Dashboard extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();
-        if ($this->session->userdata['status'] == 'login' && $this->session->userdata['role'] != 'user') {
+        // if ($this->session->userdata['status'] == 'login' && $this->session->userdata['role'] != 'user') {
+        if ($this->session->userdata['status'] == 'login') {
         } else {
             $this->session->set_flashdata('ico', 'error');
 			$this->session->set_flashdata('msg', 'Silakan login terlebih dahulu');
@@ -52,13 +53,24 @@ class Dashboard extends CI_Controller {
 	}
 
 	public function list_relawan(){
-		$data['relawan'] = $this->m_data->list_relawan()->result();
+		if ($_SESSION['role'] == 'user') {
+			$data['relawan'] = $this->m_data->list_relawan_by_penginput($_SESSION['username'])->result();
+		} else {
+			$data['relawan'] = $this->m_data->list_relawan()->result();
+		}
 		$this->load->view('list_relawan',$data);
 		// $this->load->view('data',$data);
 	}
 	function edit($id){
+		$this->session->set_userdata('edit', 'norm');
 		$where = array('nik' => $id);
 		$data['relawan'] = $this->m_data->edit_data($where,'relawan')->result();
+		$this->load->view('edit_form',$data);
+	}
+	function edit_relawan_temp($id){
+		$this->session->set_userdata('edit', 'temp');
+		$where = $id;
+		$data['relawan'] = $this->m_data->edit_data_temp($where,'relawan_temp')->result();
 		$this->load->view('edit_form',$data);
 	}
 	function update_relawan(){
@@ -100,8 +112,13 @@ class Dashboard extends CI_Controller {
 			'nik' => $nik
 		);
 	 
-		$this->m_data->update_data($where,$data,'relawan');
-		redirect('list_relawan');
+		if ($_SESSION['edit'] == 'norm') {
+			$this->m_data->update_data($where,$data,'relawan');
+			redirect('list_relawan');
+		} else {
+			$this->m_data->update_data($where,$data,'relawan_temp');
+			redirect('upload_relawan');
+		}
 	}
 	function hapus($id){
 		$where = array('nik' => $id);
@@ -157,6 +174,7 @@ class Dashboard extends CI_Controller {
 	public function import_relawan() {
 		$path 		= 'documents/users/';
 		$json 		= [];
+		$err		= [];
 		$this->upload_config($path);
 		if (!$this->upload->do_upload('file')) {
 			$json = [
@@ -177,15 +195,23 @@ class Dashboard extends CI_Controller {
 			$list 			= [];
 			foreach($sheet_data as $key => $val) {
 				if($key != 0) {
-					$result 	= $this->user->get(["nik" => $val[1]]);
-					if($result || $val['0'] == NULL) {
+					$result 	= $this->user->get_relawan_temp(["nik" => $val[0]]);
+					$result2 	= $this->user->get(["nik" => $val[0]]);
+					if($val[0] == NULL || $val[0] == "") {
+					} elseif ($result || $result2) {
+						$dup[] = $val[0];
+						$this->session->set_userdata('dup', $dup);
+					} elseif (strlen($val[0]) != 16) {
+						$len[] = $val[0];
+						$this->session->set_userdata('len', $len);
 					} else {
+						$ins[] = $val[0];
+						$this->session->set_userdata('ins', $ins);
 						$list [] = [
 							'nik'					=> $val[0],
 							'nama'					=> $val[1],
 							'tempat_lahir'			=> $val[2],
 							'jk'				=> $val[3],
-							// 'tgl_lahir'			=> DateTime::createFromFormat('m/d/Y', $val[3])->format('Y-m-d'),
 							'tgl_lahir'			=> date_format(date_create($val['4']),"Y-m-d"),
 							'alamat'			=> $val[5],
 							'rt'				=> $val[6],
