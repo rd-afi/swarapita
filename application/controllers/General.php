@@ -64,7 +64,7 @@ class General extends CI_Controller {
 		$rt = $this->input->post('rt');
 		$rw = $this->input->post('rw');
 		$provinsi = $this->input->post('provinsi');
-		$kabupaten = $this->input->post('kabupaten');
+		$kota = $this->input->post('kota');
 		$kecamatan = $this->input->post('kecamatan');
 		$kelurahan = $this->input->post('kelurahan');
 		$hpwa = $this->input->post('hpwa');
@@ -92,7 +92,7 @@ class General extends CI_Controller {
 				'rt' => $rt,
 				'rw' => $rw,
 				'provinsi' => $provinsi,
-				'kabupaten' => $kabupaten,
+				'kota' => $kota,
 				'kecamatan' => $kecamatan,
 				'kelurahan' => $kelurahan,
 				'hpwa' => $hpwa,

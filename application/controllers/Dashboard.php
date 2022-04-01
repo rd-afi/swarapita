@@ -71,7 +71,7 @@ class Dashboard extends CI_Controller {
 		$rt = $this->input->post('rt');
 		$rw = $this->input->post('rw');
 		$provinsi = $this->input->post('provinsi');
-		$kabupaten = $this->input->post('kabupaten');
+		$kota = $this->input->post('kota');
 		$kecamatan = $this->input->post('kecamatan');
 		$kelurahan = $this->input->post('kelurahan');
 		$hpwa = $this->input->post('hpwa');
@@ -87,7 +87,7 @@ class Dashboard extends CI_Controller {
 			'rt' => $rt,
 			'rw' => $rw,
 			'provinsi' => $provinsi,
-			'kabupaten' => $kabupaten,
+			'kota' => $kota,
 			'kecamatan' => $kecamatan,
 			'kelurahan' => $kelurahan,
 			'hpwa' => $hpwa,
@@ -144,7 +144,8 @@ class Dashboard extends CI_Controller {
 
 		public function upload_relawan()
 	{
-		$this->load->view('upload_relawan');
+		$data['relawan'] = $this->m_data->list_relawan_temp()->result();
+		$this->load->view('upload_relawan',$data);
 	}
 
 
@@ -172,19 +173,20 @@ class Dashboard extends CI_Controller {
 			foreach($sheet_data as $key => $val) {
 				if($key != 0) {
 					$result 	= $this->user->get(["nik" => $val[1]]);
-					if($result) {
+					if($result || $val['0'] == NULL) {
 					} else {
 						$list [] = [
 							'nik'					=> $val[0],
 							'nama'					=> $val[1],
 							'tempat_lahir'			=> $val[2],
 							'jk'				=> $val[3],
-							'tgl_lahir'			=> $val[4],
+							// 'tgl_lahir'			=> DateTime::createFromFormat('m/d/Y', $val[3])->format('Y-m-d'),
+							'tgl_lahir'			=> date_format(date_create($val['4']),"Y-m-d"),
 							'alamat'			=> $val[5],
 							'rt'				=> $val[6],
 							'rw'				=> $val[7],
 							'provinsi'			=> $val[8],
-							'kabupaten'			=> $val[9],
+							'kota'				=> $val[9],
 							'kelurahan'			=> $val[10],
 							'kecamatan'			=> $val[11],
 							'hpwa'				=> $val[12],
@@ -223,7 +225,7 @@ class Dashboard extends CI_Controller {
 			}
 		}
 		// echo json_encode($json);
-		redirect('list_relawan');
+		redirect('upload_relawan');
 
 	}
 

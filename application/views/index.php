@@ -128,7 +128,7 @@ $this->load->view('layout/navbar');
                   </div>
                   <div class="form-group">
                     <label for="kelurahan">Kota</label>
-                    <select class="data-array browser-default form-control" id="kabupaten" name="kabupaten" required></select>
+                    <select class="data-array browser-default form-control" id="kota" name="kota" required></select>
                   </div>
                   <div class="form-group">
                     <label for="kelurahan">Kecamatan</label>
@@ -212,7 +212,7 @@ $this->load->view('layout/js');
 
 <script>
     var urlProvinsi = "<?php echo base_url(). 'general/json_prov'; ?>";
-    var urlKabupaten = "<?php echo base_url(). 'general/json_kota/'; ?>";
+    var urlkota = "<?php echo base_url(). 'general/json_kota/'; ?>";
     var urlKecamatan = "<?php echo base_url(). 'general/json_kec/'; ?>";
     var urlKelurahan = "<?php echo base_url(). 'general/json_kel/'; ?>";
 
@@ -248,7 +248,7 @@ $this->load->view('layout/js');
         var selectProv = $('#provinsi');
         $(selectProv).change(function () {
             var value = $(selectProv).val();
-            clearOptions('kabupaten');
+            clearOptions('kota');
 
             if (value) {
                 console.log("on change selectProv");
@@ -256,9 +256,9 @@ $this->load->view('layout/js');
                 var text = $('#provinsi :selected').text();
                 console.log("value = " + value + " / " + "text = " + text);
 
-                console.log('Load Kabupaten di '+text+'...')
-                $.getJSON(urlKabupaten + value, function(res) {
-                // $.getJSON(urlKabupaten + value + ".json", function(res) {
+                console.log('Load kota di '+text+'...')
+                $.getJSON(urlkota + value, function(res) {
+                // $.getJSON(urlkota + value + ".json", function(res) {
 
                     res = $.map(res, function (obj) {
                         obj.text = obj.name
@@ -272,7 +272,7 @@ $this->load->view('layout/js');
                     }].concat(res);
 
                     //implemen data ke select provinsi
-                    $("#kabupaten").select2({
+                    $("#kota").select2({
                         dropdownAutoWidth: true,
                         width: '100%',
                         data: data
@@ -281,7 +281,7 @@ $this->load->view('layout/js');
             }
         });
 
-        var selectKab = $('#kabupaten');
+        var selectKab = $('#kota');
         $(selectKab).change(function () {
             var value = $(selectKab).val();
             clearOptions('kecamatan');
@@ -289,7 +289,7 @@ $this->load->view('layout/js');
             if (value) {
                 console.log("on change selectKab");
 
-                var text = $('#kabupaten :selected').text();
+                var text = $('#kota :selected').text();
                 console.log("value = " + value + " / " + "text = " + text);
 
                 console.log('Load Kecamatan di '+text+'...')
