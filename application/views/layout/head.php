@@ -2,7 +2,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SWARAPITA</title>
+  <!--<title>SWARAPITA</title>-->
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -33,4 +33,5 @@
   <link rel="stylesheet" href="<?php echo base_url();?>assets/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?php echo base_url();?>assets/dist/css/adminlte.min.css">
+  <link href="<?php echo base_url('assets/dist/img/fococlipping-20220306-173417.png') ?>" rel="shortcut icon" />
 </head>

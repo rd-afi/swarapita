@@ -8,7 +8,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <?php
 $this->load->view('layout/head');
 ?>
-
+<title>SWARAPITA | List Relawan</title>
 <body class="hold-transition layout-top-nav">
   <div class="wrapper">
 

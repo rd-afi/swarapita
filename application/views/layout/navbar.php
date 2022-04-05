@@ -1,4 +1,5 @@
 <!-- Navbar -->
+<title>SWARAPITA | Form Relawan</title>
 <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
     <div class="container">
         <a href="<?php echo base_url(); ?>" class="navbar-brand">

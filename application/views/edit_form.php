@@ -8,7 +8,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <?php
 $this->load->view('layout/head');
 ?>
-
+<title>SWARAPITA | Edit Data Relawan</title>
 <body class="hold-transition layout-top-nav">
 <div class="wrapper">  
 
@@ -70,7 +70,7 @@ $this->load->view('layout/navbar');
                   </div>
                   <div class="form-group">
                     <label for="tempat_lahir">Tempat Lahir</label>
-                    <input type="text" class="form-control" name="tempat_lahir" placeholder="Tempat Lahir Sesuai KTP" required
+                    <input type="text" class="form-control" name="tempat_lahir" placeholder="Tempat Lahir Sesuai KTP"
                     value="<?php echo (isset($relawan)) ? $u->tempat_lahir : NULL ; ?>">
                   </div>
                   <div class="form-group">

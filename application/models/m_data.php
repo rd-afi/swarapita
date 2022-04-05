@@ -55,14 +55,11 @@ class M_data extends CI_Model{
         LEFT JOIN reg_districts ON reg_districts.id = relawan.kecamatan
         LEFT JOIN reg_villages ON reg_villages.id = relawan.kelurahan
         LEFT JOIN data_kpu ON data_kpu.nik = relawan.nik
-        WHERE penginput = '$user'
-        UNION
-        SELECT relawan_temp.nik as nik, relawan_temp.nama as nama, alamat ,tempat_lahir ,jk ,tgl_lahir,provinsi,kota,kecamatan,kelurahan,hpwa,as_koor,penginput,data_kpu.lokasi as lokasi
-        FROM relawan_temp
-        LEFT JOIN data_kpu ON data_kpu.nik = relawan_temp.nik
-        ");
+        WHERE penginput = '$user'");
         return $query;
 	}
+
+    
 	function list_relawan_temp(){
         return $this->db->get('relawan_temp');
 	}

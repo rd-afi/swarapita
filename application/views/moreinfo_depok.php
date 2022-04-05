@@ -8,7 +8,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <?php
 $this->load->view('layout/head');
 ?>
-
+<title>SWARAPITA | Depok</title>
 <body class="hold-transition layout-top-nav">
 <div class="wrapper">
   
@@ -44,7 +44,7 @@ $this->load->view('layout/navbar');
           <div class="col-lg-12 col-6">
             <!-- small box -->
               <div class="card mb-2">
-                <div class="card-body">
+                            <div class="card-body">
                                 <div id="barchart_material" style="width: 900px; height: 400px;"></div>
                             </div>
           </div>
@@ -123,6 +123,7 @@ $this->load->view('layout/navbar');
           </div>
           <!-- /.card -->
         </div>
+      </div>
         <!-- /.col -->
     </section>
     <!-- /.content -->
@@ -176,16 +177,16 @@ $this->load->view('layout/js');
       "buttons": [
         {
           extend: 'excelHtml5',
-          title: "List Kecamatan Bekasi",
-          filename: "List Kecamatan Bekasi"
+          title: "List Kecamatan Depok",
+          filename: "List Kecamatan Depok"
         },{
           extend: 'csvHtml5',
-          title: "List Kecamatan Bekasi",
-          filename: "List Kecamatan Bekasi"
+          title: "List Kecamatan Depok",
+          filename: "List Kecamatan Depok"
         },{
           extend: 'pdfHtml5',
-          title: "List Kecamatan Bekasi",
-          filename: "List Kecamatan Bekasi"
+          title: "List Kecamatan Depok",
+          filename: "List Kecamatan Depok"
         }
       ],
       "fixedColumns": { right: 1 }
@@ -195,16 +196,16 @@ $this->load->view('layout/js');
       "buttons": [
         {
           extend: 'excelHtml5',
-          title: "List Kelurahan Bekasi",
-          filename: "List Kelurahan Bekasi"
+          title: "List Kelurahan Depok",
+          filename: "List Kelurahan Depok"
         },{
           extend: 'csvHtml5',
-          title: "List Kelurahan Bekasi",
-          filename: "List Kelurahan Bekasi"
+          title: "List Kelurahan Depok",
+          filename: "List Kelurahan Depok"
         },{
           extend: 'pdfHtml5',
-          title: "List Kelurahan Bekasi",
-          filename: "List Kelurahan Bekasi"
+          title: "List Kelurahan Depok",
+          filename: "List Kelurahan Depok"
         }
       ],
       "fixedColumns": { right: 1 }

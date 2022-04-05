@@ -8,7 +8,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <?php
 $this->load->view('layout/head');
 ?>
-
+<title>SWARAPITA | Bekasi</title>
 <body class="hold-transition layout-top-nav">
 <div class="wrapper">
   
@@ -123,6 +123,7 @@ $this->load->view('layout/navbar');
           </div>
           <!-- /.card -->
         </div>
+      </div>
         <!-- /.col -->
     </section>
     <!-- /.content -->
@@ -229,7 +230,8 @@ $this->load->view('layout/js');
                     subtitle: 'Grafik Total Relawan Bekasi',
                   },
                   bars: 'vertical', // Required for Material Bar Charts.
-                  colors: ['#b52314']
+                  colors: ['#b52314'],
+                  opacity:'0.2'
                 };
 
                 var chart = new google.charts.Bar(document.getElementById('barchart_material'));

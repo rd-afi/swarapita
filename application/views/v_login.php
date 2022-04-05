@@ -4,7 +4,7 @@
 <?php
 $this->load->view('layout/head');
 ?>
-
+<title>SWARAPITA | Login</title>
 <body class="hold-transition login-page">
 <div class="login-box">
   <!-- /.login-logo -->
