@@ -47,11 +47,11 @@ class General extends CI_Controller {
 	// 	echo json_encode($query);
 	// }
 	public function json_kec($data){
-		$query = $this->m_data->kel($data)->result();
+		$query = $this->m_data->kec($data)->result();
 		echo json_encode($query);
 	}
 	public function json_kel($data){
-		$query = $this->m_data->des($data)->result();
+		$query = $this->m_data->kel($data)->result();
 		echo json_encode($query);
 	}
 	function add_relawan(){
@@ -63,7 +63,7 @@ class General extends CI_Controller {
 		$alamat = $this->input->post('alamat');
 		$rt = $this->input->post('rt');
 		$rw = $this->input->post('rw');
-		$provinsi = $this->input->post('provinsi');
+		// $provinsi = $this->input->post('provinsi');
 		$kota = $this->input->post('kota');
 		$kecamatan = $this->input->post('kecamatan');
 		$kelurahan = $this->input->post('kelurahan');
@@ -91,7 +91,7 @@ class General extends CI_Controller {
 				'alamat' => $alamat,
 				'rt' => $rt,
 				'rw' => $rw,
-				'provinsi' => $provinsi,
+				// 'provinsi' => $provinsi,
 				'kota' => $kota,
 				'kecamatan' => $kecamatan,
 				'kelurahan' => $kelurahan,

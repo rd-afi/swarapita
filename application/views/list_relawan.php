@@ -184,7 +184,6 @@ $this->load->view('layout/head');
   ?>
 
 <script>
-    var urlProvinsi = "<?php echo base_url(). 'general/json_prov'; ?>";
     var urlKota = "<?php echo base_url(). 'general/json_kota/'; ?>";
     var urlKecamatan = "<?php echo base_url(). 'general/json_kec/'; ?>";
     var urlKelurahan = "<?php echo base_url(). 'general/json_kel/'; ?>";
@@ -200,7 +199,8 @@ $this->load->view('layout/head');
         $.getJSON(urlKota, function (res) {
 
             res = $.map(res, function (obj) {
-                obj.text = obj.name
+                obj.id = obj.kota
+                obj.text = obj.kota
                 return obj;
             });
 
@@ -210,7 +210,7 @@ $this->load->view('layout/head');
                 text: "- Pilih Kota -"
             }].concat(res);
 
-            //implemen data ke select provinsi
+            //implemen data ke select kota
             $("#kota").select2({
                 dropdownAutoWidth: true,
                 width: '100%',
@@ -226,15 +226,16 @@ $this->load->view('layout/head');
             if (value) {
                 console.log("on change selectKab");
 
-                var text = $('#kecamatan :selected').text();
+                var text = $('#kota :selected').text();
                 console.log("value = " + value + " / " + "text = " + text);
 
                 console.log('Load Kecamatan di '+text+'...')
-                $.getJSON(urlKecamatan + value, function(res) {
+                $.getJSON(urlKecamatan + value.replace(/\s+/g, ''), function(res) {
                 // $.getJSON(urlKecamatan + value + ".json", function(res) {
 
                     res = $.map(res, function (obj) {
-                        obj.text = obj.name
+                        obj.id = obj.kecamatan
+                        obj.text = obj.kecamatan
                         return obj;
                     });
 
@@ -262,15 +263,16 @@ $this->load->view('layout/head');
             if (value) {
                 console.log("on change selectKec");
 
-                var text = $('#kelurahan :selected').text();
+                var text = $('#kecamatan :selected').text();
                 console.log("value = " + value + " / " + "text = " + text);
 
                 console.log('Load Kelurahan di '+text+'...')
-                $.getJSON(urlKelurahan + value, function(res) {
+                $.getJSON(urlKelurahan + value.replace(/\s+/g, ''), function(res) {
                 // $.getJSON(urlKelurahan + value + ".json", function(res) {
 
                     res = $.map(res, function (obj) {
-                        obj.text = obj.name
+                        obj.id = obj.kelurahan
+                        obj.text = obj.kelurahan
                         return obj;
                     });
 

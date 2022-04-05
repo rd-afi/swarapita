@@ -123,8 +123,8 @@ $this->load->view('layout/navbar');
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="kelurahan">Provinsi</label>
-                    <select class="data-array browser-default form-control" id="provinsi" name="provinsi" required></select>
+                    <!-- <label for="kelurahan">Provinsi</label>
+                    <select class="data-array browser-default form-control" id="provinsi" name="provinsi" required></select> -->
                   </div>
                   <div class="form-group">
                     <label for="kelurahan">Kota</label>
@@ -212,7 +212,7 @@ $this->load->view('layout/js');
 
 <script>
     var urlProvinsi = "<?php echo base_url(). 'general/json_prov'; ?>";
-    var urlkota = "<?php echo base_url(). 'general/json_kota/'; ?>";
+    var urlKota = "<?php echo base_url(). 'general/json_kota'; ?>";
     var urlKecamatan = "<?php echo base_url(). 'general/json_kec/'; ?>";
     var urlKelurahan = "<?php echo base_url(). 'general/json_kel/'; ?>";
 
@@ -223,63 +223,64 @@ $this->load->view('layout/js');
             $('#' + id).empty().trigger('change');
         }
 
-        console.log('Load Provinsi...');
-        $.getJSON(urlProvinsi, function (res) {
+        console.log('Load Kota...');
+        $.getJSON(urlKota, function (res) {
 
             res = $.map(res, function (obj) {
-                obj.text = obj.name
+                obj.id = obj.kota
+                obj.text = obj.kota
                 return obj;
             });
 
             data = [{
                 id: "",
-                name: "- Pilih Provinsi -",
-                text: "- Pilih Provinsi -"
+                name: "- Pilih Kota -",
+                text: "- Pilih Kota -"
             }].concat(res);
 
-            //implemen data ke select provinsi
-            $("#provinsi").select2({
+            //implemen data ke select kota
+            $("#kota").select2({
                 dropdownAutoWidth: true,
                 width: '100%',
                 data: data
             })
         });
 
-        var selectProv = $('#provinsi');
-        $(selectProv).change(function () {
-            var value = $(selectProv).val();
-            clearOptions('kota');
+        // var selectProv = $('#provinsi');
+        // $(selectProv).change(function () {
+        //     var value = $(selectProv).val();
+        //     clearOptions('kota');
 
-            if (value) {
-                console.log("on change selectProv");
+        //     if (value) {
+        //         console.log("on change selectProv");
 
-                var text = $('#provinsi :selected').text();
-                console.log("value = " + value + " / " + "text = " + text);
+        //         var text = $('#provinsi :selected').text();
+        //         console.log("value = " + value + " / " + "text = " + text);
 
-                console.log('Load kota di '+text+'...')
-                $.getJSON(urlkota + value, function(res) {
-                // $.getJSON(urlkota + value + ".json", function(res) {
+        //         console.log('Load kota di '+text+'...')
+        //         $.getJSON(urlkota + value, function(res) {
+        //         // $.getJSON(urlkota + value + ".json", function(res) {
 
-                    res = $.map(res, function (obj) {
-                        obj.text = obj.name
-                        return obj;
-                    });
+        //             res = $.map(res, function (obj) {
+        //                 obj.text = obj.name
+        //                 return obj;
+        //             });
 
-                    data = [{
-                        id: "",
-                        name: "- Pilih Kota -",
-                        text: "- Pilih Kota -"
-                    }].concat(res);
+        //             data = [{
+        //                 id: "",
+        //                 name: "- Pilih Kota -",
+        //                 text: "- Pilih Kota -"
+        //             }].concat(res);
 
-                    //implemen data ke select provinsi
-                    $("#kota").select2({
-                        dropdownAutoWidth: true,
-                        width: '100%',
-                        data: data
-                    })
-                })
-            }
-        });
+        //             //implemen data ke select provinsi
+        //             $("#kota").select2({
+        //                 dropdownAutoWidth: true,
+        //                 width: '100%',
+        //                 data: data
+        //             })
+        //         })
+        //     }
+        // });
 
         var selectKab = $('#kota');
         $(selectKab).change(function () {
@@ -293,11 +294,12 @@ $this->load->view('layout/js');
                 console.log("value = " + value + " / " + "text = " + text);
 
                 console.log('Load Kecamatan di '+text+'...')
-                $.getJSON(urlKecamatan + value, function(res) {
+                $.getJSON(urlKecamatan + value.replace(/\s+/g, ''), function(res) {
                 // $.getJSON(urlKecamatan + value + ".json", function(res) {
 
                     res = $.map(res, function (obj) {
-                        obj.text = obj.name
+                        obj.id = obj.kecamatan
+                        obj.text = obj.kecamatan
                         return obj;
                     });
 
@@ -329,11 +331,12 @@ $this->load->view('layout/js');
                 console.log("value = " + value + " / " + "text = " + text);
 
                 console.log('Load Kelurahan di '+text+'...')
-                $.getJSON(urlKelurahan + value, function(res) {
+                $.getJSON(urlKelurahan + value.replace(/\s+/g, ''), function(res) {
                 // $.getJSON(urlKelurahan + value + ".json", function(res) {
 
                     res = $.map(res, function (obj) {
-                        obj.text = obj.name
+                        obj.id = obj.kelurahan
+                        obj.text = obj.kelurahan
                         return obj;
                     });
 

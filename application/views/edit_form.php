@@ -104,13 +104,13 @@ $this->load->view('layout/navbar');
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="kelurahan">Provinsi</label>
+                    <!-- <label for="kelurahan">Provinsi</label>
                     <?php echo '<input type="text" value="'.$u->provinsi.'" name="ed_prov" id="ed_prov" hidden>'?>
-                    <select class="data-array browser-default form-control" id="provinsi" name="provinsi" required></select>
+                    <select class="data-array browser-default form-control" id="provinsi" name="provinsi" required></select> -->
                   </div>
                   <div class="form-group">
                     <label for="kelurahan">Kota</label>
-                    <?php echo '<input type="text" value="'.$u->kota.'" name="ed_kab" id="ed_kab" hidden>'?>
+                    <?php echo '<input type="text" value="'.$u->kota.'" name="ed_kota" id="ed_kota" hidden>'?>
                     <select class="data-array browser-default form-control" id="kota" name="kota" required></select>
                   </div>
                   <div class="form-group">
@@ -194,13 +194,13 @@ $this->load->view('layout/js');
 <?php endif ?>
 
 <script>
-    var urlProvinsi = "<?php echo base_url(). 'general/json_prov'; ?>";
-    var urlkota = "<?php echo base_url(). 'general/json_kota/'; ?>";
+    // var urlProvinsi = "<?php echo base_url(). 'general/json_prov'; ?>";
+    var urlKota = "<?php echo base_url(). 'general/json_kota/'; ?>";
     var urlKecamatan = "<?php echo base_url(). 'general/json_kec/'; ?>";
     var urlKelurahan = "<?php echo base_url(). 'general/json_kel/'; ?>";
 
-    var ed_prov = document.getElementById("ed_prov").value;
-    var ed_kab = document.getElementById("ed_kab").value;
+    // var ed_prov = document.getElementById("ed_prov").value;
+    var ed_kota = document.getElementById("ed_kota").value;
     var ed_kec = document.getElementById("ed_kec").value;
     var ed_kel = document.getElementById("ed_kel").value;
     $("document").ready(function() {
@@ -210,14 +210,14 @@ $this->load->view('layout/js');
         // alert(ed_prov)
         // $('#provinsi').select2().select2('val', 32).trigger('change');
         // $("#provinsi").select2().val(32).trigger('change.select2');
-        // $("#kota").val(ed_kab).trigger('change');
+        // $("#kota").val(ed_kota).trigger('change');
         // $("#provinsi").val(ed_prov).trigger('change');
         // $('#provinsi').val("32").select2().trigger('change');
         // var $newOption = $("<option selected='selected'></option>").val("32").text("JAWA BARAT")
         // $("#provinsi").append($newOption).trigger('change');
         // $('#provinsi').val('1');
         // $('#provinsi').trigger('change');
-        // $('#kota').val(ed_kab);
+        // $('#kota').val(ed_kota);
         // $('#kota').trigger('change');
     });
 
@@ -228,68 +228,29 @@ $this->load->view('layout/js');
             $('#' + id).empty().trigger('change');
         }
 
-        console.log('Load Provinsi...');
-        $.getJSON(urlProvinsi, function (res) {
+        console.log('Load Kota...');
+        $.getJSON(urlKota, function (res) {
 
             res = $.map(res, function (obj) {
-                obj.text = obj.name
+                obj.id = obj.kota
+                obj.text = obj.kota
                 return obj;
             });
 
             data = [{
                 id: "",
-                name: "- Pilih Provinsi -",
-                text: "- Pilih Provinsi -"
+                name: "- Pilih Kota -",
+                text: "- Pilih Kota -"
             }].concat(res);
 
-            //implemen data ke select provinsi
-            $("#provinsi").select2({
+            //implemen data ke select kota
+            $("#kota").select2({
                 dropdownAutoWidth: true,
                 width: '100%',
                 data: data
             })
-            $('#provinsi').val(ed_prov);
-            $('#provinsi').trigger('change');
-        });
-
-        var selectProv = $('#provinsi');
-        $(selectProv).change(function () {
-            var value = $(selectProv).val();
-            clearOptions('kota');
-
-            if (value) {
-                console.log("on change selectProv");
-
-                var text = $('#provinsi :selected').text();
-                console.log("value = " + value + " / " + "text = " + text);
-
-                console.log('Load kota di '+text+'...')
-                $.getJSON(urlkota + value, function(res) {
-                // $.getJSON(urlkota + value + ".json", function(res) {
-
-                    res = $.map(res, function (obj) {
-                        obj.text = obj.name
-                        return obj;
-                    });
-
-                    data = [{
-                        id: "",
-                        name: "- Pilih kota -",
-                        text: "- Pilih kota -"
-                    }].concat(res);
-
-                    //implemen data ke select provinsi
-                    $("#kota").select2({
-                        dropdownAutoWidth: true,
-                        width: '100%',
-                        data: data
-                    })
-                    if (ed_kab) {
-                      $('#kota').val(ed_kab);
-                      $('#kota').trigger('change');
-                    }
-                })
-            }
+            $('#kota').val(ed_kota);
+            $('#kota').trigger('change');
         });
 
         var selectKab = $('#kota');
@@ -304,11 +265,12 @@ $this->load->view('layout/js');
                 console.log("value = " + value + " / " + "text = " + text);
 
                 console.log('Load Kecamatan di '+text+'...')
-                $.getJSON(urlKecamatan + value, function(res) {
+                $.getJSON(urlKecamatan + value.replace(/\s+/g, ''), function(res) {
                 // $.getJSON(urlKecamatan + value + ".json", function(res) {
 
                     res = $.map(res, function (obj) {
-                        obj.text = obj.name
+                        obj.id = obj.kecamatan
+                        obj.text = obj.kecamatan
                         return obj;
                     });
 
@@ -344,11 +306,12 @@ $this->load->view('layout/js');
                 console.log("value = " + value + " / " + "text = " + text);
 
                 console.log('Load Kelurahan di '+text+'...')
-                $.getJSON(urlKelurahan + value, function(res) {
+                $.getJSON(urlKelurahan + value.replace(/\s+/g, ''), function(res) {
                 // $.getJSON(urlKelurahan + value + ".json", function(res) {
 
                     res = $.map(res, function (obj) {
-                        obj.text = obj.name
+                        obj.id = obj.kelurahan
+                        obj.text = obj.kelurahan
                         return obj;
                     });
 

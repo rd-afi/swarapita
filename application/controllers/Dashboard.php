@@ -69,8 +69,8 @@ class Dashboard extends CI_Controller {
 	}
 	function edit_relawan_temp($id){
 		$this->session->set_userdata('edit', 'temp');
-		$where = $id;
-		$data['relawan'] = $this->m_data->edit_data_temp($where,'relawan_temp')->result();
+		$where = array('nik' => $id);
+		$data['relawan'] = $this->m_data->edit_data($where,'relawan_temp')->result();
 		$this->load->view('edit_form',$data);
 	}
 	function update_relawan(){
@@ -82,7 +82,7 @@ class Dashboard extends CI_Controller {
 		$alamat = $this->input->post('alamat');
 		$rt = $this->input->post('rt');
 		$rw = $this->input->post('rw');
-		$provinsi = $this->input->post('provinsi');
+		// $provinsi = $this->input->post('provinsi');
 		$kota = $this->input->post('kota');
 		$kecamatan = $this->input->post('kecamatan');
 		$kelurahan = $this->input->post('kelurahan');
@@ -98,7 +98,7 @@ class Dashboard extends CI_Controller {
 			'alamat' => $alamat,
 			'rt' => $rt,
 			'rw' => $rw,
-			'provinsi' => $provinsi,
+			// 'provinsi' => $provinsi,
 			'kota' => $kota,
 			'kecamatan' => $kecamatan,
 			'kelurahan' => $kelurahan,
@@ -134,8 +134,8 @@ class Dashboard extends CI_Controller {
 		$query = $this->m_data->prov()->result();
 		echo json_encode($query);
 	}
-	public function json_kota($data){
-		$query = $this->m_data->kota($data)->result();
+	public function json_kota(){
+		$query = $this->m_data->kota()->result();
 		echo json_encode($query);
 	}
 	public function json_kec($data){
@@ -205,13 +205,12 @@ class Dashboard extends CI_Controller {
 						$len[] = $val[0];
 						$this->session->set_userdata('len', $len);
 					} else {
-						$ins[] = $val[0];
-						$this->session->set_userdata('ins', $ins);
+						// (strtolower(substr($val[3],0,1)) == 'l') ? $val[3] = 1 : $val[3] = 2;
 						$list [] = [
 							'nik'					=> $val[0],
 							'nama'					=> $val[1],
 							'tempat_lahir'			=> $val[2],
-							'jk'				=> $val[3],
+							'jk'				=> (strtolower(substr($val[3],0,1)) == 'l') ? 1 : 2,
 							'tgl_lahir'			=> date_format(date_create($val['4']),"Y-m-d"),
 							'alamat'			=> $val[5],
 							'rt'				=> $val[6],
