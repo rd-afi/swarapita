@@ -342,17 +342,6 @@ $this->load->view('layout/head');
           right: 1
         },
         initComplete: function() {
-          // $('<div class="row">' +
-          //   '<div class="col-sm-4"> <div class="form-group">' +
-          //   '<select class="form-control" id="fKot" ><option value="">KOTA</option></select>' +
-          //   '</div> </div>' +
-          //   '<div class="col-sm-4"> <div class="form-group">' +
-          //   '<select class="form-control" id="fKec"><option value="">KECAMATAN</option></select>' +
-          //   '</div> </div>' +
-          //   '<div class="col-sm-4"> <div class="form-group">' +
-          //   '<select class="form-control" id="fKel"><option value="">KELURAHAN</option></select>' +
-          //   '</div> </div>' +
-          //   '</div>').appendTo("#list1_wrapper .dataTables_filter");
           this.api().columns(6).every(function() {
             var column = this;
             var select = $("#kota")
@@ -404,61 +393,6 @@ $this->load->view('layout/head');
                 console.log(val2);
               });
           });
-          // this.api().columns(6).every(function() {
-          //   var column = this;
-          //   var select = $("#fKot")
-          //     .on('change', function() {
-          //       if ($(this).val() == "") {
-          //         document.getElementById("fKec").removeAttribute("hidden");
-          //         document.getElementById("fKel").removeAttribute("hidden");
-          //       } else {
-          //         document.getElementById("fKec").setAttribute("hidden", "true");
-          //         document.getElementById("fKel").setAttribute("hidden", "true");
-          //       }
-          //       var val = $.fn.dataTable.util.escapeRegex($(this).val());
-          //       column.search(val ? '^' + val + '$' : '', true, false).draw();
-          //       console.log(val);
-          //     });
-          //   column.data().unique().sort().each(function(d, j) {
-          //     select.append('<option value="' + d + '">' + d + '</option>')
-          //   });
-          // });
-          // this.api().columns(7).every(function() {
-          //   var column = this;
-          //   var select = $("#fKec")
-          //     .on('change', function() {
-          //       if ($(this).val() == "") {
-          //         document.getElementById("fKot").removeAttribute("hidden");
-          //         document.getElementById("fKel").removeAttribute("hidden");
-          //       } else {
-          //         document.getElementById("fKot").setAttribute("hidden", "true");
-          //         document.getElementById("fKel").setAttribute("hidden", "true");
-          //       }
-          //       var val = $.fn.dataTable.util.escapeRegex($(this).val());
-          //       column.search(val ? '^' + val + '$' : '', true, false).draw();
-          //     });
-          //   column.data().unique().sort().each(function(d, j) {
-          //     select.append('<option value="' + d + '">' + d + '</option>')
-          //   });
-          // });
-          // this.api().columns(8).every(function() {
-          //   var column = this;
-          //   var select = $("#fKel")
-          //     .on('change', function() {
-          //       if ($(this).val() == "") {
-          //         document.getElementById("fKot").removeAttribute("hidden");
-          //         document.getElementById("fKec").removeAttribute("hidden");
-          //       } else {
-          //         document.getElementById("fKot").setAttribute("hidden", "true");
-          //         document.getElementById("fKec").setAttribute("hidden", "true");
-          //       }
-          //       var val = $.fn.dataTable.util.escapeRegex($(this).val());
-          //       column.search(val ? '^' + val + '$' : '', true, false).draw();
-          //     });
-          //   column.data().unique().sort().each(function(d, j) {
-          //     select.append('<option value="' + d + '">' + d + '</option>')
-          //   });
-          // });
         }
       }).buttons().container().appendTo('#list1_wrapper .col-md-6:eq(0)');
     });

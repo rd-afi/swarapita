@@ -204,21 +204,6 @@ $this->load->view('layout/js');
     var ed_kec = document.getElementById("ed_kec").value;
     var ed_kel = document.getElementById("ed_kel").value;
     $("document").ready(function() {
-        // setTimeout(function() {
-        //     $("ul.galleria li:first-child img").trigger('click');
-        // },10);
-        // alert(ed_prov)
-        // $('#provinsi').select2().select2('val', 32).trigger('change');
-        // $("#provinsi").select2().val(32).trigger('change.select2');
-        // $("#kota").val(ed_kota).trigger('change');
-        // $("#provinsi").val(ed_prov).trigger('change');
-        // $('#provinsi').val("32").select2().trigger('change');
-        // var $newOption = $("<option selected='selected'></option>").val("32").text("JAWA BARAT")
-        // $("#provinsi").append($newOption).trigger('change');
-        // $('#provinsi').val('1');
-        // $('#provinsi').trigger('change');
-        // $('#kota').val(ed_kota);
-        // $('#kota').trigger('change');
     });
 
         function clearOptions(id) {

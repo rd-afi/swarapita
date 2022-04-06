@@ -13,28 +13,6 @@ class M_data extends CI_Model{
 		return $this->db->count_all_results('regional');
 	}
 	function list_relawan(){
-        // $this->db->select('relawan.nik as nik,relawan.nama as nama,relawan.alamat as alamat,relawan.tempat_lahir as tempat_lahir,relawan.jk as jk,relawan.tgl_lahir as tgl_lahir,reg_provinces.name as provinsi,reg_regencies.name as kota,reg_districts.name as kecamatan,reg_villages.name as kelurahan,hpwa,as_koor,penginput,data_kpu.lokasi as lokasi');
-        // $this->db->from('relawan');
-        // $this->db->join('reg_provinces', 'reg_provinces.id = relawan.provinsi');
-        // $this->db->join('reg_regencies', 'reg_regencies.id = relawan.kota');
-        // $this->db->join('reg_districts', 'reg_districts.id = relawan.kecamatan');
-        // $this->db->join('reg_villages', 'reg_villages.id = relawan.kelurahan');
-        // $this->db->join('data_kpu','relawan.nik = data_kpu.nik','left');
-        // return $this->db->get();
-		// return $this->db->get('relawan');
-        // $query = $this->db->query("
-        // SELECT relawan.nik as nik,relawan.nama as nama,relawan.alamat as alamat,relawan.tempat_lahir as tempat_lahir,relawan.jk as jk,relawan.tgl_lahir as tgl_lahir,reg_provinces.name as provinsi,reg_regencies.name as kota,reg_districts.name as kecamatan,reg_villages.name as kelurahan,hpwa,as_koor,penginput,data_kpu.lokasi as lokasi
-        // FROM relawan
-        // JOIN reg_provinces ON reg_provinces.id = relawan.provinsi
-        // LEFT JOIN reg_regencies ON reg_regencies.id = relawan.kota
-        // LEFT JOIN reg_districts ON reg_districts.id = relawan.kecamatan
-        // LEFT JOIN reg_villages ON reg_villages.id = relawan.kelurahan
-        // LEFT JOIN data_kpu ON data_kpu.nik = relawan.nik
-        // UNION
-        // SELECT relawan_temp.nik as nik, relawan_temp.nama as nama, alamat ,tempat_lahir ,jk ,tgl_lahir,provinsi,kota,kecamatan,kelurahan,hpwa,as_koor,penginput,data_kpu.lokasi as lokasi
-        // FROM relawan_temp
-        // LEFT JOIN data_kpu ON data_kpu.nik = relawan_temp.nik
-        // ");
         $query = $this->db->query("
         SELECT relawan.nik as nik,relawan.nama as nama,relawan.alamat as alamat,relawan.tempat_lahir as tempat_lahir,relawan.jk as jk,relawan.tgl_lahir as tgl_lahir,kota,kecamatan,kelurahan,hpwa,as_koor,penginput,data_kpu.lokasi as lokasi
         FROM relawan
@@ -47,22 +25,9 @@ class M_data extends CI_Model{
         return $query;
 	}
 	function list_relawan_by_penginput($user){
-        // $this->db->select('relawan.nik as nik,relawan.nama as nama,relawan.alamat as alamat,relawan.tempat_lahir as tempat_lahir,relawan.jk as jk,relawan.tgl_lahir as tgl_lahir,reg_provinces.name as provinsi,reg_regencies.name as kota,reg_districts.name as kecamatan,reg_villages.name as kelurahan,hpwa,as_koor,penginput,data_kpu.lokasi as lokasi');
-        // $this->db->from('relawan');
-        // $this->db->join('reg_provinces', 'reg_provinces.id = relawan.provinsi');
-        // $this->db->join('reg_regencies', 'reg_regencies.id = relawan.kota');
-        // $this->db->join('reg_districts', 'reg_districts.id = relawan.kecamatan');
-        // $this->db->join('reg_villages', 'reg_villages.id = relawan.kelurahan');
-        // $this->db->join('data_kpu','relawan.nik = data_kpu.nik','left');
-        // return $this->db->get();
-		// return $this->db->get('relawan');
         $query = $this->db->query("
-        SELECT relawan.nik as nik,relawan.nama as nama,relawan.alamat as alamat,relawan.tempat_lahir as tempat_lahir,relawan.jk as jk,relawan.tgl_lahir as tgl_lahir,reg_provinces.name as provinsi,reg_regencies.name as kota,reg_districts.name as kecamatan,reg_villages.name as kelurahan,hpwa,as_koor,penginput,data_kpu.lokasi as lokasi
+        SELECT relawan.nik as nik,relawan.nama as nama,relawan.alamat as alamat,relawan.tempat_lahir as tempat_lahir,relawan.jk as jk,relawan.tgl_lahir as tgl_lahir,kota,kecamatan,kelurahan,hpwa,as_koor,penginput,data_kpu.lokasi as lokasi
         FROM relawan
-        JOIN reg_provinces ON reg_provinces.id = relawan.provinsi
-        LEFT JOIN reg_regencies ON reg_regencies.id = relawan.kota
-        LEFT JOIN reg_districts ON reg_districts.id = relawan.kecamatan
-        LEFT JOIN reg_villages ON reg_villages.id = relawan.kelurahan
         LEFT JOIN data_kpu ON data_kpu.nik = relawan.nik
         WHERE penginput = '$user'");
         return $query;
