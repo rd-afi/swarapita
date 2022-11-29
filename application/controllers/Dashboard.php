@@ -21,7 +21,7 @@ class Dashboard extends CI_Controller {
 
 	public function index()
 	{
-        $data['t_relawan'] = $this->m_data->all_relawan()->result();
+        $data['t_relawan'] = $this->m_data->total_all_relawan();
         $data['c_kotbek'] = $this->m_data->c_kotbek();
         $data['c_kotdep'] = $this->m_data->c_kotdep();
         $data['chartData'] = $this->m_data->getChartData()->result();
