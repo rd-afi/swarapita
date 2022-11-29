@@ -4,13 +4,33 @@ class M_data extends CI_Model{
 	function all_relawan(){
 		return $this->db->get('relawan');
 	}
+
+    function total_all_relawan(){
+        $query = $this->db->query('SELECT nik FROM relawan
+        UNION ALL
+        SELECT nik FROM relawan_temp');
+        return $query->num_rows();
+	}
+
 	function c_kotbek(){
-		$this->db->where('kota','KOTA BEKASI');
-		return $this->db->count_all_results('regional');
+		// $this->db->where('kota','KOTA BEKASI');
+		// return $this->db->count_all_results('regional');
+        $query = $this->db->query('SELECT nik FROM relawan
+        WHERE kota = "KOTA BEKASI"
+        UNION ALL
+        SELECT nik FROM relawan_temp
+        WHERE kota = "KOTA BEKASI"');
+        return $query->num_rows();
 	}
 	function c_kotdep(){
-		$this->db->where('kota','KOTA DEPOK');
-		return $this->db->count_all_results('regional');
+		// $this->db->where('kota','KOTA DEPOK');
+		// return $this->db->count_all_results('regional');
+        $query = $this->db->query('SELECT nik FROM relawan
+        WHERE kota = "KOTA DEPOK"
+        UNION ALL
+        SELECT nik FROM relawan_temp
+        WHERE kota = "KOTA DEPOK"');
+        return $query->num_rows();
 	}
 	function list_relawan(){
         $query = $this->db->query("
@@ -107,9 +127,14 @@ class M_data extends CI_Model{
 
 function list_bekasi_kec(){
     $query = $this->db->query("
-        SELECT regional.kecamatan, COUNT(data_kpu.nik) as total_pemilih, COUNT(relawan.nik) as total_relawan
+        SELECT regional.kecamatan, COUNT(DISTINCT data_kpu.nik) as total_pemilih, COUNT(DISTINCT relawan.nik) as total_relawan
         FROM regional
-        LEFT JOIN relawan ON relawan.kecamatan = regional.kecamatan
+        LEFT JOIN (
+            SELECT nik, kota, kecamatan, kelurahan FROM relawan
+        	UNION ALL 
+        	SELECT nik, kota, kecamatan, kelurahan FROM relawan_temp
+        ) relawan 
+            ON relawan.kecamatan = regional.kecamatan
         LEFT JOIN data_kpu ON data_kpu.nik = relawan.nik
         WHERE regional.kota = 'KOTA BEKASI'
         GROUP BY 1
@@ -119,9 +144,14 @@ function list_bekasi_kec(){
 
 function list_bekasi_kel(){
     $query = $this->db->query("
-        SELECT regional.kelurahan, COUNT(data_kpu.nik) as total_pemilih, COUNT(relawan.nik) as total_relawan
+        SELECT regional.kelurahan, COUNT(DISTINCT data_kpu.nik) as total_pemilih, COUNT(DISTINCT relawan.nik) as total_relawan
         FROM regional
-        LEFT JOIN relawan ON relawan.kelurahan = regional.kelurahan
+        LEFT JOIN (
+            SELECT nik, kota, kecamatan, kelurahan FROM relawan
+        	UNION ALL 
+        	SELECT nik, kota, kecamatan, kelurahan FROM relawan_temp
+        ) relawan 
+            ON relawan.kelurahan = regional.kelurahan
         LEFT JOIN data_kpu ON data_kpu.nik = relawan.nik
         WHERE regional.kota = 'KOTA BEKASI'
         GROUP BY 1
@@ -131,9 +161,14 @@ function list_bekasi_kel(){
 
 function list_depok_kec(){
     $query = $this->db->query("
-        SELECT regional.kecamatan, COUNT(data_kpu.nik) as total_pemilih, COUNT(relawan.nik) as total_relawan
+        SELECT regional.kecamatan, COUNT(DISTINCT data_kpu.nik) as total_pemilih, COUNT(DISTINCT relawan.nik) as total_relawan
         FROM regional
-        LEFT JOIN relawan ON relawan.kecamatan = regional.kecamatan
+        LEFT JOIN (
+            SELECT nik, kota, kecamatan, kelurahan FROM relawan
+        	UNION ALL 
+        	SELECT nik, kota, kecamatan, kelurahan FROM relawan_temp
+        ) relawan 
+            ON relawan.kecamatan = regional.kecamatan
         LEFT JOIN data_kpu ON data_kpu.nik = relawan.nik
         WHERE regional.kota = 'KOTA DEPOK'
         GROUP BY 1
@@ -143,9 +178,14 @@ function list_depok_kec(){
 
 function list_depok_kel(){
     $query = $this->db->query("
-        SELECT regional.kelurahan, COUNT(data_kpu.nik) as total_pemilih, COUNT(relawan.nik) as total_relawan
+        SELECT regional.kelurahan, COUNT(DISTINCT data_kpu.nik) as total_pemilih, COUNT(DISTINCT relawan.nik) as total_relawan
         FROM regional
-        LEFT JOIN relawan ON relawan.kelurahan = regional.kelurahan
+        LEFT JOIN (
+            SELECT nik, kota, kecamatan, kelurahan FROM relawan
+        	UNION ALL 
+        	SELECT nik, kota, kecamatan, kelurahan FROM relawan_temp
+        ) relawan 
+            ON relawan.kelurahan = regional.kelurahan
         LEFT JOIN data_kpu ON data_kpu.nik = relawan.nik
         WHERE regional.kota = 'KOTA DEPOK'
         GROUP BY 1
