@@ -75,7 +75,7 @@ $this->load->view('layout/navbar');
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3><?php echo $c_kotbek + $c_kotdep ?></h3>
+                <h3><?php echo $t_relawan ?></h3>
 
                 <p>SEMUA RELAWAN TERDAFTAR</p>
               </div>

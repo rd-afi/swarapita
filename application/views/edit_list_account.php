@@ -76,7 +76,7 @@ $this->load->view('layout/navbar');
                                         <div class="col-md-7">
                                             <select class="form-control" name="role" id="Role" required>
                                                 <option value="">- Role -</option>
-                                                    <option value="super admin">Super Admin</option>
+                                                    <option value="super_admin">Super Admin</option>
                                                     <option value="admin">Admin</option>
                                                     <option value="user">User</option>
                                               </select>
