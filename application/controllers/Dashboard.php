@@ -63,14 +63,16 @@ class Dashboard extends CI_Controller {
 	}
 	function edit($id){
 		$this->session->set_userdata('edit', 'norm');
-		$where = array('nik' => $id);
-		$data['relawan'] = $this->m_data->edit_data($where,'relawan')->result();
+		// $where = array('nik' => $id);
+		// $data['relawan'] = $this->m_data->edit_data($where,'relawan')->result();
+		$data['relawan'] = $this->m_data->edit_data($id)->result();
 		$this->load->view('edit_form',$data);
 	}
 	function edit_relawan_temp($id){
 		$this->session->set_userdata('edit', 'temp');
 		$where = array('nik' => $id);
-		$data['relawan'] = $this->m_data->edit_data($where,'relawan_temp')->result();
+		// $data['relawan'] = $this->m_data->edit_data($where,'relawan_temp')->result();
+		$data['relawan'] = $this->m_data->edit_data($where)->result();
 		$this->load->view('edit_form',$data);
 	}
 	function update_relawan(){
@@ -114,6 +116,7 @@ class Dashboard extends CI_Controller {
 	 
 		if ($_SESSION['edit'] == 'norm') {
 			$this->m_data->update_data($where,$data,'relawan');
+			$this->m_data->update_data($where,$data,'relawan_temp');
 			redirect('list_relawan');
 		} else {
 			$this->m_data->update_data($where,$data,'relawan_temp');
@@ -123,6 +126,7 @@ class Dashboard extends CI_Controller {
 	function hapus($id){
 		$where = array('nik' => $id);
 		$this->m_data->hapus_data($where,'relawan');
+		$this->m_data->hapus_data($where,'relawan_temp');
 		redirect('list_relawan');
 	}
 	function hapus_temp($id){
