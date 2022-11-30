@@ -63,9 +63,16 @@ class M_data extends CI_Model{
     function hapus_data($where,$table){
         $this->db->where($where);
         $this->db->delete($table);
+        // $this->db->delete(array($table,$table2));
     }
-    function edit_data($where,$table){		
-        return $this->db->get_where($table,$where);
+    // function edit_data($where,$table){		
+    function edit_data($nik){		
+        $query = $this->db->query("
+        SELECT nik, nama, tempat_lahir, jk, tgl_lahir, alamat, rt, rw, kota, kecamatan, kelurahan, hpwa, as_koor, source, created_at, updated_at, penginput FROM relawan WHERE nik ='$nik'
+        UNION ALL
+        SELECT nik, nama, tempat_lahir, jk, tgl_lahir, alamat, rt, rw, kota, kecamatan, kelurahan, hpwa, as_koor, source, created_at, updated_at, penginput FROM relawan_temp WHERE nik ='$nik'");
+        return $query;
+        // return $this->db->get_where($table,$where);
     }
     function update_data($where,$data,$table){
 		$this->db->where($where);
