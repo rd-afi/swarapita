@@ -34,11 +34,11 @@ class M_data extends CI_Model{
 	}
 	function list_relawan(){
         $query = $this->db->query("
-        SELECT relawan.nik as nik,relawan.nama as nama,relawan.alamat as alamat,relawan.tempat_lahir as tempat_lahir,relawan.jk as jk,relawan.tgl_lahir as tgl_lahir,kota,kecamatan,kelurahan,hpwa,as_koor,penginput,data_kpu.lokasi as lokasi
+        SELECT relawan.nik as nik,relawan.nama as nama,relawan.alamat as alamat,relawan.tempat_lahir as tempat_lahir,relawan.jk as jk,relawan.tgl_lahir as tgl_lahir,kota,rt,rw,kecamatan,kelurahan,hpwa,as_koor,penginput,data_kpu.lokasi as lokasi
         FROM relawan
         LEFT JOIN data_kpu ON data_kpu.nik = relawan.nik
         UNION
-        SELECT relawan_temp.nik as nik, relawan_temp.nama as nama, alamat ,tempat_lahir ,jk ,tgl_lahir,kota,kecamatan,kelurahan,hpwa,as_koor,penginput,data_kpu.lokasi as lokasi
+        SELECT relawan_temp.nik as nik, relawan_temp.nama as nama, alamat ,tempat_lahir ,jk ,tgl_lahir,kota,rt,rw,kecamatan,kelurahan,hpwa,as_koor,penginput,data_kpu.lokasi as lokasi
         FROM relawan_temp
         LEFT JOIN data_kpu ON data_kpu.nik = relawan_temp.nik
         ");
@@ -46,7 +46,7 @@ class M_data extends CI_Model{
 	}
 	function list_relawan_by_penginput($user){
         $query = $this->db->query("
-        SELECT relawan.nik as nik,relawan.nama as nama,relawan.alamat as alamat,relawan.tempat_lahir as tempat_lahir,relawan.jk as jk,relawan.tgl_lahir as tgl_lahir,kota,kecamatan,kelurahan,hpwa,as_koor,penginput,data_kpu.lokasi as lokasi
+        SELECT relawan.nik as nik,relawan.nama as nama,relawan.alamat as alamat,relawan.tempat_lahir as tempat_lahir,relawan.jk as jk,relawan.tgl_lahir as tgl_lahir,kota,rt,rw,kecamatan,kelurahan,hpwa,as_koor,penginput,data_kpu.lokasi as lokasi
         FROM relawan
         LEFT JOIN data_kpu ON data_kpu.nik = relawan.nik
         WHERE penginput = '$user'");
