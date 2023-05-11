@@ -87,6 +87,8 @@ $this->load->view('layout/head');
                         <th>Tanggal Lahir</th>
                         <th>Alamat</th>
                         <th>Kota</th>
+                        <th>RT</th>
+                        <th>RW</th>
                         <th>Kecamatan</th>
                         <th>Kelurahan</th>
                         <th>No HP / WA</th>
@@ -122,6 +124,8 @@ $this->load->view('layout/head');
                           <td><?php echo $u->tgl_lahir ?></td>
                           <td><?php echo $u->alamat ?></td>
                           <td><?php echo $u->kota ?></td>
+                          <td><?php echo $u->rt ?></td>
+                          <td><?php echo $u->rw ?></td>
                           <td><?php echo $u->kecamatan ?></td>
                           <td><?php echo $u->kelurahan ?></td>
                           <td><?php echo $u->hpwa ?></td>
